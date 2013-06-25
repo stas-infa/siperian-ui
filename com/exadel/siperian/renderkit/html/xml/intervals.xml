@@ -1,0 +1,13 @@
+
+<intervals>
+	<interval length="10m" marker="1m" datePattern="HH:mm" />
+	<interval length="2h" marker="15m" datePattern="HH:mm" />
+	<interval length="8h" marker="1h" datePattern="HH:mm" />
+	<interval length="16h" marker="2h" datePattern="HH:mm" />
+	<interval length="24h" marker="3h" datePattern="HH:mm" />
+	<interval length="7d" marker="1d" datePattern="NNN/dd" />
+	<interval length="1M" marker="1d" datePattern="NNN/dd" />
+	<interval length="6M" marker="1M" datePattern="NNN/yyyy" />
+	<interval length="24M" marker="3M" datePattern="MM/dd/yyyy" />
+	<interval length="+" marker="1y" datePattern="MM/dd/yyyy" />
+</intervals>

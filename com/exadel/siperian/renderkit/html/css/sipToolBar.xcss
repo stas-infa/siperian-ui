@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:template xmlns:f='http:/jsf.exadel.com/template'
+   xmlns:u='http:/jsf.exadel.com/template/util' 
+   xmlns="http://www.w3.org/1999/xhtml" >
+   
+<u:selector name=".siptoolbar .bg, .siptoolbar td.group">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/toolbar_bg.png" />
+    </u:style>
+</u:selector>
+<u:selector name=".siptoolbar td.highlightedGroup">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/toolbar_bg_ac.png" />
+    </u:style>
+</u:selector>
+<u:selector name=".siptoolbar .bg-ac, .siptoolbar td.active">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/toolbar_bg_ac.png" />
+    </u:style>
+</u:selector>
+
+<u:selector name=".siptoolbar .active">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/toolbar_bg_ac.png" />
+    </u:style>
+</u:selector>
+
+<f:verbatim>
+<![CDATA[
+.siptoolbar {font-family: Arial, Helvetica, sans-serif; font-size: 11px; color:#000000; text-decoration: none;}
+.siptoolbar .bg, td.group, td.highlightedGroup {height: 30px; white-space:nowrap; background-repeat:repeat-x; white-space:nowrap;}
+.siptoolbar .bg-ac, td.active {height: 30px; white-space:nowrap; background-repeat:repeat-x; white-space:nowrap; cursor:pointer;}
+.siptoolbar td.active * {cursor:pointer;}
+.siptoolbar td.group, .siptoolbar td.highlightedGroup {padding: 0px 3px}
+.siptoolbar td.bg img {width: 2px; height: 18px}
+.siptoolbar td.group *, .siptoolbar td.highlightedGroup * {font-family: Arial, Helvetica, sans-serif; font-size: 11px; color:#000000; text-decoration: none; vertical-align: middle} 
+.siptoolbar .sep {padding-top: 6px; padding-left: 2px; padding-right: 2px;}
+.siptoolbar_disgroup {
+	position: absolute; 
+	opacity: .4; 
+	filter: alpha(opacity=40); 
+	top: -7px;
+	//top: -4px;
+	//backgroundPositionY : -2px;
+ 	//height: 26px;
+ }
+]]>
+</f:verbatim>
+</f:template>

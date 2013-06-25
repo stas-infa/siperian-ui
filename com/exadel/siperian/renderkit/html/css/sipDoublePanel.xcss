@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:template xmlns:f='http:/jsf.exadel.com/template'
+   xmlns:u='http:/jsf.exadel.com/template/util' 
+   xmlns="http://www.w3.org/1999/xhtml" >
+   <f:verbatim>
+<![CDATA[
+
+.spn_dbl_panel_bgtright, .spn_dbl_panel_contentright, .spn_dbl_panel_bgbright { width: 100%; }
+
+.spn_dbl_panel_bgtl, .spn_dbl_panel_bgtleft, .spn_dbl_panel_bgtright, .spn_dbl_panel_bgtr, .spn_dbl_panel_bgct, .spn_dbl_panel_bgcb { font-size:1px; line-height: 1px;}
+.spn_dbl_panel_bgtleft, .spn_dbl_panel_bgtright { height: 15px;}
+.spn_dbl_panel_contentleft, .spn_dbl_panel_contentright { padding : 0px; background : #f5f7f9; vertical-align:top; }
+.spn_dbl_panel_bgbleft, .spn_dbl_panel_bgbright { height: 15px; }
+
+.spn_dbl_panel_bgtl{ width: 15px; height: 15px; }
+.spn_dbl_panel_bgtr{ width: 15px; height: 15px; }
+.spn_dbl_panel_bgl{ width: 15px; height: 100%; }
+.spn_dbl_panel_bgr{ width: 15px; height: 100%; }
+.spn_dbl_panel_bgbl{ width: 15px; height: 15px; }
+.spn_dbl_panel_bgbr{ width: 15px; height: 15px; }
+.spn_dbl_panel_bgct{ width: 30px; height: 15px; }
+.spn_dbl_panel_bgcc{ width: 30px; height: 100%; }
+.spn_dbl_panel_bgcb{ width: 30px; height: 15px; }
+
+
+
+
+]]>
+</f:verbatim>
+
+
+<u:selector name=".spn_dbl_panel_bgtleft">
+	 <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/sip_dbl_panel_top.png" />
+    </u:style>
+   	<u:style name="background-repeat" value="repeat-x" />
+</u:selector>
+
+<u:selector name=".spn_dbl_panel_bgtright">
+	 <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/sip_dbl_panel_top.png" />
+    </u:style>
+   	<u:style name="background-repeat" value="repeat-x" />
+</u:selector>
+
+
+<u:selector name=".spn_dbl_panel_bgbleft">
+	 <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/sip_dbl_panel_bottom.png" />
+    </u:style>
+   	<u:style name="background-repeat" value="repeat-x" />
+</u:selector>
+
+<u:selector name=".spn_dbl_panel_bgbright">
+	 <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/sip_dbl_panel_bottom.png" />
+    </u:style>
+   	<u:style name="background-repeat" value="repeat-x" />
+</u:selector>
+
+
+<u:selector name=".spn_dbl_panel_bgtl">
+	 <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/sip_dbl_panel_left-top.png" />
+    </u:style>
+   	<u:style name="background-repeat" value="no-repeat" />
+</u:selector>
+
+
+<u:selector name=".spn_dbl_panel_bgtr">
+	 <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/sip_dbl_panel_right-top.png" />
+    </u:style>
+   	<u:style name="background-repeat" value="no-repeat" />
+</u:selector>
+
+
+
+<u:selector name=".spn_dbl_panel_bgl">
+	 <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/sip_dbl_panel_left.png" />
+    </u:style>
+   	<u:style name="background-repeat" value="repeat-y" />
+</u:selector>
+
+
+<u:selector name=".spn_dbl_panel_bgr">
+	 <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/sip_dbl_panel_right.png" />
+    </u:style>
+   	<u:style name="background-repeat" value="repeat-y" />
+</u:selector>
+
+
+
+<u:selector name=".spn_dbl_panel_bgbl">
+	 <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/sip_dbl_panel_left-bottom.png" />
+    </u:style>
+   	<u:style name="background-repeat" value="no-repeat" />
+</u:selector>
+
+
+<u:selector name=".spn_dbl_panel_bgbr">
+	 <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/sip_dbl_panel_right-bottom.png" />
+    </u:style>
+   	<u:style name="background-repeat" value="no-repeat" />
+</u:selector>
+
+
+<u:selector name=".spn_dbl_panel_bgct">
+	 <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/sip_dbl_panel_center-top.png" />
+    </u:style>
+   	<u:style name="background-repeat" value="no-repeat" />
+</u:selector>
+
+
+<u:selector name=".spn_dbl_panel_bgcc">
+	 <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/sip_dbl_panel_center-center.png" />
+    </u:style>
+   	<u:style name="background-repeat" value="repeat-y" />
+</u:selector>
+
+
+<u:selector name=".spn_dbl_panel_bgcb">
+	 <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/sip_dbl_panel_center-bottom.png" />
+    </u:style>
+   	<u:style name="background-repeat" value="no-repeat" />
+</u:selector>
+
+
+</f:template>

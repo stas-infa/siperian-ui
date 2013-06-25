@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<components>
+	<namespace>http://siperian.exadel.com/sipPanel</namespace>
+
+	<component>
+		<name>panel</name>
+
+		
+		
+				<styles>
+						<style>com/exadel/siperian/renderkit/html/css/sippanel.xcss</style>
+					</styles>
+			</component>
+
+</components>

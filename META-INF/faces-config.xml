@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd"
+  version="1.2">	
+
+
+
+
+
+
+  <component>
+  	<description>"src/main/config/component/barTimeline.xml"</description>
+        <component-type>com.exadel.siperian.BarTimeline</component-type>
+    <component-class>com.exadel.siperian.component.html.HtmlBarTimeline</component-class>
+    
+	    <component-extension>
+      <component-family>com.exadel.siperian.Timeline</component-family>
+      <renderer-type>com.exadel.siperian.BarTimelineRenderer</renderer-type>
+    </component-extension>
+      </component>
+
+  <render-kit>
+				<render-kit-id>HTML_BASIC</render-kit-id>
+							  		<renderer>
+			<component-family>com.exadel.siperian.Timeline</component-family>
+			<renderer-type>
+				com.exadel.siperian.BarTimelineRenderer
+			</renderer-type>
+			<renderer-class>
+				com.exadel.siperian.renderkit.html.BarTimelineRenderer
+			</renderer-class>
+		</renderer>
+			
+
+  </render-kit>
+
+
+</faces-config>

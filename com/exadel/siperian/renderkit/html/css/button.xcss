@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:template 
+	xmlns:f="http://jsf.exadel.com/template"
+   	xmlns:u="http://jsf.exadel.com/template/util" 
+   	xmlns="http://www.w3.org/1999/xhtml">
+
+<f:verbatim>
+<![CDATA[
+.sipbutton {
+	display: table;
+}
+.sipbutton .left {
+	background-repeat: no-repeat;
+	width: 9px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	text-decoration: none;
+	cursor: pointer;
+}
+.sipbutton .right {
+	background-repeat: no-repeat;
+	width: 9px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	text-decoration: none;
+	height: 19px;
+	cursor: pointer;
+}
+.sipbutton .middle {
+	background-repeat: repeat-x;
+	white-space: nowrap;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	text-decoration: none;
+	cursor: pointer;
+	text-align: center;
+	vertical-align: top;
+	padding: 2px 0 0 0;
+}
+
+.sipbutton .btnstub{
+  width: 1px;
+  height: 1px;
+}
+
+.dottedButtonAnchor {
+	color:transparent; 
+	border:none;	
+}
+
+.normalButtonAnchor {
+	color:transparent !important;
+}
+
+.sipbutton .middle img.icon-left {margin-right: 5px; border:0px;}
+.sipbutton .middle img.icon-right {margin-left: 5px; border:0px;}
+
+.sipbutton .sipButCommon .middle {color: #000000; cursor: pointer;}
+
+a:hover .sipbutton .sipButCommon .middle {color: #ffffff; cursor: pointer;}
+a:hover .sipbutton .sipButCommon .left  {color: #ffffff; cursor: pointer;}
+a:hover .sipbutton .sipButCommon .right  {color: #ffffff; cursor: pointer;}
+
+.dottedButtonAnchor .sipbutton .sipButCommon .middle {color: #000000;}
+
+
+.sipbutton .disabled .left {cursor: default;}
+.sipbutton .disabled .right {cursor: default;}
+.sipbutton .disabled .middle {cursor: default; color: #999999;}
+]]>
+</f:verbatim>
+
+<u:selector name=".sipbutton .sipButCommon .left">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/bl.png" />
+    </u:style>
+</u:selector>
+<u:selector name=".sipbutton .sipButCommon .right">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/br.png" />
+    </u:style>
+</u:selector>
+<u:selector name=".sipbutton .sipButCommon .middle">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/bc.png" />
+    </u:style>
+</u:selector>
+
+
+<u:selector name="a:hover .sipbutton .sipButCommon .left">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/bl-active.png" />
+    </u:style>
+</u:selector>
+<u:selector name="a:hover .sipbutton .sipButCommon .right">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/br-active.png" />
+    </u:style>
+</u:selector>
+<u:selector name="a:hover .sipbutton .sipButCommon .middle">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/bc-active.png" />
+    </u:style>
+</u:selector>
+
+
+
+<u:selector name=".dottedButtonAnchor .sipbutton .sipButCommon .left">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/bl-clicked.png" />
+    </u:style>
+</u:selector>
+<u:selector name=".dottedButtonAnchor .sipbutton .sipButCommon .right">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/br-clicked.png" />
+    </u:style>
+</u:selector>
+<u:selector name=".dottedButtonAnchor .sipbutton .sipButCommon .middle">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/bc-clicked.png" />
+    </u:style>
+</u:selector>
+
+
+<u:selector name=".sipbutton .disabled .left">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/bl-disabled.png" />
+    </u:style>
+</u:selector>
+<u:selector name=".sipbutton .disabled .right">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/br-disabled.png" />
+    </u:style>
+</u:selector>
+<u:selector name=".sipbutton .disabled .middle">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/bc-disabled.png" />
+    </u:style>
+</u:selector>
+
+
+</f:template>

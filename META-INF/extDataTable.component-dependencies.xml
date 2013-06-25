@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<components>
+	<namespace>http://siperian.exadel.com/extDataTable</namespace>
+
+	<component>
+		<name>extendedDataTable</name>
+
+		
+				<scripts>
+						<script>org.ajax4jsf.javascript.AjaxScript</script>
+						<script>org.ajax4jsf.javascript.PrototypeScript</script>
+						<script>org/richfaces/renderkit/html/scripts/utils.js</script>
+						<script>org/richfaces/renderkit/html/scripts/browser_info.js</script>
+						<script>org/ajax4jsf/javascript/scripts/form.js</script>
+						<script>org/richfaces/renderkit/html/scripts/form.js</script>
+						<script>org/richfaces/renderkit/html/scripts/jquery/jquery.js</script>
+						<script>org/richfaces/renderkit/html/script/controlUtils.js</script>
+						<script>org/richfaces/renderkit/html/scripts/common-scrollable-data-table.js</script>
+						<script>com/exadel/siperian/renderkit/html/scripts/sip-extended-data-table.js</script>
+						<script>org/richfaces/renderkit/html/scripts/drag-indicator.js</script>
+						<script>org/richfaces/renderkit/html/scripts/ext-dt-drag-indicator.js</script>
+						<script>org/richfaces/renderkit/html/scripts/ext-dt-simple-draggable.js</script>
+						<script>org/richfaces/renderkit/html/scripts/ext-dt-simple-dropzone.js</script>
+					</scripts>
+		
+				<styles>
+						<style>com/exadel/siperian/renderkit/html/css/extendedDataTable.xcss</style>
+						<style>org/richfaces/renderkit/html/css/dragIndicator.xcss</style>
+					</styles>
+			</component>
+
+</components>

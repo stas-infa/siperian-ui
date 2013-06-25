@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+
+<taglib xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
+    version="2.1">
+ <tlib-version>9.5</tlib-version>
+ <short-name>barTimeline</short-name>
+ <uri>http://siperian.exadel.com/sip</uri>
+
+
+
+					 <tag>
+	  	  <description>"src/main/config/component/barTimeline.xml"</description>
+	  	  	  		  <name>barTimeline</name>
+	  	  <tag-class>com.exadel.siperian.taglib.BarTimelineTag</tag-class>
+	  <body-content>JSP</body-content>
+	  
+	    		  <attribute>
+	   <description>barTimelineState</description>
+	   <name>barTimelineState</name>
+	   	   	   					   	<deferred-value>
+					<type>com.exadel.siperian.model.BarTimelineState</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>binding</description>
+	   <name>binding</name>
+	   	   	   					   	<deferred-value>
+					<type>javax.el.ValueExpression</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>${prop.xmlEncodedDescription}</description>
+	   <name>dataModel</name>
+	   	   	   					   	<deferred-value>
+					<type>com.exadel.siperian.model.BarTimelineDataModel</type>
+				</deferred-value>
+				   	  </attribute>
+		  	  		  <attribute>
+	   <description>${prop.xmlEncodedDescription}</description>
+	   <name>flashWmode</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>header</description>
+	   <name>header</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>${prop.xmlEncodedDescription}</description>
+	   <name>height</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>id</description>
+	   <name>id</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>${prop.xmlEncodedDescription}</description>
+	   <name>locale</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.Object</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>monthLabels</description>
+	   <name>monthLabels</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.Object</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>monthLabelsShort</description>
+	   <name>monthLabelsShort</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.Object</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>js handler</description>
+	   <name>oncontextmenu</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>js handler</description>
+	   <name>ontimelineinit</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>js handler</description>
+	   <name>onzoomerchange</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>rendered</description>
+	   <name>rendered</name>
+	   	   	   					   	<deferred-value>
+					<type>boolean</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>${prop.xmlEncodedDescription}</description>
+	   <name>styleClass</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>path to the file where template for the group tooltip located.</description>
+	   <name>timelineStylesheet</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>weekDayLabels</description>
+	   <name>weekDayLabels</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.Object</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>weekDayLabelsShort</description>
+	   <name>weekDayLabelsShort</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.Object</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>${prop.xmlEncodedDescription}</description>
+	   <name>width</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  	  
+	</tag>
+	
+				
+  
+</taglib>

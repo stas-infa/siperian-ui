@@ -1,0 +1,23 @@
+JarIndex-Version: 1.0
+
+barTimeline-9.5-SNAPSHOT.jar
+META-INF
+META-INF/maven
+META-INF/maven/com.exadel.siperian.ui
+META-INF/maven/com.exadel.siperian.ui/barTimeline
+com
+com/exadel
+com/exadel/siperian
+com/exadel/siperian/component
+com/exadel/siperian/component/html
+com/exadel/siperian/model
+com/exadel/siperian/model/impl
+com/exadel/siperian/renderkit
+com/exadel/siperian/renderkit/html
+com/exadel/siperian/renderkit/html/css
+com/exadel/siperian/renderkit/html/js
+com/exadel/siperian/renderkit/html/swf
+com/exadel/siperian/renderkit/html/xml
+com/exadel/siperian/taglib
+com/exadel/siperian/xml
+

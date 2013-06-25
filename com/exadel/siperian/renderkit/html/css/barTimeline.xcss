@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:template 
+	xmlns:f="http://jsf.exadel.com/template"
+   	xmlns:u="http://jsf.exadel.com/template/util" 
+   	xmlns="http://www.w3.org/1999/xhtml">	
+
+<f:verbatim>
+<![CDATA[
+
+		.swimLine {height:30px; background-color:#fbfa9d;}
+		.type1 {color:#ff0000; border-width:1px; border-color:#ffffff;}
+		.type1selected {color:#ff0000; background-color:#ff7e02; border-width:1px; border-color:#ffffff;}
+		.type1hover {color:#ff0000; background-color:#000000; border-width:1px; border-color:#ffffff;}
+		.type1highlight {color:#ff6000; border-width:1px; border-color:#ffffff;}
+		.type2 {color:#0000ff; border-width:1px; border-color:#ffffff;}
+		.type2selected {color:#0000ff; background-color:#ff7e02; border-width:1px; border-color:#ffffff;}
+		.type2hover {color:#0000ff; background-color:#000000; border-width:1px; border-color:#ffffff;}
+		.type2highlight {color:#0060ff; border-width:1px; border-color:#ffffff;}
+		.tooltip {background-color:#ffffec; border-width:1px; border-color:#000000; font-size:12px}
+]]>
+</f:verbatim>
+</f:template>
+		

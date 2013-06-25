@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:template 
+	xmlns:f="http://jsf.exadel.com/template"
+   	xmlns:u="http://jsf.exadel.com/template/util" 
+   	xmlns="http://www.w3.org/1999/xhtml">
+
+<f:verbatim>
+<!-- TODO nick - choose another class name, "icon" is a common class to be used by users in their apps  -->
+<![CDATA[
+
+.icon {
+	
+}
+.icon .left {
+	background-repeat: no-repeat;
+	width: 6px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	text-decoration: none;
+	cursor: pointer;
+}
+.icon .right {
+	background-repeat: no-repeat;
+	width: 6px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	text-decoration: none;
+	height: 19px;
+	cursor: pointer;
+}
+.icon .middle {
+	background-repeat: repeat-x;
+	white-space: nowrap;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	text-decoration: none;
+	cursor: pointer;
+	width: 16px;
+}
+.icon .middle img {border:0px;}
+.icon .iconCommon .middle {color: #000000;}
+a:hover .icon .iconCommon .middle {color: #ffffff;}
+a:active .icon .iconCommon .middle {color: #000000;}
+
+.icon .disabled .left {cursor: default;}
+.icon .disabled .right {cursor: default;}
+.icon .disabled .middle {cursor: default; color: #999999;}
+
+.iconImage {
+	width: 16px;
+	height: 16px;
+	margin-right: 1px;
+	margin-top: 3px;
+	
+}
+]]>
+</f:verbatim>
+
+<u:selector name=".icon .iconCommon .left">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/icon-bl.png" />
+    </u:style>
+</u:selector>
+<u:selector name=".icon .iconCommon .right">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/icon-br.png" />
+    </u:style>
+</u:selector>
+<u:selector name=".icon .iconCommon .middle">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/icon-bc.png" />
+    </u:style>
+</u:selector>
+
+
+
+
+<u:selector name="a:hover .icon .iconCommon .left">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/icon-bl-active.png" />
+    </u:style>
+</u:selector>
+<u:selector name="a:hover .icon .iconCommon .right">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/icon-br-active.png" />
+    </u:style>
+</u:selector>
+<u:selector name="a:hover .icon .iconCommon .middle">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/icon-bc-active.png" />
+    </u:style>
+</u:selector>
+
+
+
+<u:selector name="a:active .icon .iconCommon .left">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/icon-bl-clicked.png" />
+    </u:style>
+</u:selector>
+<u:selector name="a:active .icon .iconCommon .right">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/icon-br-clicked.png" />
+    </u:style>
+</u:selector>
+<u:selector name="a:active .icon .iconCommon .middle">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/icon-bc-clicked.png" />
+    </u:style>
+</u:selector>
+
+
+
+
+
+
+
+
+
+
+
+<u:selector name=".icon .disabled .left">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/icon-bl-disabled.png" />
+    </u:style>
+</u:selector>
+<u:selector name=".icon .disabled .right">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/icon-br-disabled.png" />
+    </u:style>
+</u:selector>
+<u:selector name=".icon .disabled .middle">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/icon-bc-disabled.png" />
+    </u:style>
+</u:selector>
+
+</f:template>

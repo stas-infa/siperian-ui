@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<timeline-root>
+	<properties>
+		<menu>
+			<eventMenu>
+				 <item label="Label1" handler="onItem1Handler"/>
+				 <item label="Label2" handler="onItem2Handler"/>
+			</eventMenu>
+			<globalMenu>
+				 <item label="GLobal label1" handler="onItem3Handler"/>
+				 <item label="Global label2" handler="onItem4Handler"/>
+			</globalMenu>
+		</menu>
+	</properties>
+	<styles>
+		.swimLine {height:20px;}
+	</styles>
+	<data>
+		<intervals>
+			<interval period="2h" value="15m" outputPattern=""/>
+			<interval period="8h" value="1h" outputPattern=""/>
+			<interval period="16h" value="2h" outputPattern=""/>
+			<interval period="24h" value="3h" outputPattern=""/>
+			<interval period="7d" value="1d" outputPattern=""/>
+			<interval period="30d" value="1w" outputPattern=""/>
+			<interval period="6M" value="1M" outputPattern=""/>
+			<interval period="24M" value="3M" outputPattern=""/>
+			<interval period="+" value="1y" outputPattern=""/>
+		</intervals>
+		<swimLines frozenWidth="60">
+			<swimLine name="Phone" id="1" styleClass=""/>
+			<swimLine name="Email" id="2" styleClass=""/>
+			<swimLine name="Address" id="3" styleClass=""/>
+			<swimLine name="Person" id="4" styleClass=""/>
+			<swimLine name="Party" id="5" styleClass=""/>
+		</swimLines>
+		<eventTypes>
+			<eventType id="type1" name="name1" styleClass="sdfgsdfg"/>
+		</eventTypes>
+		<events>
+			<event id="1" type="type1" date="20/10/2008 23:20" swimLineId="1">
+				<tooltip>tooltip1</tooltip>
+			</event>
+		</events>
+	</data>
+</timeline-root>

@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+
+<taglib xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
+    version="2.1">
+ <tlib-version>9.5</tlib-version>
+ <short-name>modalPanel</short-name>
+ <uri>http://siperian.exadel.com/sip</uri>
+
+
+
+					 <tag>
+	  	  <description></description>
+	  	  	  		  <name>modalPanel</name>
+	  	  <tag-class>com.exadel.siperian.taglib.ModalPanelTag</tag-class>
+	  <body-content>JSP</body-content>
+	  
+	    		  <attribute>
+	   <description>If panelDOMAttachment equals 'form' then check this attribute that contains of form for attachment.</description>
+	   <name>attachmentFormId</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>If "true" modalPanel should be autosizeable. Default value is "false".</description>
+	   <name>autosized</name>
+	   	   	   					   	<deferred-value>
+					<type>boolean</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>The attribute takes a value-binding expression for a component property of
+a backing bean</description>
+	   <name>binding</name>
+	   	   	   					   	<deferred-value>
+					<type>javax.faces.component.UIComponent</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>CSS style(s) is/are to be applied to component controls when this component
+				is rendered</description>
+	   <name>controlsClass</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  	  	  	  		  <attribute>
+	   <description>CSS style(s) is/are to be applied to component header when this component
+				is rendered</description>
+	   <name>headerClass</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>Attribute defines height of component. Default value is "200".</description>
+	   <name>height</name>
+	   	   	   					   	<deferred-value>
+					<type>int</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>Every component may have a unique id that is automatically created if omitted</description>
+	   <name>id</name>
+	   	   	   		<rtexprvalue>false</rtexprvalue>
+	   		<type>java.lang.String</type>
+	   	  </attribute>
+		  	  		  <attribute>
+	   <description>Defines whether to show page blocking div under modalPanel</description>
+	   <name>isModal</name>
+	   	   	   					   	<deferred-value>
+					<type>boolean</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>If "true" modalPanel should save state after submission. Default value is "false".</description>
+	   <name>keepVisualState</name>
+	   	   	   					   	<deferred-value>
+					<type>boolean</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>A localized user presentable name for this component.</description>
+	   <name>label</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>Attribute defines X position of component left-top corner. Default value is "auto".</description>
+	   <name>left</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  	  	  		  <attribute>
+	   <description>Attribute defines min height of component. Default value is "10". If the value is less then 10, a "IllegalArgumentException" exception is thrown.</description>
+	   <name>minHeight</name>
+	   	   	   					   	<deferred-value>
+					<type>int</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>Attribute defines min width of component. Default value is "10".  If the value is less then 10, a "IllegalArgumentException" exception is thrown.</description>
+	   <name>minWidth</name>
+	   	   	   					   	<deferred-value>
+					<type>int</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>if "true" there is possibility to move component. Default value is "true".</description>
+	   <name>moveable</name>
+	   	   	   					   	<deferred-value>
+					<type>boolean</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>Event must occurs before panel is hiding</description>
+	   <name>onbeforehide</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>Event must occurs before panel is opening</description>
+	   <name>onbeforeshow</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>Event must occurs after panel closed</description>
+	   <name>onhide</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>HTML: a script expression; a pointer button is clicked outside modalPanel</description>
+	   <name>onmaskclick</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>JavaScript handler to be called on right click outside modalPanel</description>
+	   <name>onmaskcontextmenu</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>HTML: a script expression; a pointer button is double-clicked outside modalPanel</description>
+	   <name>onmaskdblclick</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>HTML: a script expression; a pointer button is pressed down outside modalPanel</description>
+	   <name>onmaskmousedown</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>HTML: a script expression; a pointer button is moved outside modalPanel</description>
+	   <name>onmaskmousemove</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>HTML: a script expression; a pointer button is moved away modalPanel</description>
+	   <name>onmaskmouseout</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>HTML: a script expression; a pointer button is moved onto modalPanel</description>
+	   <name>onmaskmouseover</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>HTML: a script expression; a pointer button is released outside modalPanel</description>
+	   <name>onmaskmouseup</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>Event must occurs before panel is moving</description>
+	   <name>onmove</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>Event must occurs than panel is resizing</description>
+	   <name>onresize</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>Event must occurs after panel opened</description>
+	   <name>onshow</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>Attribute defines panel DOM attachment. Possible values 'body', 'form', 'unchanged'</description>
+	   <name>panelDOMAttachment</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>If "false", this component is not rendered</description>
+	   <name>rendered</name>
+	   	   	   					   	<deferred-value>
+					<type>boolean</type>
+				</deferred-value>
+				   	  </attribute>
+		  	  	  		  <attribute>
+	   <description>if "true" there is possibility to change component size. Default value is "true".</description>
+	   <name>resizeable</name>
+	   	   	   					   	<deferred-value>
+					<type>boolean</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>Pop-up shadow depth for suggestion content</description>
+	   <name>shadowDepth</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>HTML CSS class attribute of element for pop-up suggestion content</description>
+	   <name>shadowOpacity</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  	  		  <attribute>
+	   <description>Defines whether to show close button in modalPanel header</description>
+	   <name>showCloseButton</name>
+	   	   	   					   	<deferred-value>
+					<type>boolean</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>If "true" value for this attribute makes a modal panel opened as default.</description>
+	   <name>showWhenRendered</name>
+	   	   	   					   	<deferred-value>
+					<type>boolean</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>CSS style(s) is/are to be applied when this component is rendered</description>
+	   <name>style</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>Corresponds to the HTML class attribute</description>
+	   <name>styleClass</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>Attribute defines Y position of component left-top corner. Default value is "auto".</description>
+	   <name>top</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>How to handle HTML SELECT-based controls in IE 6? - "disable" - default,
+				handle as usual, use disabled="true" to hide SELECT controls - "hide" - use
+				visibility="hidden" to hide SELECT controls</description>
+	   <name>tridentIVEngineSelectBehavior</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>Defines whether to trim or not elements inside modalPanel</description>
+	   <name>trimOverlayedElements</name>
+	   	   	   					   	<deferred-value>
+					<type>boolean</type>
+				</deferred-value>
+				   	  </attribute>
+		  	  	  	  	  	  	  	  		  <attribute>
+	   <description>Defines options that were specified on the client side</description>
+	   <name>visualOptions</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.Object</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>Attribute defines width of component. Default value is "300".</description>
+	   <name>width</name>
+	   	   	   					   	<deferred-value>
+					<type>int</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>Attribute is similar to the standard HTML attribute and can specify window. Default value is "100".
+				placement relative to the content</description>
+	   <name>zindex</name>
+	   	   	   					   	<deferred-value>
+					<type>int</type>
+				</deferred-value>
+				   	  </attribute>
+		  	  
+	</tag>
+	
+				
+  
+</taglib>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<components>
+	<namespace>http://siperian.exadel.com/t</namespace>
+
+	<component>
+		<name>toolBar</name>
+
+		
+				<scripts>
+						<script>org.ajax4jsf.javascript.PrototypeScript</script>
+						<script>com/exadel/siperian/renderkit/html/scripts/toolBar.js</script>
+					</scripts>
+		
+				<styles>
+						<style>com/exadel/siperian/renderkit/html/css/sipToolBar.xcss</style>
+					</styles>
+			</component>
+	<component>
+		<name>toolBarGroup</name>
+
+		
+		
+			</component>
+
+</components>

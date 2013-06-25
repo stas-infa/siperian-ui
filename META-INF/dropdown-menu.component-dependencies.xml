@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<components>
+	<namespace>http://siperian.exadel.com/sip</namespace>
+
+	<component>
+		<name>dropDownMenu</name>
+
+		
+				<scripts>
+						<script>org.ajax4jsf.javascript.PrototypeScript</script>
+						<script>org.ajax4jsf.javascript.AjaxScript</script>
+						<script>com/exadel/siperian/renderkit/html/scripts/sipmenu.js</script>
+					</scripts>
+		
+				<styles>
+						<style>com/exadel/siperian/renderkit/html/css/sipdropdownmenu.xcss</style>
+					</styles>
+			</component>
+
+</components>

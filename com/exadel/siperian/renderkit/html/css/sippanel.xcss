@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:template xmlns:f='http:/jsf.exadel.com/template'
+   xmlns:u='http:/jsf.exadel.com/template/util' 
+   xmlns="http://www.w3.org/1999/xhtml" >
+   <f:verbatim>
+<![CDATA[
+
+
+.spn_panel_bgtl, .spn_panel_bgt, .spn_panel_bgtr { font-size:1px; line-height: 1px;}
+.spn_panel_bgtl{width: 15px; height: 15px; }
+.spn_panel_bgt{ width: 100%; height: 15px; }
+.spn_panel_bgtr{width: 15px; height: 15px; }
+.spn_panel_bgl{ width: 15px; height: 100%; }
+.spn_panel_content { padding : 0px; background : white; vertical-align:top; height:100%;}
+
+.spn_panel_bgr{width: 15px; height: 100%; }
+.spn_panel_bgbl{width: 15px; height: 15px; }
+.spn_panel_bgb{width: 100%; height: 15px; }
+.spn_panel_bgbr{width: 15px; height: 15px; }
+
+]]>
+</f:verbatim>
+
+
+<u:selector name=".spn_panel_bgtl">
+	 <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/left-top.png" />
+    </u:style>
+   	<u:style name="background-repeat" value="no-repeat" />
+</u:selector>
+<u:selector name=".spn_panel_bgt">
+	 <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/top.png" />
+    </u:style>
+   	<u:style name="background-repeat" value="repeat-x" />
+</u:selector>
+<u:selector name=".spn_panel_bgtr">
+	 <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/right-top.png" />
+    </u:style>
+   	<u:style name="background-repeat" value="no-repeat" />
+</u:selector>
+
+<u:selector name=".spn_panel_bgl">
+	 <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/left.png" />
+    </u:style>
+   	<u:style name="background-repeat" value="repeat-y" />
+</u:selector>
+
+<u:selector name=".spn_panel_bgr">
+	 <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/right.png" />
+    </u:style>
+   	<u:style name="background-repeat" value="repeat-y" />
+</u:selector>
+
+<u:selector name=".spn_panel_bgbl">
+	 <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/left-bottom.png" />
+    </u:style>
+   	<u:style name="background-repeat" value="no-repeat" />
+</u:selector>
+
+<u:selector name=".spn_panel_bgb">
+	 <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/bottom.png" />
+    </u:style>
+   	<u:style name="background-repeat" value="repeat-x" />
+</u:selector>
+
+<u:selector name=".spn_panel_bgbr">
+	 <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/right-bottom.png" />
+    </u:style>
+   	<u:style name="background-repeat" value="no-repeat" />
+</u:selector>
+
+
+
+
+
+</f:template>

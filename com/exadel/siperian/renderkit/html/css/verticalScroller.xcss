@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:template xmlns:f='http:/jsf.exadel.com/template'
+   xmlns:u='http:/jsf.exadel.com/template/util'
+   xmlns="http://www.w3.org/1999/xhtml" >
+
+<f:verbatim><![CDATA[
+
+.mainContainer {
+	width: 300px;
+	font-family: Verdana, Arial, Helvetica, sans-serif /* Tabs-TabFontFamily */;
+	font-size: 11px /*Tabs-TabFontSize*/;
+}
+.verticalTabs {
+				display: inline; 
+				float: left; 
+				width: 30px; 
+				margin-right: -1px; 
+				position: relative; 
+			  }
+
+.verticalTabsNoScroll 
+			 {
+				display: inline; 
+				float: left; 
+				width: 30px; 
+				margin-right: -1px; 
+				position: relative;
+			 }
+.scrollTabsContainer {
+	height: 300px;
+	overflow: hidden;
+	margin-top: 14px;
+	margin-bottom: -3px;
+}
+.verticalTabsNoScroll .scrollTabsContainer {
+	height: 300px;
+	overflow: hidden;
+	padding-top: 6px;
+	margin-bottom: 0px;
+
+}
+.verticalTabsNoScroll .arrowTopInActive {display: none;}
+.verticalTabsNoScroll .arrowTopActive {display: none;}
+
+.arrowTopInActive {
+	width: 30px;
+	height: 16px;
+	font-size: 8px;
+	position: absolute;
+	right: 0px;
+	top: 0px;
+}
+
+.arrowTopActive {
+	width: 30px;
+	height: 16px;
+	font-size: 8px;
+	position: absolute;
+	right: 0px;
+	top: 0px;
+}
+
+.arrowBottomActive {
+	width: 30px;
+	height: 16px;
+	font-size: 8px;
+
+}
+
+.arrowBottomInActive {
+	width: 30px;
+	height: 16px;
+	font-size: 8px;
+}
+
+.tabInActive {
+	width: 15px;	
+	height: 20px;
+	margin-left: 4px;
+	padding: 5px 0px 0px 10px;
+	margin-bottom: 3px;
+	margin-right: 1px;
+	margin-top: -1px;
+}
+.tabActive {
+	width: 17px;
+	height: 20px;
+	margin-right: -1px;
+	font-weight: bold;
+	padding: 5px 0px 0px 13px;
+	margin-bottom: 3px;
+	margin-top: -1px;
+}
+
+
+]]>
+
+</f:verbatim>
+
+<!-- TODO nick - how does scroller relates to tabs? -->
+
+<u:selector name=".verticalTabs">
+   <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/tabs-container-back.png" />
+    </u:style>
+    <u:style name="background-repeat" value="repeat-y" />
+</u:selector>
+
+<u:selector name=".verticalTabsNoScroll">
+   <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/tabs-container-back.png" />
+    </u:style>
+    <u:style name="background-repeat" value="repeat-y" />
+</u:selector>
+
+<u:selector name=".arrowTopActive">
+   <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/arrow-top-active.png" />
+    </u:style>
+    <u:style name="background-repeat" value="no-repeat" />
+</u:selector>
+
+<u:selector name=".arrowTopInActive">
+   <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/arrow-top-inactive.png" />
+    </u:style>
+    <u:style name="background-repeat" value="no-repeat" />
+</u:selector>
+
+<u:selector name=".arrowBottomActive">
+   <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/arrow-bottom-active.png" />
+    </u:style>
+    <u:style name="background-repeat" value="no-repeat" />
+</u:selector>
+
+<u:selector name=".arrowBottomInActive">
+   <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/arrow-bottom-inactive.png" />
+    </u:style>
+    <u:style name="background-repeat" value="no-repeat" />
+</u:selector>
+
+<u:selector name=".verticalTabsNoScroll .arrowBottomActive">
+   <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/bottom-container.png" />
+    </u:style>
+    <u:style name="background-repeat" value="no-repeat" />
+    <u:style name="background-color" value="#FFF" />
+</u:selector>
+
+
+<u:selector name=".tabInActive">
+   <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/tab-inactive.png" />
+    </u:style>
+    <u:style name="background-repeat" value="no-repeat" />
+</u:selector>
+
+<u:selector name=".tabActive">
+   <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/tab-active.png" />
+    </u:style>
+    <u:style name="background-repeat" value="no-repeat" />
+</u:selector>
+</f:template>
