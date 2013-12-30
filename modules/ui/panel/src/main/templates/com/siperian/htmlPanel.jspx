@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:root 
+	xmlns:f="http://ajax4jsf.org/cdk/template" 
+	xmlns:c=" http://java.sun.com/jsf/core" 
+	xmlns:ui=" http://ajax4jsf.org/cdk/ui"
+	xmlns:u=" http://ajax4jsf.org/cdk/u"
+	xmlns:h=" http://ajax4jsf.org/cdk/h"
+	xmlns:x=" http://ajax4jsf.org/cdk/x"
+	xmlns:vcp="http://ajax4jsf.org/cdk/vcp"
+	class="com.exadel.siperian.renderkit.html.PanelRenderer"
+	baseclass="org.ajax4jsf.renderkit.HeaderResourcesRendererBase"
+	component="com.exadel.siperian.component.UIPanel">
+	<f:clientid var="clientId"/>
+	<f:resource name="images/empty.gif" var="emptyPng" />
+        <h:styles>css/sippanel.xcss</h:styles>
+         <table id="#{clientId}" width="100%" height="100%" border="0" cellpadding="0" cellspacing="0"
+         x:passThruWithExclusions="id,styleClass,class,style" style="#{component.attributes['style'] }"> 
+
+        	 <tr> 
+          		<td><div class="spn_panel_bgtl"> <!----></div></td> 
+          		<td><div class="spn_panel_bgt"> <!----></div></td> 
+          		<td><div class="spn_panel_bgtr"> <!----></div></td> 
+        	</tr> 
+        	 <tr> 
+       		   <td class="spn_panel_bgl"></td> 
+         	   <td class="spn_panel_content">
+        	  	 <img border="0" width="#{component.attributes['minWidth']}" height="1" src="#{emptyPng}"/>
+        	  	 	<div id="#{clientId}:sipbody">
+        	  	 	<vcp:body>
+						<f:call name="renderChildren" />
+					</vcp:body>
+					</div>
+               </td> 
+                <td class="spn_panel_bgr"></td> 
+     		 </tr> 
+  		<tr> 
+          <td class="spn_panel_bgbl"><img src="#{emptyPng}" width="15" height="15" border="0"/></td> 
+          <td class="spn_panel_bgb"></td> 
+          <td class="spn_panel_bgbr"><img src="#{emptyPng}" width="15" height="15" border="0"/></td> 
+        </tr> 
+      </table>
+       <f:clientid var="clientId"/>
+</f:root>

@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE components PUBLIC "-//AJAX4JSF//CDK Generator config/EN"  "http://labs.jboss.com/jbossrichfaces/component-config.dtd">
+<components>
+          <component>
+                    <name>com.exadel.siperian.ExtendedDataTable</name>
+                    <family>com.exadel.siperian.ExtendedDataTable</family>
+                    <classname>com.exadel.siperian.component.html.HtmlExtendedDataTable</classname>
+                    <superclass>com.exadel.siperian.component.UIExtendedDataTable</superclass>
+                    <description> The &lt;rich:extendedDataTable&gt; component is used for
+                              tables extending standard component &lt;rich:dataTable&gt; . </description>
+                    <renderer generate="true" override="true">
+                              <name>com.exadel.siperian.ExtendedDataTableRenderer</name>
+                              <template>com/exadel/siperian/htmlExtendedDataTable.jspx</template>
+                    </renderer>
+                    <tag>
+                              <name>extendedDataTable</name>
+                              <classname>com.exadel.siperian.taglib.ExtendedDataTableTag</classname>
+                              <superclass>org.ajax4jsf.webapp.taglib.HtmlComponentTagBase</superclass>
+                    </tag>
+                    <taghandler generate="true">
+						<classname>com.exadel.siperian.taglib.ExtendedDataTableTagHandler</classname>
+						<superclass>com.exadel.siperian.taglib.ExtendedDataTableTagHandlerBase</superclass>
+					</taghandler>
+                    
+                    &ui_component_attributes; &ui_data_attributes;
+                    &html_universal_attributes; &html_table_attributes; &html_events;
+                    &spec_table_attributes; <property>
+                              <name>activeRowKey</name>
+                            
+                              <description>Request scope attribute under which the activeRowKey will
+                                        be accessible</description>
+                    </property>
+                    <property>
+                              <name>rowKeyConverter</name>
+                             
+                              <description>Converter for a row key object</description>
+                    </property>
+                  
+                    <property>
+                              <name>groupingColumn</name>
+                              <classname>java.lang.String</classname>
+                              <description>The information in the table wiil be grouped by the
+                                        information in the column, which id is provided with this
+                                        attribute.</description>
+                    </property>
+                     <property>
+                              <name>groupingOn</name>
+                              <classname>boolean</classname>
+                              <description></description>
+                    </property>
+                    <property>
+                              <name>groupColumnWidth</name>
+                              <classname>java.lang.String</classname>
+                              <description> </description>
+                              <defaultvalue> "40px" </defaultvalue>
+                    </property>
+                    <property>
+                              <name>onselectionchange</name>
+                              <classname>java.lang.String</classname>
+                              <description> HTML: script expression to invoke on changing of rows
+                                        selection </description>
+                    </property>
+                    <property>
+                              <name>selectionMode</name>
+                              <classname>java.lang.String</classname>
+                              <description> single [default]: Single row can be selected. multi:
+                                        Multiple rows can be selected. none: no rows can be
+                                        selected. </description>
+                              <defaultvalue> "single" </defaultvalue>
+                    </property>
+                    <property>
+                              <name>height</name>
+                              <classname>java.lang.String</classname>
+                              <description>Defines a height of the component. Default value is 500px</description>
+                              <defaultvalue>"auto"</defaultvalue>
+                    </property>
+                    <property>
+                              <name>selectedClass</name>
+                              <classname>java.lang.String</classname>
+                              <description> CSS class for selected rows </description>
+                    </property>
+                    <property>
+                              <name>activeClass</name>
+                              <classname>java.lang.String</classname>
+                              <description> CSS class for active row </description>
+                    </property>
+                    <property>
+                              <name>ajaxKeys</name>
+                              <classname>java.util.Set</classname>
+                              <description>This attribute defines row keys that are updated after an
+                                        AJAX request</description>
+                    </property>
+                    <property>
+                              <name>border</name>
+                              <classname>java.lang.String</classname>
+                              <description>This attributes specifies the width of the frame around a
+                                        component</description>
+                              <defaultvalue>"0"</defaultvalue>
+                    </property>
+                    <property>
+                              <name>cellpadding</name>
+                              <classname>java.lang.String</classname>
+                              <description>This attribute specifies the amount of space between the
+                                        border of the cell and its contents</description>
+                              <defaultvalue>"0"</defaultvalue>
+                    </property>
+                    <property>
+                              <name>cellspacing</name>
+                              <classname>java.lang.String</classname>
+                              <description>This attribute specifies the amount of space between the
+                                        border of the cell and its contents. The attribute also
+                                        specifies the amount of space to leave between cells </description>
+                              <defaultvalue>"0"</defaultvalue>
+                    </property>
+                    <property>
+                              <name>captionClass</name>
+                              <classname>java.lang.String</classname>
+                              <description>Space-separated list of CSS style class(es) that are be
+                                        applied to caption for this component</description>
+                              <defaultvalue>""</defaultvalue>
+                    </property>
+                    <property>
+                              <name>captionStyle</name>
+                              <classname>java.lang.String</classname>
+                              <description>CSS style(s) is/are to be applied to caption when this
+                                        component is rendered</description>
+                    </property>
+                    <property>
+                              <name>headerClass</name>
+                              <classname>java.lang.String</classname>
+                              <description>Space-separated list of CSS style class(es) that are be
+                                        applied to header for this component </description>
+                              <defaultvalue>""</defaultvalue>
+                    </property>
+                    <property>
+                              <name>headerHeight</name>
+                              <classname>java.lang.Integer</classname>
+                              <description>Height of a Table Header in pixels. If it is null or is less
+                                  than zero, height is calculated depending on the markup of header
+                                  facets </description>
+                              <defaultvalue>-1</defaultvalue>
+                    </property>
+                    <property>
+                              <name>footerClass</name>
+                              <classname>java.lang.String</classname>
+                              <description>Space-separated list of CSS style class(es) that are be
+                                        applied to footer for this component </description>
+                              <defaultvalue>""</defaultvalue>
+                    </property>
+                    <property>
+                              <name>componentState</name>
+                              <classname>org.ajax4jsf.model.DataComponentState</classname>
+                              <description>It defines EL-binding for a component state for saving or
+                                        redefinition</description>
+                    </property>
+                    <property hidden="true" existintag="false" exist="false">
+                              <name>rowKey</name>
+                              <classname>java.lang.Object</classname>
+                              <description> RowKey is a representation of an identifier for a
+                                        specific data row </description>
+                    </property>
+                    <property>
+                              <name>rowKeyVar</name>
+                              <classname>java.lang.String</classname>
+                              <description>The attribute provides access to a row key in a Request
+                                        scope</description>
+                    </property>
+                    <property>
+                              <name>stateVar</name>
+                              <classname>java.lang.String</classname>
+                              <description> The attribute provides access to a component state on
+                                        the client side </description>
+                    </property>
+                    <property>
+                              <name>value</name>
+                              <classname>java.lang.Object</classname>
+                              <description> The current value for this component </description>
+                    </property>
+                    <!-- rows javascript events -->
+                    <property>
+                              <name>onRowClick</name>
+                              <classname>java.lang.String</classname>
+                              <description> HTML: a script expression; a pointer button is clicked
+                                        on row </description>
+                    </property>
+                     <property>
+                              <name>onRowContextMenu</name>
+                              <classname>java.lang.String</classname>
+                              <description> HTML: a script expression; a pointer button is clicked
+                                        on row </description>
+                    </property>
+                    <property>
+                              <name>onRowDblClick</name>
+                              <classname>java.lang.String</classname>
+                              <description>HTML: a script expression; a pointer button is
+                                        double-clicked on row </description>
+                    </property>
+                    <property>
+                              <name>onRowMouseUp</name>
+                              <classname>java.lang.String</classname>
+                              <description>HTML: script expression; a pointer button is released on
+                                        row </description>
+                    </property>
+                    <property>
+                              <name>onRowMouseDown</name>
+                              <classname>java.lang.String</classname>
+                              <description>HTML: script expression; a pointer button is pressed down
+                                        on row </description>
+                    </property>
+                    <property>
+                              <name>onRowMouseOver</name>
+                              <classname>java.lang.String</classname>
+                              <description>HTML: a script expression; a pointer is moved onto of row
+                              </description>
+                    </property>
+                    <property>
+                              <name>onRowMouseOut</name>
+                              <classname>java.lang.String</classname>
+                              <description>HTML: a script expression; a pointer is moved away of row
+                              </description>
+                    </property>
+                    <property>
+                              <name>onRowMouseMove</name>
+                              <classname>java.lang.String</classname>
+                              <description>HTML: a script expression; a pointer is moved within of
+                                        row </description>
+                    </property>
+                    <property>
+                              <name>onscroll</name>
+                              <classname>java.lang.String</classname>
+                              <description>HTML: a script expression; table content is scrolled</description>
+                    </property>
+                    <property>
+                              <name>sortPriority</name>
+                              <classname>java.util.Collection</classname>
+                              <description>Defines a set of column ids in the order the columns
+                                        could be set</description>
+                    </property>
+                    <property hidden="true" existintag="false" exist="false">
+                              <name>sortFields</name>
+                    </property>
+                    <property hidden="true" existintag="false" exist="false">
+                              <name>filterFields</name>
+                    </property>
+                    <property>
+                              <name>sortMode</name>
+                              <classname>java.lang.String</classname>
+                              <description> Defines mode of sorting. Possible values are 'single'
+                                        for sorting of one column and 'multi' for some.
+                              </description>
+                    </property>
+                    <property hidden="true" existintag="false" exist="false">
+                              <name>summary</name>
+                              <classname>java.lang.Object</classname>
+                    </property>
+                    <property elonly="true">
+                              <name>tableState</name>
+                              <classname>java.lang.String</classname>
+                              <description> ValueBinding pointing at a property of a String to hold
+                                        table state </description>
+                    </property>
+                    <property attachedstate="true" elonly="true">
+                              <name>selection</name>
+                              <classname>org.richfaces.model.selection.Selection</classname>
+                              <description>Value binding representing selected rows</description>
+                    </property>
+                    <property>
+                              <name>hoverRowClass</name>
+                              <classname>java.lang.String</classname>
+                              <description>CSS class for row with mouse over</description>
+                    </property>
+					<property>
+						<name>scrollable</name>
+						<classname>java.lang.String</classname>
+						<description> false to hide the scroll </description>
+                     	<defaultvalue> "true" </defaultvalue>
+                    </property>
+                    <property>
+						<name>dndSupported</name>
+						<classname>java.lang.Boolean</classname>
+						<description> false to hide the scroll </description>
+                     	<defaultvalue>true</defaultvalue>
+                    </property>
+                    <property>
+						<name>allowColumnsHide</name>
+						<classname>java.lang.Boolean</classname>
+						<description>false to disable hide columns functionality</description>
+                     	<defaultvalue>true</defaultvalue>
+                    </property>
+                     <property>
+						<name>allowColumnResize</name>
+						<classname>java.lang.Boolean</classname>
+						<description>false to disable columns resize functionality</description>
+                     	<defaultvalue>true</defaultvalue>
+                    </property>
+                    <property>
+                    	<name>onlayoutupdate</name>
+                    	<classname>java.lang.String</classname>
+                    	<description>Handler for update layout event</description>
+                    </property>
+                    <property>
+                    	<name>selectedCellClass</name>
+                    	<classname>java.lang.String</classname>
+                    	<description>Css style class that define styles for highlighted cell</description>
+                    	<defaultvalue>"extdt-default-selected-cell"</defaultvalue>
+                    </property>
+                    <property>
+                  		<name>allowCellSelection</name>
+                    	<classname>java.lang.Boolean</classname>
+                    	<description>Allow or not cell selection by default false.</description>
+                    	<defaultvalue>false</defaultvalue>
+                    </property>
+                    <property>
+                  		<name>forseSorting</name>
+                    	<classname>java.lang.Boolean</classname>
+                    	<description>Default true rerender after sorting</description>
+                    	<defaultvalue>false</defaultvalue>
+                    </property>
+                     <property>
+                  		<name>horizontalScrolling</name>
+                    	<classname>java.lang.Boolean</classname>
+                    	<description>Default true rerender after sorting</description>
+                    	<defaultvalue>false</defaultvalue>
+                    </property>
+                    <property>
+                  		<name>frozenColumns</name>
+                    	<classname>java.lang.Integer</classname>
+                    	<description>Frozen columns number</description>
+                    	<defaultvalue>0</defaultvalue>
+                    </property>
+                    <property>
+                    	<name>subRows</name>
+                    	<classname>java.util.List</classname>
+                    </property>
+                    <property>
+                  		<name>inlineEditing</name>
+                    	<classname>java.lang.Boolean</classname>
+                    	<defaultvalue>false</defaultvalue>
+                    </property>
+          </component>
+</components>

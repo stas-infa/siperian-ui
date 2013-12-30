@@ -1,0 +1,22 @@
+ ----
+ Introduction
+ ----
+
+Introduction
+
+  Welcome!
+It is a Siperian-Components project built using Maven.
+It even uses Maven to generate this website.
+Here are some useful links to get you started:
+
+* {{{news.html}News}}
+
+* {{{features.html}Features}}
+
+* {{{installation.html}Installation}}
+
+* {{{configuration.html}Configuration}}
+
+* {{{faq.html}FAQ}}
+
+[]

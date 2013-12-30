@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:template xmlns:f='http:/jsf.exadel.com/template'
+xmlns:u='http:/jsf.exadel.com/template/util'
+xmlns="http://www.w3.org/1999/xhtml" >
+
+<f:verbatim>
+<![CDATA[
+
+input.sip-combobox-input {
+    width : 240px;
+    height: 18px;
+    position : absolute;
+    top : 0px;
+    left : 0;
+    padding-left :14px;
+    padding-right :14px;
+    margin : 0px;
+    border:0;
+    outline: 0;
+}
+
+input.sip-combobox-input-disabled {
+    width : 240px;
+    height: 18px;
+    position : absolute;
+    top : 0px;
+    left : 0;
+    padding-left :14px;
+    padding-right :14px;
+    margin : 0px;
+    border:0;
+    outline: 0;
+}
+
+input.sip-combobox-input-inactive {
+    width : 240px;
+    height: 18px;
+    position : absolute;
+    top : 0px;
+    left : 0;
+    padding-left :14px;
+    padding-right :14px;
+    margin : 0px;
+    border:0;
+    outline: 0;
+
+}
+
+input.sip-combobox-font-disabled {
+    color: #AAAAAA;
+}
+
+.sip-combobox-list-position {
+    position : absolute;
+    top:4px;
+    left:-1px;
+    z-index:1001
+
+}
+
+.sip-combobox{
+    height: 20px;
+    border: 1px solid #E4E4E4;
+}
+
+.sip-combobox-list-decoration {
+    border : 1px solid #c0c0c0;
+    padding : 0px;
+    background : #FFFFFF;
+}
+
+.sip-combobox-list-scroll {
+    overflow : auto;
+    overflow-x : hidden;
+}
+.sip-combobox-ie7-list-bak{
+    border: 1px solid #E4E4E4 !important;
+    background-color:#FFFFFF !important;
+    border-collapse:collapse !important;
+    overflow : auto !important;
+    overflow-x : hidden !important;
+    min-width:100px !important;
+}
+.sip-combobox-list-cord {
+    position : relative;
+    background-color:#FFFFFF;
+}
+
+.sip-combobox-item {
+    padding-left:4px;
+    padding-right:4px;
+    margin-left:10px;
+    margin-right:10px;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height:25px;
+    line-height:25px;
+}
+
+.sip-combobox-item-selected:hover {
+    background-color: #E4e4e4;
+}
+
+.sip-combobox-item-selected {
+    background-color: #DFF699;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sip-combobox-strut {
+    width : 240px;
+    position : relative;
+    visibility : hidden;
+    margin : 0px;
+    padding-left : 3px;
+    border : 1px solid #c0c0c0;
+}
+
+.sip-combobox-shell {
+    position : relative;
+}
+
+input.sip-combobox-button {
+    width : 18px;
+    height: 18px;
+    position : absolute;
+    top : 0px;
+    right : 0;
+    padding-left : 0px;
+    padding-right : 0px;
+    margin : 0px;
+    border:0;
+    outline: 0;
+}
+
+input.sip-combobox-button-disabled {
+    width : 18px;
+    height: 18px;
+    position : absolute;
+    top : 0px;
+    right : 0;
+    padding-left : 0px;
+    padding-right : 0px;
+    border:0;
+    outline: 0;
+
+}
+
+input.sip-combobox-button-inactive {
+    width : 18px;
+    height: 18px;
+    position : absolute;
+    top : 0px;
+    right : 0;
+    padding-left : 0px;
+    padding-right : 0px;
+    margin : 0px;
+    border:0;
+    outline: 0;
+
+}
+
+input.sip-combobox-button-icon {
+    background : center no-repeat; cursor : pointer;
+}
+
+input.sip-combobox-button-icon-disabled {
+    background : center no-repeat; cursor : pointer;
+}
+
+input.sip-combobox-button-icon-inactive {
+    background : center no-repeat; cursor : pointer;
+}
+
+input.sip-combobox-button-hovered {
+
+}
+
+.sip-combobox-shadow{
+    position : absolute;
+
+}
+
+.sip-combobox-shadow-tl{
+    background-position: top left;
+    background-repeat: repeat-x;
+
+}
+.sip-combobox-shadow-tr{
+    background-repeat: repeat-x;
+    background-position: top right;
+}
+.sip-combobox-shadow-bl{
+    background-repeat: repeat-x;
+    background-position: bottom left;
+}
+.sip-combobox-shadow-br{
+    background-repeat: repeat-x;
+    background-position: bottom right;
+}
+.sip-combobox-list-table{
+    border-collapse : collapse;
+    border : 1px;
+}
+.combo-items-list{
+    z-index: 1001;
+}
+]]>
+
+</f:verbatim>
+
+<u:selector name=".sip-combobox-shadow-tl, .sip-combobox-shadow-tr, .sip-combobox-shadow-bl, .sip-combobox-shadow-br">
+<u:style name="background-image">
+<f:resource f:key="/com/exadel/siperian/renderkit/html/images/bg_shadow.png"/>
+</u:style>
+</u:selector>
+
+
+
+
+<u:selector name="input.sip-combobox-button-icon, input.sip-combobox-button-icon-inactive">
+<u:style name="background-image">
+<f:resource f:key="/com/exadel/siperian/renderkit/html/images/arrowActive.png" />
+</u:style>
+</u:selector>
+
+<u:selector name="input.sip-combobox-button-icon-disabled">
+<u:style name="background-image">
+<f:resource f:key="/com/exadel/siperian/renderkit/html/images/arrowDisabled.png" />
+</u:style>
+</u:selector>
+
+<u:selector name=".sip-combobox-font, input.sip-combobox-font">
+<u:style name="font-size" skin="generalSizeFont"/>
+<u:style name="font-family" skin="generalFamilyFont"/>
+<u:style name="color" skin="generalTextColor"/>
+</u:selector>
+
+<u:selector name="input.sip-combobox-font-disabled, .sip-combobox-font-disabled">
+<u:style name="font-family" skin="headerFamilyFont"/>
+<u:style name="font-size" skin="headerSizeFont"/>
+</u:selector>
+
+<u:selector name="input.sip-combobox-font-inactive, .sip-combobox-font-inactive, .sip-combobox-item">
+<u:style name="font-size" skin="generalSizeFont"/>
+<u:style name="font-family" skin="generalFamilyFont"/>
+<u:style name="color" skin="generalTextColor"/>
+</u:selector>
+
+
+<u:selector name=".sip-combobox-list-decoration">
+<u:style name="border-color" value="#E4E4E4"/>
+<u:style name="background" skin="tableBackgroundColor"/>
+</u:selector>
+
+<u:selector name="input.sip-combobox-button-hovered">
+
+</u:selector>
+</f:template>

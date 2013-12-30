@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:sip="http://siperian.exadel.com/sip">
+
+<ui:composition>
+	<script type="text/javascript">
+		<!--
+			//Event.observe(window, 'load', SipPanel.onResizePanel);
+		-->
+	</script>
+	<h:form id="form">
+				<!-- rich:dropDownMenu value="Menu">
+					<rich:menuItem value="Item1"></rich:menuItem>
+					<rich:menuItem value="Item2"></rich:menuItem>
+				</rich:dropDownMenu-->
+				<a onclick="Siperian.showModalPanel('mp')" href="#">
+			   		Siperian.showModalPanel('mp')
+			 	</a>
+			 	<sip:modalPanel  id="mp" height="600" width="400" zindex="2000"
+					panelDOMAttachment="form" showWhenRendered="true" isModal="true" >
+					<f:facet name="header">
+						<h:outputText value="Modal Panel Title" />
+					</f:facet>
+				<sip:tabPanel id="tapPanel"
+					tabCloseListener="#{capitalsBean.remove}"
+					maxTabWidth="150" 
+					style="position: relative; margin-top: 20px; margin-right: 10px">
+					<c:forEach items="#{capitalsBean.capitals}" var="cap">
+						<sip:tab name="#{cap.name}" tabCloseable="true">
+							<f:facet name="label">
+								<h:panelGroup>
+									<h:graphicImage value="#{cap.stateFlag}"
+										style="width:12px; height:12px;" />
+									<h:outputText value=" " />
+									<h:outputText value="#{cap.name}" />
+									<h:outputText value=" " />
+								</h:panelGroup>
+							</f:facet>
+							<div>
+							<sip:panel style="height: 150px; width: 300px;">
+									<h:panelGrid columns="2">
+										<h:outputText value="State Name" />
+										<h:inputText value="#{cap.state}" />
+										<h:outputText value="State Capital" />
+										<h:inputText value="#{cap.name}" />
+										<h:outputText value="State TimeZone" />
+										<h:inputText value="#{cap.timeZone}" />
+									</h:panelGrid>
+								<br />
+								<sip:toolBar height="34" width="300px" itemSeparator="line">
+									<sip:toolBarGroup>
+										<h:graphicImage width="18" height="18" value="/images/toolbar_new_ic.png" />
+										<h:outputLabel value="New" for="new" />
+									</sip:toolBarGroup>
+									<sip:toolBarGroup>
+										<h:graphicImage width="18" height="18" value="/images/toolbar_edit_ic.png" />
+										<h:outputLabel value="Edit" for="edit" />
+									</sip:toolBarGroup>
+									<sip:toolBarGroup>
+										<h:graphicImage width="18" height="18" value="/images/toolbar_delete_ic.png" />
+										<h:outputLabel value="Delete" for="delete" />
+									</sip:toolBarGroup>
+								</sip:toolBar>
+								<sip:button value="save button" />
+							</sip:panel>
+							</div>
+						</sip:tab>
+					</c:forEach>
+
+				</sip:tabPanel>
+				 
+		 <sip:tabPanel id="searchResult" selectedTab="#{tabPanelBean.selectedTab}">
+		 	<c:forEach items="#{tabPanelBean.list}" var="tab" varStatus="status">
+		 		<sip:tab name="#{tab.name}" label="#{tab.name}" id="searchTab#{tab.name}">
+		 				<ui:include src="#{tab.include}" />
+		 		</sip:tab>
+		 	</c:forEach>
+		 </sip:tabPanel>		
+		
+		
+	<br clear="all"/><br/>
+		
+ 
+		<table>
+		<tr>
+			<td>
+				<sip:verticalScroller for="list" reRender="listHolder" height="100"/>
+			</td>
+			<td>
+				<h:panelGroup layout="block" id="listHolder">
+					<a4j:repeat id="list" rows="1" value="#{verticalScroller.list}" var="var">
+						<h:outputText value="#{var}"></h:outputText>
+					</a4j:repeat>
+				</h:panelGroup>
+			</td>
+		</tr>
+		</table>
+		
+		
+		
+		</sip:modalPanel>
+	</h:form>
+</ui:composition>
+
+</html>

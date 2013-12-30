@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:sip="http://siperian.exadel.com/sip">
+
+<ui:composition>
+	<script type="text/javascript">
+		<!--
+			//Event.observe(window, 'load', SipPanel.onResizePanel);
+		-->
+	</script>
+	<h:form id="form">
+				<!-- rich:dropDownMenu value="Menu">
+					<rich:menuItem value="Item1"></rich:menuItem>
+					<rich:menuItem value="Item2"></rich:menuItem>
+				</rich:dropDownMenu-->
+			 
+				<sip:panel id="panel" style="">
+				<sip:tabPanel id="tapPanel"
+					tabCloseListener="#{capitalsBean.remove}"
+					maxTabWidth="150" 
+					style="position: relative; margin-top: 20px; margin-right: 10px">
+					<c:forEach items="#{capitalsBean.capitals}" var="cap">
+						<sip:tab name="#{cap.name}" tabCloseable="true">
+							<f:facet name="label">
+								<h:panelGroup>
+									<h:graphicImage value="#{cap.stateFlag}"
+										style="width:12px; height:12px;" />
+									<h:outputText value=" " />
+									<h:outputText value="#{cap.name}" />
+									<h:outputText value=" " />
+								</h:panelGroup>
+							</f:facet>
+							<div>
+								<c:if test="true">		
+								<h:panelGrid columns="1">			
+									
+								<rich:comboBox value="#{timeLineBean.value}" 
+					   				defaultValue="There are the default value"
+					  				suggestionValues="#{timeLineBean.values}"
+                       				enableManualInput="true"/>
+                       			</h:panelGrid>
+                       			</c:if>
+	
+							</div>
+							<div>
+							<sip:panel style="height: 300px; width: 600px;">
+									<h:panelGrid columns="2">
+										<h:outputText value="State Name" />
+										<h:inputText value="#{cap.state}" />
+										<h:outputText value="State Capital" />
+										<h:inputText value="#{cap.name}" />
+										<h:outputText value="State TimeZone" />
+										<h:inputText value="#{cap.timeZone}" />
+									</h:panelGrid>
+								<br />
+								<sip:toolBar height="34" width="300px" itemSeparator="line">
+									<sip:toolBarGroup>
+										<h:graphicImage width="18" height="18" value="/images/toolbar_new_ic.png" />
+										<h:outputLabel value="New" for="new" />
+									</sip:toolBarGroup>
+									<sip:toolBarGroup>
+										<h:graphicImage width="18" height="18" value="/images/toolbar_edit_ic.png" />
+										<h:outputLabel value="Edit" for="edit" />
+									</sip:toolBarGroup>
+									<sip:toolBarGroup>
+										<h:graphicImage width="18" height="18" value="/images/toolbar_delete_ic.png" />
+										<h:outputLabel value="Delete" for="delete" />
+									</sip:toolBarGroup>
+								</sip:toolBar>
+								<sip:button value="save button" />
+							</sip:panel>
+							</div>
+						</sip:tab>
+					</c:forEach>
+
+				</sip:tabPanel>
+				</sip:panel>
+				 
+			<a4j:commandLink value="Rerender panel" reRender="panel"></a4j:commandLink>
+		
+		 <br/><br/><br/>
+				
+	<br clear="all"/><br/>
+		<sip:toolBar id="disabled" height="34" width="300px" disabled="true"
+			itemSeparator="line">
+			<sip:toolBarGroup>
+				<h:graphicImage width="18" height="18" value="/images/toolbar_new_ic.png" />
+				<h:commandLink value="New" />
+			</sip:toolBarGroup>
+			<sip:toolBarGroup>
+				<h:graphicImage width="18" height="18" value="/images/toolbar_edit_ic.png" />
+				<h:commandLink value="Edit" />
+			</sip:toolBarGroup>
+			<sip:toolBarGroup>
+				<h:graphicImage width="18" height="18" value="/images/toolbar_delete_ic.png" />
+				<h:commandLink value="Delete" />
+			</sip:toolBarGroup>
+		</sip:toolBar>
+ 
+		<sip:button value="save button" />
+		<sip:ajaxButton value="ajax save button" reRender="normal, tapPanel" />
+		
+		
+	
+	</h:form>
+</ui:composition>
+
+</html>

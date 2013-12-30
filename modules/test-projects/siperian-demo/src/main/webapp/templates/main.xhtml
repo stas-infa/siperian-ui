@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:a4j="http://richfaces.org/a4j"
+	  xmlns:rich="http://richfaces.org/rich">
+   
+<head >
+<script type="text/javascript">
+
+</script>
+<title>Hello world</title>
+
+
+<meta http-equiv="Content-Type" content="text/xhtml; charset=UTF-8"/>
+<title>
+	<ui:insert name="title"/>
+</title>
+   <ui:debug hotkey="P"/>
+<!--script src="${facesContext.externalContext.requestContextPath}/js/tmp.js"/>
+<script src="${facesContext.externalContext.requestContextPath}/js/tmp2.js"></script>
+<script src="${facesContext.externalContext.requestContextPath}/js/tmp3.js"></script>
+<script src="${facesContext.externalContext.requestContextPath}/js/tmp4.js"></script-->
+<link rel="STYLESHEET" type="text/css" href="${facesContext.externalContext.requestContextPath}/css/common.css"/>
+
+ <!-- 
+<a4j:loadScript src="resource:///org/richfaces/renderkit/html/scripts/utils.js"></a4j:loadScript>
+<script src="${facesContext.externalContext.requestContextPath}/js/common_png.js"></script>
+<script src="${facesContext.externalContext.requestContextPath}/js/swfobject.js"></script>
+  -->
+
+
+<script src="${facesContext.externalContext.requestContextPath}/js/common.js"></script>
+<a4j:loadScript src="resource:///com/exadel/siperian/ui.pack.js"></a4j:loadScript>
+<script type="text/javascript">
+
+	
+	
+</script>
+<f:loadBundle basename="com.siperian.demo.messages" var="msg" />
+<ui:include src="/templates/include/dynamic-css.xhtml" />
+
+</head>
+
+
+<body>
+
+
+<ui:include src="/templates/include/header.xhtml" />
+
+<table class="left_menu" cellpadding="0" cellspacing="0" border="0">
+<tbody>
+	<tr>
+		<td>
+			<ui:include src="/templates/include/references.xhtml" />
+			<div class="menu_separator">
+				&nbsp;
+			</div>
+			<ui:include src="/templates/include/components-navigation.xhtml" />
+		</td>
+	</tr>
+</tbody>
+</table>
+
+<table cellpadding="0" cellspacing="0" border="0" class="content_container" width="100%">
+<tbody>
+
+	<tr>
+		<td>
+			<div class="content_container_left_brick"></div>
+		</td>
+		<td width="100%" class="content_container_pdddings">
+		
+			<ui:insert name="body">Body</ui:insert>
+			<rich:spacer style="height:10px;" />
+			<rich:separator style="height:1px" />	
+			
+			<div style="float:right;" class="footer-text">
+			#{versionBean.version}
+				<a4j:outputPanel ajaxRendered="false" >
+<table >
+	<tr>
+		<td>
+		<a4j:outputPanel id="logPanel" ajaxRendered="false" rendered="#{logBean.showLog}">
+				  <a4j:log popup="false" level="ALL" style="width: 800px; height: 300px;"></a4j:log>	    
+			</a4j:outputPanel>
+			
+		<a4j:outputPanel id="pupupLogPanel" ajaxRendered="false" >
+				  <a4j:log popup="true" level="ALL" style="width: 800px; height: 600px;" hotkey="P"></a4j:log>	    
+		</a4j:outputPanel>
+		</td>
+	</tr>
+</table>
+</a4j:outputPanel>
+			</div>
+			
+		</td>
+	</tr>
+</tbody>
+</table>
+
+<script type="text/javascript">
+   A4J.AJAX.onExpired = function(loc,expiredMsg){
+    alert("Your session has expired; Reload the page ");
+      return false;
+}
+</script>
+
+</body>
+</html>

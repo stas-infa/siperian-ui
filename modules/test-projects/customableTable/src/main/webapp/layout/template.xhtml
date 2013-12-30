@@ -1,0 +1,25 @@
+<a:page
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:s="http://jboss.com/products/seam/taglib"
+      xmlns:a="http://richfaces.org/a4j"
+      pageTitle="#{title}" format="xhtml">
+      <a:loadStyle src="/css/grids.css" />
+<div id="doc3" class="yui-t2"> 
+     <div id="hd">          <ui:insert name="header"/>      
+</div> 
+     <div id="bd"> 
+     <div id="yui-main"> 
+      <div class="yui-b"><div class="yui-g"> 
+      <!-- YOUR DATA GOES HERE --> 
+            <ui:insert name="content"/>
+      </div> 
+  </div> 
+      </div> 
+      <div class="yui-b"><!-- YOUR NAVIGATION GOES HERE --></div> 
+            <ui:include src="/include/pagesList.xhtml"/>       
+      </div> 
+     <div id="ft">Footer is here.</div> 
+  </div> 
+</a:page>

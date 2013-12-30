@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:sip="http://siperian.exadel.com/sip">
+
+<ui:composition>
+	<style>
+		.image {
+			border: 0px;
+			margin-right: 2px;
+			position: relative;
+		}	
+	</style>
+	<h:form>
+		<h:outputText value="Edit group disabled: "></h:outputText>
+		<h:selectBooleanCheckbox value="#{toolBarBean.editGroupDisabled}">
+			<a4j:support event="onclick" reRender="normal"></a4j:support>
+		</h:selectBooleanCheckbox>
+		<br/><br/>
+		<h:outputText value="Delete group highlighted: "></h:outputText>
+		<h:selectBooleanCheckbox value="#{toolBarBean.deleteGroupHighlighted}">
+			<a4j:support event="onclick" reRender="normal"></a4j:support>
+		</h:selectBooleanCheckbox>
+		<br/><br/>		
+		<sip:toolBar id="normal" height="34" width="300px" itemSeparator="line">
+			<sip:toolBarGroup>
+				<a4j:commandLink id="new" reRender="panel" action="#{toolBarBean.create}" actionListener="#{toolBarBean.actionListener}">
+					<h:graphicImage class="image" width="18" height="18" value="/images/toolbar_new_ic.png" />New
+				</a4j:commandLink>
+			</sip:toolBarGroup>
+			<sip:toolBarGroup disabled="#{toolBarBean.editGroupDisabled}">
+				<a4j:commandLink id="edit" reRender="panel" action="#{toolBarBean.edit}" actionListener="#{toolBarBean.actionListener}">
+					<h:graphicImage class="image" width="18" height="18" value="/images/toolbar_edit_ic.png" />Edit
+				</a4j:commandLink>
+			</sip:toolBarGroup>
+			<sip:toolBarGroup highlight="#{toolBarBean.deleteGroupHighlighted}">
+				<a4j:commandLink id="delete" reRender="panel" action="#{toolBarBean.delete}" actionListener="#{toolBarBean.actionListener}">
+					<h:graphicImage class="image" width="18" height="18" value="/images/toolbar_delete_ic.png" />Delete
+				</a4j:commandLink>
+			</sip:toolBarGroup>
+		</sip:toolBar>
+		<sip:toolBar id="disabled" height="34" width="300px" disabled="true" itemSeparator="line">
+			<sip:toolBarGroup>
+				<h:graphicImage width="18" height="18" value="/images/toolbar_new_ic.png" />
+				<h:commandLink value="New" />
+			</sip:toolBarGroup>
+			<sip:toolBarGroup>
+				<h:graphicImage width="18" height="18" value="/images/toolbar_edit_ic.png" />
+				<h:commandLink value="Edit" />
+			</sip:toolBarGroup>
+			<sip:toolBarGroup>
+				<h:graphicImage width="18" height="18" value="/images/toolbar_delete_ic.png" />
+				<h:commandLink value="Delete" />
+			</sip:toolBarGroup>
+		</sip:toolBar>
+		<a4j:commandLink value="Rerender" reRender="normal, disabled"></a4j:commandLink>
+			<rich:panel id="panel">
+				<h:panelGrid columns="2">
+					<h:outputText value="Action:"/>
+					<h:outputText value="#{toolBarBean.action}"/>
+					<h:outputText value="ActionListener:"/>
+					<h:outputText value="#{toolBarBean.actionListener}"/>
+				</h:panelGrid>
+			</rich:panel>
+	</h:form>
+</ui:composition>
+
+</html>

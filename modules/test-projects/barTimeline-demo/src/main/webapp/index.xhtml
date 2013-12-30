@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE project [     <!ENTITY nbsp "&#160;">  ]>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:sip="http://siperian.exadel.com/sip"
+	xmlns:rich="http://richfaces.org/rich"
+	>
+<head>
+	<script type="text/javascript">
+		function zoomIn() {
+			var callResult = $("form:timelineFlash").component.zoomIn(2);
+		}
+		function zoomOut() {
+			var callResult = $("form:timelineFlash").component.zoomOut(2);
+		}
+		function disableComponent() {
+			var callResult = $("form:timelineFlash").component.disable(true);
+		}
+		function enableComponent() {
+			var callResult = $("form:timelineFlash").component.disable(false);
+		}
+	</script>	
+	<style>
+	
+	</style>
+</head>
+
+<f:view>
+	<body>
+	<h:form id="form">
+		
+		<sip:barTimeline id="timelineFlash" dataModel="#{barTimelineDataModel}" timelineStylesheet="css/barTimeline.css" ontimelineinit="alert('ontimelineinit')" oncontextmenu="alert('oncontextmenu')" onzoomerchange="alert('onzoomerchange')"> </sip:barTimeline>
+		
+		<input type="button" id="zoomIn" value="Zoom In" onClick="window.zoomIn();"/>
+		 <input type="button" id="zoomOut" value="Zoom Out" onClick="window.zoomOut();"/>
+		 <br/><br/>
+		 <input type="button" id="disamble" value="Disable" onClick="disableComponent();"/>
+		 <input type="button" id="enable" value="Enable" onClick="enableComponent();"/>	
+		
+		<rich:panel>
+			<rich:calendar/>
+		
+		</rich:panel>
+		
+		
+		<h:commandButton value="test"/>
+		
+		
+	</h:form>
+	</body>
+</f:view>
+
+</html>

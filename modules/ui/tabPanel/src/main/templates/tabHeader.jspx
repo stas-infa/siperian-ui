@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:root xmlns:f="http://ajax4jsf.org/cdk/template"
+	xmlns:c=" http://java.sun.com/jsf/core"
+	xmlns:ui=" http://ajax4jsf.org/cdk/ui"
+	xmlns:u=" http://ajax4jsf.org/cdk/u"
+	xmlns:x=" http://ajax4jsf.org/cdk/x"
+	xmlns:h="http://jsf.exadel.com/header"
+	baseclass="com.exadel.siperian.renderkit.TabHeaderRendererBase"
+	class="com.exadel.siperian.renderkit.html.TabHeaderRenderer"
+	component="javax.faces.component.UIComponent">
+
+	<f:clientid var="clientId" />
+
+	
+	<f:resource name="/com/exadel/siperian/renderkit/html/images/spn_close_btn.png" var="closeImage" />
+	<f:resource name="/com/exadel/siperian/renderkit/html/images/spn_ico_tab_process.gif" var="processImage" />
+	
+	<jsp:scriptlet>
+		<![CDATA[
+		       
+		    Boolean isActive = isTabActive(context, component);
+		    com.exadel.siperian.renderkit.TabPanelClassBuilder builder = getBuilder(component);
+		    if (isActive) {
+		    	markActiveTab(component, clientId);
+		    }
+		    markClientTabs(component, clientId);
+		         
+			String tabClassName = isActive ? builder.getActiveTabClass()  : builder.getInactiveTabClass();
+			String tabLinkClass = isActive ? "activeTabLink"  : "inactiveTabLink";
+			String tabStyle = isFirstTab(component) ? "padding-left: 0px; " : "";
+			
+			
+		
+			variables.setVariable("tabClassName", tabClassName);
+			variables.setVariable("tabStyle", tabStyle);
+			variables.setVariable("tabLinkClass", tabLinkClass);
+			variables.setVariable("tabLinkClass", tabLinkClass);
+	
+		]]>
+	</jsp:scriptlet>
+
+	<f:call name="collectTabInfo" />
+	
+	
+	<div class="#{tabClassName}" 
+		 onclick="#{this:getSwitchScript(context, component)}"
+		 id="#{clientId}:header" style="#{tabStyle}">
+		 
+		 
+		 <jsp:scriptlet>
+					<![CDATA[
+			         	if (builder.isDynamic()) {
+		     		]]>
+			</jsp:scriptlet>
+		 
+		 		<a href="#" id="#{clientId}:headerLink" class="#{tabLinkClass}">
+			<!-- TODO nick - A element cannot contain DIV -->
+			<div id="#{clientId}:headerLeft" class="left">
+				<div id="#{clientId}:headerLabel"
+					onclick="#{component.attributes['onlabelclick']}" 
+					onkeypress="#{component.attributes['onlabelkeypress']}"
+					ondblclick="#{component.attributes['onlabeldblclick']}"
+					onkeyup="#{component.attributes['onlabelkeyup']}"
+					onkeydown="#{component.attributes['onlabelkeydown']}"
+					onmouseup="#{component.attributes['onlabelmouseup']}"
+					onmousedown="#{component.attributes['onlabelmousedown']}"
+					onmousemove="#{component.attributes['onlabelmousemove']}"
+					class="spn_sr_tabpanel_contentActive" 
+					style="float: left"><f:call name="encodeLabel" /></div>
+				
+				<jsp:scriptlet>
+					<![CDATA[
+					     Boolean isCloseable = ((com.exadel.siperian.component.UITab)component).getTabCloseable();
+			        	 if (isCloseable) {
+		     		]]>
+				</jsp:scriptlet>
+				
+				<div class="tabPanelIcon" onclick="#{this:getCloseScript(context, component)}">
+					<jsp:scriptlet>
+					<![CDATA[
+					     Boolean isLongRunning = ((com.exadel.siperian.component.UITab)component).getLongRunning();
+			        	 if (!isLongRunning) {
+		     		]]></jsp:scriptlet>
+						<img src="#{closeImage}" id="#{clientId}:headerClose" width="13" height="13" border="0" />
+					<jsp:scriptlet>
+					<![CDATA[
+			         	}else {
+		     		]]></jsp:scriptlet>
+						<img src="#{processImage}" id="#{clientId}:headerClose" width="13" height="13" border="0" />
+					<jsp:scriptlet>
+					<![CDATA[
+			         	}
+		     		]]></jsp:scriptlet>
+				</div>
+				
+				<jsp:scriptlet>
+					<![CDATA[
+			         	}
+		     		]]>
+				</jsp:scriptlet>
+				
+			</div>
+			<!-- TODO nick - some AJAX parsers can remove empty DIV elements -->
+			<div id="#{clientId}:headerRight" class="right"></div>
+			
+			
+			</a>
+			
+			 <jsp:scriptlet>
+					<![CDATA[
+			         	}else {
+		     		]]>
+			</jsp:scriptlet>
+			
+				<div id="#{clientId}:headerLeft" align="center" class="sip-static-pnl-left sip-static-pnl-leftActive"><f:call name="encodeLabel" /></div>
+				<div id="#{clientId}:headerRight" class="sip-static-pnl-right">
+					<!-- TODO nick - some AJAX parsers can remove empty DIV elements -->
+					<div></div>
+				</div>
+				
+			
+			 <jsp:scriptlet>
+					<![CDATA[
+			         	}
+		     		]]>
+			</jsp:scriptlet>
+			
+		</div>
+	
+</f:root>
+

@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:sip="http://siperian.exadel.com/sip">
+
+<ui:composition>
+	<script type="text/javascript">
+		<!--
+			//Event.observe(window, 'load', SipPanel.onResizePanel);
+		-->
+	</script>
+	<h:form id="form">
+		 
+		 <rich:messages></rich:messages>
+		 
+		 <a4j:commandLink value="Search" actionListener="#{tabPanelBean.clearNewTabs}" action="#{tabPanelBean.search}" ajaxSingle="true">
+		 	<rich:componentControl event="oncomplete" ajaxSingle="true" operation="addNewTabs" for="searchResult">
+		 		<a4j:actionparam name="tabsId" value="#{tabPanelBean.newTabsId}"></a4j:actionparam>
+		 	</rich:componentControl>
+		 </a4j:commandLink>
+		 
+		 <br/>
+		 <sip:tabPanel id="searchResult" 
+		 		selectedTab="#{tabPanelBean.selectedTab}"
+		 		tabCloseListener="#{tabPanelBean.closeTab}"
+		 		maxTabWidth="200">
+		 	<c:forEach items="#{tabPanelBean.list}" var="tab" varStatus="status">
+		 			<sip:tab name="#{tab.name}" label="#{tab.name}" id="searchTab#{status.index}">
+		 			<c:if test="#{tab != null}">
+			 				<a4j:include viewId="#{tab.include}" id="inc#{status.index}" ajaxRendered="false" />
+			 				<h:outputText value="#{tab.name}"></h:outputText>
+			 		</c:if>
+			 		</sip:tab>
+		 	</c:forEach>
+		 </sip:tabPanel>		
+		
+		<a4j:commandLink value="ReRender" reRender="searchResult"></a4j:commandLink>
+	
+	</h:form>
+</ui:composition>
+
+</html>

@@ -1,0 +1,19 @@
+<listener>
+    <name>scrollerListener</name>
+    <listenerclass>
+        org.richfaces.event.DataScrollerListener
+    </listenerclass>
+    <componentclass>
+        org.richfaces.event.DataScrollerSource
+    </componentclass>
+    <eventclass>
+        org.richfaces.event.DataScrollerEvent
+    </eventclass>
+    <!--test/-->
+	<taghandler generate="true">
+		<classname>
+			com.exadel.siperian.taglib.VerticalScrollerListenerTagHandler
+		</classname>
+		<!--test/-->
+	</taghandler>
+</listener>

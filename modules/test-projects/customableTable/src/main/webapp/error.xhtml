@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+	<head><title>Error!</title></head>
+<body>
+<div id="box3">
+    <f:view contentType="text/html">
+        <h:form id="helloForm">
+        <rich:panel id="tab">
+            <table>
+                <tr>
+                    <td>Response status:</td>
+                    <td>
+                        <h:outputText value="#{requestScope['javax.servlet.error.status_code']}"/>
+                    </td>
+                    <td>Error message:</td>
+                    <td>
+                        <h:outputText value="#{requestScope['javax.servlet.error.message']}"/>
+                    </td>
+                    <td>Original request URI:</td>
+                    <td>
+                        <h:outputText value="#{requestScope['javax.servlet.error.request_uri']}"/>
+                    </td>
+                    </tr>
+                    <tr>
+                    <td>Servlet name:</td>
+                    <td>
+                        <h:outputText value="#{requestScope['javax.servlet.error.servlet_name']}"/>
+                    </td>
+                    <td>Exception:</td>
+                    <td>
+                        <h:outputText value="#{requestScope['javax.servlet.error.exception']}"/>
+                    </td>
+                </tr>
+            </table>
+            </rich:panel>
+        </h:form>
+        <a4j:log hotkey="M"/>
+    </f:view>
+</div>
+</body>
+</html>

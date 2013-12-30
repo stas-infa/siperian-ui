@@ -1,0 +1,6 @@
+./com/exadel/siperian/renderkit/html/css/icon.xcss
+./com/exadel/siperian/renderkit/html/css/sippanel.xcss
+./com/exadel/siperian/renderkit/html/css/button.xcss
+./com/exadel/siperian/renderkit/html/css/tabPanel.xcss
+./com/exadel/siperian/renderkit/html/css/sipToolBar.xcss
+./com/exadel/siperian/renderkit/html/css/verticalScroller.xcss

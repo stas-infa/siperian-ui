@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<timeline-root>
+	<properties>
+		<monthNames>January,February,March,April,May,June,July,August,September,October,November,December,Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec</monthNames>
+		<dayNames>Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sun,Mon,Tue,Wed,Thu,Fri,Sat</dayNames>
+	</properties>
+	<data>
+		<intervals>
+			<interval length="10m" marker="1m" datePattern="HH:mm"/>
+			<interval length="2h" marker="15m" datePattern="HH:mm"/>
+			<interval length="8h" marker="1h" datePattern="HH:mm"/>
+			<interval length="16h" marker="2h" datePattern="HH:mm"/>
+			<interval length="24h" marker="3h" datePattern="HH:mm"/>
+			<interval length="7d" marker="1d" datePattern="NNN/dd"/>
+			<!--interval length="30d" marker="1w" datePattern=""/-->
+			<interval length="1M" marker="1d" datePattern="NNN/dd"/>
+			<interval length="6M" marker="1M" datePattern="NNN/yyyy"/>
+			<interval length="24M" marker="3M" datePattern="MM/dd/yyyy"/>
+			<interval length="+" marker="1y" datePattern="MM/dd/yyyy"/>
+		</intervals>
+		<swimLines frozenWidth="120">
+			<swimLine name="Object 1être défini" id="1" styleClass=""/>
+			<swimLine name="Object 2" id="2" styleClass=""/>
+			<swimLine name="Object 3" id="3" styleClass="swimLine"/>
+			<swimLine name="Object 4" id="4" styleClass=""/>
+			<swimLine name="Object 5" id="5" styleClass=""/>
+		</swimLines>
+		<itemTypes>
+			<itemType id="type1" name="name1" styleClass="type1" selectedStyleClass="type1selected" hoverStyleClass="type1hover" highlightStyleClass="type1highlight" tooltipStyleClass="tooltip"/>
+			<itemType id="type2" name="name2" styleClass="type2" selectedStyleClass="type2selected" hoverStyleClass="type2hover" highlightStyleClass="type2highlight" tooltipStyleClass="tooltip"/>
+		</itemTypes>
+		<items>
+			<item id="0" type="type2" startDate="1201512900000" endDate="1211512900000" swimLineId="1"><tooltip>There are very long long long long tooltip. There are very long long long long tooltip. !</tooltip></item>
+			<item id="1" type="type2" startDate="1201612900000" swimLineId="2"><tooltip>There are very long long long long tooltip. There are very long long long long tooltip. !</tooltip></item>
+			<item id="2" type="type1" endDate="1201410000000" swimLineId="3"><tooltip>There are very long long long long tooltip. There are very long long long long tooltip. !</tooltip></item>
+			<item id="3" type="type1" startDate="1201410000000" endDate="1201450000000" swimLineId="4"><tooltip>There are very long long long long tooltip. There are very long long long long tooltip. !</tooltip></item>
+			<item id="4" type="type2" swimLineId="5"><tooltip>There are very long long long long tooltip. There are very long long long long tooltip. !</tooltip></item>
+		</items>
+	</data>
+</timeline-root>

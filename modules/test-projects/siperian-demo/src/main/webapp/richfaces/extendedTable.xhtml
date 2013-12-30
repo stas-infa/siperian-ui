@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+      xmlns:a4j="http://richfaces.org/a4j">
+<ui:composition template="/templates/main.xhtml">
+	<ui:define name="title">Extended Table</ui:define>
+	<ui:define name="body">
+	<a4j:loadBundle var="msg" basename="com.siperian.demo.extendedDataTable.messages"/>
+	
+		<rich:tabPanel switchType="server" styleClass="top_tab" contentClass="content_tab" headerClass="header_tabs_class" inactiveTabClass="inactive_tab" activeTabClass="active_tab"
+		selectedTab="#{componentNavigator.currentComponent.activeTab}" valueChangeListener="#{componentNavigator.tabPanelSwitched}">
+			<rich:tab label="Simple" name="index">
+				<ui:include src="/richfaces/extendedTable/simple.xhtml"/>
+			</rich:tab>			
+			<rich:tab label="Cell Context Menu" name="cellcm">
+				<ui:include src="/richfaces/extendedTable/usage.xhtml"/>
+			</rich:tab>			
+			<rich:tab label="Row Context Menu" name="rowcm">
+				<ui:include src="/richfaces/extendedTable/rowUsage.xhtml"/>
+			</rich:tab>
+			<rich:tab label="Paginated Extended Table" name="pet">
+				<ui:include src="/richfaces/extendedTable/paginated.xhtml"/>
+			</rich:tab>	
+			<rich:tab label="Push Updates" name="push">
+				<ui:include src="/richfaces/extendedTable/pushUpdate.xhtml"/>
+			</rich:tab>	
+		</rich:tabPanel>
+	</ui:define>
+</ui:composition>
+</html>

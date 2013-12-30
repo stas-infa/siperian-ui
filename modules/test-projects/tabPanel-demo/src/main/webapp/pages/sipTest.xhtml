@@ -1,0 +1,66 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:sip="http://siperian.exadel.com/sip"
+      xmlns:c="http://java.sun.com/jstl/core">
+      <head>
+      <!--a4j:loadScript src="resource:///ui/ui.pack.js" /-->
+      <a4j:loadScript src="resource:///js/common_png.js" />
+      	<style>
+      		.highLightClass {
+      			border: 2px dotted red;
+      		}
+      	</style>
+      </head>
+      <body>
+      <h:form id="form">
+
+		<h:inputText value="" required="true"/>      
+    
+      <a4j:commandLink actionListener="#{bean.clearNewTabs}" action="#{bean.search}" value="Test">
+      	<a4j:actionparam name="#{rich:clientId('panel')}:newTabId" value="true" />
+      	<f:attribute name="onbeforedomupdate" value="#{rich:component('panel')}.creatNewTabs(data)" />
+      </a4j:commandLink>
+      <br/>
+ 	 
+      
+      	<div style="width: 800px">
+      	<sip:tabPanel id="panel" selectedTab="#{bean.selectedTab}" 
+      			maxTabWidth="150"
+      			newTabsList="#{bean.newTabsId}"
+      			highlightStyleClass="highLightClass"
+      			markupTemplate="dynamic"
+      			tabCloseListener="#{bean.removeTab}">
+      		<sip:forEach items="#{bean.tabs}" var="tab" varStatus="i">
+      		     <c:if test="#{tab != null}">
+      			<sip:tab tabCloseable="true"
+      				id="tabID#{tab.name}"
+      				label="TTT"
+      				name="#{tab.name}">
+      				<h:outputText id="ccc#{tab.name}" value="TTT" />
+   						
+						<sip:forEach begin="1" end="7" varStatus="ii" externalStatus="#{i.index}">
+							<h:outputText value="Text" />
+						</sip:forEach>
+      			</sip:tab>
+      			</c:if>
+			</sip:forEach>
+		</sip:tabPanel>
+		</div><br/><br/><br/><br/>
+		<a4j:commandLink reRender="panel" value="Rerender"></a4j:commandLink><br/>
+		<a4j:commandLink actionListener="#{bean.switchMarkup}" value="Switch"  reRender="panel" />
+		</h:form>
+		<!--a4j:include viewId="sipTest2.xhtml"/-->
+		<rich:hotKey handler="$('form:panel').component.startSwitchMode()" key="ctrl+q" />
+		<h:form>
+			<h:inputText value="#{bean.selectedTab}"></h:inputText>
+			<h:commandLink value="Rerender"></h:commandLink>
+			<h:commandLink value="Clear" actionListener="#{bean.clear}"></h:commandLink>
+		</h:form>
+		
+		
+      </body>
+</html>

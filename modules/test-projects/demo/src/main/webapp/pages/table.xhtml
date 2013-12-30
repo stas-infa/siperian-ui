@@ -1,0 +1,350 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:sip="http://siperian.exadel.com/sip"
+	xmlns:rich="http://richfaces.ajax4jsf.org/rich"
+	xmlns:a4j="https://ajax4jsf.dev.java.net/ajax">
+
+<!--@elvariable id="testTableData" type="com.siperian.dsapp.jsf.ui.util.TestTableData"-->
+<head>
+<title>This is a test page for ExtendedDataTable</title>
+<a4j:loadScript src="resource:///com/exadel/siperian/ui.pack.js"></a4j:loadScript>
+<a4j:loadScript src="/js/bddc.js"></a4j:loadScript>
+<script type="text/javascript">
+            if(Sarissa._OLD_XMLHTTPRequest){
+                XMLHttpRequest = Sarissa._OLD_XMLHTTPRequest;
+            }
+    </script>
+<link href="/demo/css/styles.css" rel="stylesheet" type="text/css" />
+<style>
+
+.extdt-cell {
+	height: 28px !important;
+}
+
+.extdt-cell-div {
+	height: 16px;
+} 
+
+.groupImg {
+	margin-bottom: 2px;
+	margin-left: 3px;
+}
+
+.extdt-cell-not-editable {
+	background-color: DarkGray;
+}
+
+
+</style>
+
+<script type="text/javascript">
+	function _scroll_change(event) {
+		if (#{rich:component('testTable')}.options.modifiedData) { 
+			#{rich:component('unsavedDataModel')}.show();
+			window._scroll_target = event.target; 
+			return false;
+		}
+		return true;
+	}
+
+	function _scroll_changed(event) {
+		_checkbox_checkAny(null);
+	}
+
+	function _scroll_confirmYes() {
+		#{rich:component('testTable')}.options.modifiedData = null;
+		#{rich:component('unsavedDataModel')}.hide()
+		jQuery(window._scroll_target).click();
+	}
+
+	function _scroll_confirmNo() {
+		#{rich:component('unsavedDataModel')}.hide()
+	}
+
+	function _checkbox_checkAll(el, context) {
+		jQuery('.selected', context).each(function (i, o) {
+			o.checked = el.checked;
+		});
+	}
+
+	function _checkbox_checkAny(context) {
+		var allchecked = true;
+		jQuery('.selected', context).each(function (i,o) {
+			if (!o.checked) {
+				allchecked = false;
+			}	
+		});
+		jQuery('.allSelected', context)[0].checked = allchecked;
+	}
+
+	function onComboboxEdit(value) {
+		var combo = #{rich:component('combobox')};
+		combo.oldValue = value;
+		combo.comboList.activeItem = null;
+		combo.comboList.selectedItem = null;
+	}
+
+ 
+ </script>
+
+
+</head>
+<body>
+
+<h:form id="testF">
+	<sip:doublePanel leftPanelWidth="330" rightPanelMinWidth="480"
+		defaultHeight="600" id="testPanel">
+		<a4j:outputPanel ajaxRendered="false">
+			<!-- this empty panel is used to workaround the bug with incorrect element search function in RichFaces,
+                     in case the element is under facets without other sibling components
+                -->
+		</a4j:outputPanel>
+		<f:facet name="leftPanelContent">
+			<a4j:outputPanel ajaxRendered="false">
+				<h:outputText value="Left Panel Content" />
+				<a4j:commandLink value="ReRender" reRender="testTable" />
+			</a4j:outputPanel>
+		</f:facet>
+		<f:facet name="rightPanelContent">
+
+			<a4j:outputPanel layout="block" ajaxRendered="false"
+				style="margin: 0 auto; height: 150px; width:100%;padding-right:20px;">
+
+
+				<f:facet name="header">
+					<h:outputText value="Header" />
+				</f:facet>
+
+				<div onclick="event.data = 'editing';">
+					<rich:calendar datePattern="MM/dd/yyyy" id="calendar"
+						inputClass="richCalendarInputClass"
+						buttonClass="richCalendarButtonClass"
+						showApplyButton="true"
+						enableManualInput="true"
+						onchanged="#{rich:component('calendar')}.customInput.value=event.rich.component.getSelectedDateString(); #{rich:component('testTable')}.onEditingComplete(event); #{rich:component('testTable2')}.onEditingComplete(event);"
+						/>
+					<script>
+						#{rich:component('calendar')}.customExpand=customExpand;
+					</script>
+				</div>
+
+
+				<sip:extendedDataTable id="testTable" width="90%" frozenColumns="2"
+					var="rowItem" sortMode="single"
+					style="margin: 0 auto; height: 150px"
+					value="#{testTableData.dataModel}" rows="10" height="250px"
+					selectionMode="multi" tableState="#{testTableData.state1}"
+					scrollable="true" inlineEditing="true" horizontalScrolling="true"
+					selectedClass="extdt-table-row-hover" footerClass="demo-footer"
+					rowClasses="extdt-table-row-2,extdt-table-row-1"
+					dndSupported="false" allowColumnsHide="true"
+					groupExpandAjax="true"
+					allowCellSelection="true" subRows="#{rowItem.rows}" rootVar="root">
+					
+					<rich:column canHide="false" width="9%">
+						<f:attribute name="GroupColumn" value="true" />
+						<f:facet name="header">
+							<h:panelGroup layout="block" style="text-align: left">
+								<input type="checkbox"
+									onclick="_checkbox_checkAll(this, #{rich:element('testTable')})" 
+									style="display: block" class="allSelected"/>
+							</h:panelGroup>
+						</f:facet>
+						
+						<h:selectBooleanCheckbox id="checkbox" styleClass="selected" rendered="#{root}"
+								onclick="_checkbox_checkAny(#{rich:element('testTable')})"
+								value="#{rowItem.checked}">
+							</h:selectBooleanCheckbox>
+					</rich:column>
+					<rich:column label="Email"
+							sortBy="#{rowItem.email}" 
+							filterBy="#{rowItem.email}"
+							editable="#{rowItem.editable}"
+							edited="#{rowItem.emailEdited}"
+							sortable="false" id="col1" width="20%" onError="alert(errors[0])">
+						<f:facet name="filterValueInput">
+							<h:inputText value="" onkeydown="if (event.keyCode == 13) { this.onchange(event); Event.stop(event); return false }"  />
+						</f:facet>
+						<f:facet name="header">
+							<h:outputText value="Email *" />
+						</f:facet>
+						<f:facet name="editor">
+							<h:inputText id="input" autocomplete="false" valueChangeListener="#{testTableData.valueChanged}" required="true" style="width: 100%" value="#{rowItem.email}" onkeydown="if (event.keyCode == 13) { #{rich:component('testTable')}.onEditingComplete(event); }">
+								<f:validator validatorId="emailValidator"/>
+							</h:inputText>
+						</f:facet>
+						<h:outputText id="out" value="#{rowItem.email}" />
+					</rich:column>
+					
+					<rich:column label="timestamp" id="timestampCol" width="20%" editable="false">
+						<f:facet name="header">
+							<h:outputText value="Timestamp" />
+						</f:facet>
+						<h:outputText value="#{testTableData.time}" id="timespamp" />
+					</rich:column>
+
+					<rich:column label="Date" sortable="false" id="col2" width="20%" 
+					 		onError="alert(errors[0])"
+					 		sortBy="#{rowItem.date}"
+					 		edited="#{rowItem.dateEdited}"
+							onEdited="#{rich:component('calendar')}.collapse(event);">
+						<f:facet name="header">
+							<h:outputText value="Date" />
+						</f:facet>
+						<f:facet name="editor">
+							<h:panelGroup layout="block">
+								<h:inputText value="#{rowItem.date}" id="input2"
+									style="float: left; height: 13px"
+									autocomplete="false"
+									onkeydown="if (event.keyCode == 13) { #{rich:component('testTable')}.onEditingComplete(event); }"
+									onclick="#{rich:component('calendar')}.customExpand(event, #{rich:element('input2')}, #{rich:element('button2')});">
+									<f:validator validatorId="dateValidator"/>
+								</h:inputText>
+								<h:graphicImage
+									width="17px"
+									value="resource:///org.richfaces.renderkit.html.iconimages.CalendarIcon"
+									onclick="#{rich:component('calendar')}.customExpand(event, #{rich:element('input2')}, #{rich:element('button2')});"
+									id="button2" />
+							</h:panelGroup>
+						</f:facet>
+						<h:outputText style="text-align: center" value="#{rowItem.date}" />
+					</rich:column>
+					<rich:column label="Test 3" id="col3" sortable="false" width="30%"
+						onEdit="onComboboxEdit(data)">
+						<f:facet name="header">
+							<h:outputText value="Test 3" />
+						</f:facet>
+						<f:facet name="editor">
+							<sip:comboBox behaviourStrategy="siperian" 
+								width="100%"
+								id="combobox"
+								edited="#{rowItem.selectEdited}"
+								value="#{rowItem.select}"
+								enableManualInput="true"
+								onselect="#{rich:component('testTable')}.onEditingComplete(event);"
+								suggestionValues="#{testTableData.selects}" />
+							
+						</f:facet>
+						<h:outputText value="#{rowItem.select}" />
+					</rich:column>
+					
+					<f:facet name="footer">
+						<rich:datascroller id="testTable" ajaxSingle="false"
+							page="#{testTableData.currentPage}" pagesVar="pages"
+							onpagechange="return _scroll_change(event);"
+							oncomplete="_scroll_changed(event);"
+							pageIndexVar="pageIndex" />
+					</f:facet>
+
+				</sip:extendedDataTable>
+				
+				<br/><br/><br/>
+				
+				<sip:extendedDataTable id="testTable2" width="90%" frozenColumns="1"
+					var="rowItem" sortMode="single"
+					style="margin: 0 auto; height: 150px"
+					value="#{testTableData.dataModel}" rows="10" height="250px"
+					selectionMode="multi" tableState="#{testTableData.state2}"
+					scrollable="true" inlineEditing="true" horizontalScrolling="true"
+					selectedClass="extdt-table-row-hover" footerClass="demo-footer"
+					rowClasses="extdt-table-row-2,extdt-table-row-1"
+					dndSupported="false" allowColumnsHide="true"
+					allowCellSelection="false">
+					
+					
+					<rich:column label="Email"
+							sortBy="#{rowItem.email}" 
+							filterBy="#{rowItem.email}"
+							sortable="false" id="col1" width="30%" onError="alert(errors[0])">
+							<f:facet name="filterValueInput">
+							<h:inputText value="" onkeydown="if (event.keyCode == 13) { this.onchange(event); Event.stop(event); return false }" />
+						</f:facet>
+						<f:facet name="header">
+							<h:outputText value="Email *" />
+						</f:facet>
+						<f:facet name="editor">
+							<h:inputText id="input" autocomplete="false" required="true" style="width: 100%" value="#{rowItem.email}" onkeydown="if (event.keyCode == 13) { #{rich:component('testTable2')}.onEditingComplete(event); }">
+								<f:validator validatorId="emailValidator"/>
+							</h:inputText>
+						</f:facet>
+						<h:outputText id="out" value="#{rowItem.email}" />
+					</rich:column>
+
+					<rich:column label="Date" sortable="false" id="col2" width="30%" 
+					 		onError="alert(errors[0])"
+					 		sortBy="#{rowItem.date}"
+							onEdited="#{rich:component('calendar')}.collapse(event);">
+						
+						<f:facet name="header">
+							<h:outputText value="Date" />
+						</f:facet>
+						<f:facet name="editor">
+							<h:panelGroup layout="block">
+								<h:inputText value="#{rowItem.date}" id="input22"
+									style="float: left; height: 13px"
+									autocomplete="false"
+									onkeydown="if (event.keyCode == 13) { #{rich:component('testTable2')}.onEditingComplete(event); }"
+									onclick="#{rich:component('calendar')}.customExpand(event, #{rich:element('input22')}, #{rich:element('button22')});">
+									<f:validator validatorId="dateValidator"/>
+								</h:inputText>
+								<h:graphicImage
+									width="17px"
+									value="resource:///org.richfaces.renderkit.html.iconimages.CalendarIcon"
+									onclick="#{rich:component('calendar')}.customExpand(event, #{rich:element('input22')}, #{rich:element('button22')});"
+									id="button22" />
+							</h:panelGroup>
+						</f:facet>
+						<h:outputText style="text-align: center" value="#{rowItem.date}" />
+					</rich:column>
+					<rich:column label="Test 3" id="col3" sortable="false" width="30%"
+						onEdit="onComboboxEdit(data)">
+						<f:facet name="header">
+							<h:outputText value="Test 3" />
+						</f:facet>
+						<f:facet name="editor">
+							<sip:comboBox behaviourStrategy="siperian" 
+								width="100%"
+								id="combobox"
+								value="#{rowItem.select}"
+								enableManualInput="true"
+								onselect="#{rich:component('testTable2')}.onEditingComplete(event);"
+								suggestionValues="#{testTableData.selects}" />
+							
+						</f:facet>
+						<h:outputText value="#{rowItem.select}" />
+					</rich:column>
+					
+					<f:facet name="footer">
+						<rich:datascroller id="testTable" ajaxSingle="false"
+							page="#{testTableData.currentPage}" pagesVar="pages"
+							onpagechange="return _scroll_change(event);"
+							oncomplete="_scroll_changed(event);"
+							pageIndexVar="pageIndex" />
+					</f:facet>
+
+				</sip:extendedDataTable>
+				
+				<rich:modalPanel id="unsavedDataModel" onmaskclick="#{rich:component('unsavedDataModel')}.hide()">
+					<f:facet name="header">
+						<h:outputText value="Important Message" />
+					</f:facet>
+					<p>
+						You have modified data on the page.
+						Do you really want to navigate to another page?
+					</p>
+					<input type="button" value="Yes" onclick="_scroll_confirmYes()" />
+					<input type="button" value="No" onclick="_scroll_confirmNo()"/>
+				</rich:modalPanel>
+
+			</a4j:outputPanel>
+		</f:facet>
+	</sip:doublePanel>
+</h:form>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:rich="http://richfaces.org/rich">
+<ui:composition>            
+<rich:panel styleClass="panel_menu" bodyClass="rich-laguna-panel-no-header">
+<rich:panelBar style="width: auto;" selectedPanel="#{componentNavigator.currentComponent.group}" height="625px" contentStyle="background:none;">
+	<rich:panelBarItem id="richTable" label="Siperian Table Examples"> 
+		<ui:include src="/templates/include/components-group.xhtml" >
+ 			<ui:param name="components" value="#{componentNavigator.tableExamples}" />
+ 		</ui:include>
+	</rich:panelBarItem> 
+	<rich:panelBarItem id="richTabs" label="Siperian Tabs Examples"> 
+		<ui:include src="/templates/include/components-group.xhtml" >
+ 			<ui:param name="components" value="#{componentNavigator.tabsExamples}" />
+ 		</ui:include>
+	</rich:panelBarItem>
+	<rich:panelBarItem id="sipMisc" label="Siperian Miscellaneous">
+		<ui:include src="/templates/include/components-group.xhtml" >
+ 			<ui:param name="components" value="#{componentNavigator.siperianMisc}" />
+ 		</ui:include>
+	</rich:panelBarItem>
+	<rich:panelBarItem id="richPanels" label="Siperian Panels Examples"> 
+		<ui:include src="/templates/include/components-group.xhtml" >
+ 			<ui:param name="components" value="#{componentNavigator.panelsExamples}" />
+ 		</ui:include>
+	</rich:panelBarItem> 
+	<rich:panelBarItem id="timeline" label="Siperian Timeline Examples"> 
+		<ui:include src="/templates/include/components-group.xhtml" >
+ 			<ui:param name="components" value="#{componentNavigator.timeline}" />
+ 		</ui:include>
+	</rich:panelBarItem> 
+	<rich:panelBarItem id="sipIntegration" label="Integration Examples"> 
+		<ui:include src="/templates/include/components-group.xhtml" >
+ 			<ui:param name="components" value="#{componentNavigator.integration}" />
+ 		</ui:include>
+	</rich:panelBarItem> 
+	<rich:panelBarItem id="singleCalendar" label="Single Calendar"> 
+		<ui:include src="/templates/include/components-group.xhtml" >
+ 			<ui:param name="components" value="#{componentNavigator.singleCalendar}" />
+ 		</ui:include>
+	</rich:panelBarItem> 
+	<rich:panelBarItem id="singleTooltip" label="Single Tooltip"> 
+		<ui:include src="/templates/include/components-group.xhtml" >
+ 			<ui:param name="components" value="#{componentNavigator.singleTooltip}" />
+ 		</ui:include>
+	</rich:panelBarItem> 
+	<rich:panelBarItem id="singleCombobox" label="Single Combobox"> 
+		<ui:include src="/templates/include/components-group.xhtml" >
+ 			<ui:param name="components" value="#{componentNavigator.singleCombobox}" />
+ 		</ui:include>
+	</rich:panelBarItem> 
+</rich:panelBar>
+</rich:panel>
+</ui:composition>
+</html>
+

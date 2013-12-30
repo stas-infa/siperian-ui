@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE components PUBLIC "-//AJAX4JSF//CDK Generator config/EN"  "http://labs.jboss.com/jbossrichfaces/component-config.dtd">
+
+<components>
+	<component>
+		<name>com.exadel.siperian.Panel</name>
+		<family>com.exadel.siperian.Panel</family>
+		<classname>
+			com.exadel.siperian.component.html.HtmlPanel
+		</classname>
+		<superclass>
+			com.exadel.siperian.component.UIPanel
+		</superclass>
+		<description>
+			<![CDATA[
+    ]]>
+		</description>
+		<renderer generate="true" override="true">
+			<name>com.exadel.siperian.PanelRenderer</name>
+			<template>com/siperian/htmlPanel.jspx</template>
+		</renderer>
+		<tag>
+			<name>panel</name>
+			<classname>
+				com.exadel.siperian.taglib.PanelTag
+			</classname>
+			<superclass>
+				org.ajax4jsf.webapp.taglib.HtmlComponentTagBase
+			</superclass>
+		</tag>
+		&ui_component_attributes;
+		&html_events;
+		&html_style_attributes;
+		<property>
+			<name>minWidth</name>
+			<classname>java.lang.String</classname>
+			<description>
+				A class that defines a style for a panel header
+			</description>
+		</property>
+	</component>
+</components>

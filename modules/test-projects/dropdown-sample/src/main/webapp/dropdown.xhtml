@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:sip="http://siperian.exadel.com/sip">
+
+<f:view>
+	<h:form id="dropdownmenu_form">	
+		<rich:toolBar>
+		
+			<sip:dropDownMenu id="ddmenu2" submitMode="ajax"
+				event="onclick">
+				<f:facet name="label">
+					<h:panelGroup layout="block">
+						<h:outputText value="Group 2 " escape="false" />
+					</h:panelGroup>
+				</f:facet>
+				<rich:menuItem value="Item 1" ajaxSingle="true">
+					<a4j:support event="onselect"
+                           action="#{testBean.action}">
+                     </a4j:support>
+				</rich:menuItem>
+			</sip:dropDownMenu>
+		</rich:toolBar>
+	</h:form>
+</f:view>
+
+</html>

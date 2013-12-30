@@ -1,0 +1,68 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+<ui:composition>
+<div class="page_brick"></div>
+<h:form>
+<table class="skin_chooser" cellpadding="0" cellspacing="0" border="0">
+<tbody>
+	<tr>
+		<td>
+			<strong>Skins:</strong>
+		</td>
+		<td>
+					<h:panelGroup>
+					<table class="skin_line" cellpadding="0" cellspacing="0" border="0">
+						<tbody>
+							<tr>
+								<td>
+									<h:outputLink value="#{componentNavigator.currentComponent.contextRelativeDemoLocation}">
+										Sip
+										<f:param value="Sip" name="s"/>
+									</h:outputLink>
+								</td>
+							</tr>
+						</tbody> 
+					</table>
+					</h:panelGroup> 
+		</td>
+		<td align="right">
+			<table cellpadding="0" cellspacing="0" border="0">
+				<tr>
+					<td>
+						<h:outputText value="Log:"></h:outputText>
+					</td>
+					
+					<td>
+						<a href="#" onclick="alert('Press CTRL+SHIRT+P');">
+							Open log popup
+						</a>
+					</td>
+					<td>
+						<a4j:commandLink 
+								id="hideShowPanel"
+								value="#{logBean.showLog ? 'Hide log panel' : 'Show log panel'}" 
+								reRender="logPanel,hideShowPanel"
+								actionListener="#{logBean.actionShow}"/>
+					</td>
+				</tr>
+			</table>
+		</td>
+	
+	</tr>
+	<tr>
+		<td colspan="3">
+			
+		</td>
+	</tr>
+</tbody>
+
+</table>
+
+
+</h:form>
+</ui:composition>
+</html>

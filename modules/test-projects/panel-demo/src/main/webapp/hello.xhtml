@@ -1,0 +1,15 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/WEB-INF/template/default.xhtml"
+>
+<ui:define name="title">Hello #{helloBean.name}</ui:define>
+<ui:define name="content">
+        <f:view>
+            <h2>Hello #{helloBean.name}.</h2>
+	    <a href=".">GO HOME</a>
+        </f:view>
+</ui:define>
+</ui:composition>

@@ -1,0 +1,700 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:template 
+	xmlns:f="http://jsf.exadel.com/template"
+   	xmlns:u="http://jsf.exadel.com/template/util" 
+   	xmlns="http://www.w3.org/1999/xhtml">	
+
+ 
+<f:verbatim> <![CDATA[
+
+.spn_panel_container{width : 100%;}
+.spn_content{width : 100%; height : 100%; padding : 0px;}
+
+
+.containerActive .left {
+		height: 20px;
+		white-space: nowrap;
+		overflow: hidden;
+		float: left;
+		padding: 4px 0px 0px 16px;
+		font-family: Verdana;
+		font-size: 12px;
+		font-weight: bold;
+		color: #000000;
+	}
+	.containerActive .right {
+		width: 10px;
+		height: 24px;
+		float: left;
+	}
+	.containerInActive .left {
+		height: 20px;
+		white-space: nowrap;
+		overflow: hidden;
+		padding: 4px 0px 0px 16px;
+		float: left;
+		cursor: pointer;
+	}
+	.containerInActive .right {
+		width: 10px;
+		height: 24px;
+		float: left;
+		cursor: pointer;
+	}
+	.containerActive {
+		position: relative;
+		bottom: -1px;
+		float: left;
+		padding-left: 2px;
+		z-index: 1;
+	}
+	.containerInActive {
+		position: relative;
+		height: 24px;
+		float: left;
+		padding-left: 2px;
+		bottom: -1px;
+	}
+	.containerInActive a {
+		color: #000000;
+		text-decoration: none;
+	}
+	.tabsContainer {
+		width: 100%;
+		height: 24px;
+		margin: 0px;
+		white-space: nowrap;
+		margin-bottom: -1px;
+		position: relative;
+		background-color:#FFFFFF;		
+		overflow: hidden;
+	}
+	
+	.tabs {margin-left:0px; overflow: hidden; white-space: nowrap; display: inline; width: 98%; float: left; position: relative; background-color:#FFFFFF}
+
+	
+	.spn_sr_tabpanel_content{
+		overflow : hidden;  
+		text-overflow: ellipsis; 
+		-o-text-overflow: ellipsis; 
+		-webkit-text-overflow: ellipsis; 
+		font-size : 11px;
+		float: left;
+		margin-right: 15px;
+		color : #333333; 
+		font-family: Arial; 
+		font-weight : normal;
+	}
+	
+	.spn_sr_tabpanel_contentActive{
+		overflow : hidden;  
+		text-overflow: ellipsis; 
+		-o-text-overflow: ellipsis; 
+		-webkit-text-overflow: ellipsis; 
+		font-size : 11px;
+		float: left;
+		margin-right: 15px;
+		color : #333333; 
+		font-family: Arial; 
+		font-weight: bold; 
+	}
+	
+	.spn_sr_tabpanel_icon{
+		width : 25px; 
+		float : left; 
+		text-align: right;
+
+	}
+
+	.spn_panel_bottom_container {width : 100%; height : 3px; visibility: visible;}	
+
+	
+	.arrowLeft {float: left; height: 24px; width: 24px; position : absolute; bottom : -1px; left: 0px; z-index: 1;}
+	.arrowRight {float: right; height: 24px; width: 24px; position : absolute; bottom : -1px; right: 24px; z-index: 1;}
+	.arrowLeftDis {float: left; height: 24px; width: 24px; position : absolute; bottom : -1px; left: 0px; z-index: 1;}
+	.arrowRightDis {float: right; height: 24px; width: 24px; position : absolute; bottom : -1px; right: 24px; z-index: 1;}
+	.contextArrowRight {float: right; height: 24px; width: 24px; position : absolute;  bottom : -1px; right: 0px; z-index: 1;}
+	.contextArrowRightClicked {float: right; height: 24px; width: 24px; position : absolute;  bottom : -1px; right: 0px; z-index: 1;}
+	
+	.activeTabLink {
+		text-decoration: none;
+		cursor: default;
+	}
+	
+	.inactiveTabLink {
+		text-decoration: none;
+		cursor: handler;
+	}
+	
+	.tabList{
+		top: 0px;
+		right: 7px;
+		width: 200px;		
+		height: auto;
+		z-index: 1000;
+		position: absolute; 
+		visibility: hidden;
+	}
+	
+	.tabListLeft {
+		width: 6px;
+		height:100%;
+	}
+	
+	.tabListRight {
+		width: 6px;
+		height:100%;
+	}
+
+	.tabListLeftCorner {
+		height: 9px;
+		width: 6px;
+		overflow: hidden;
+	}
+	
+	.tabListRightCorner {
+		height: 9px;
+		width: 6px;
+		overflow: hidden;
+	}
+	
+	.tabListBottom {
+		height: 9px;
+		overflow: hidden;
+	}
+	
+	.tabListTop{
+		height:1px;
+		width: 178px;
+		left: 0px;
+	}
+	
+	.tabListContent{
+		overflow-x: hidden;
+		overflow-y: auto;
+		width: 180px;
+		cursor: pointer;
+		background-color: #ffffff;
+		white-spaces: nowrap;
+		padding:10px !important;
+	}
+	
+	.tabListItemNormal{
+		display: block;
+		font-weight: normal;
+		font-family: Arial;
+		padding-top:5px;
+		font-size: 11px;
+		height: 20px;
+		color: #333333;
+	}
+	
+	.tabListItemHovered{
+		display: block;
+		background-color: #E4e4e4; outline: none;
+		font-family: Arial;
+		font-size: 11px;
+		padding-top:5px;
+		height: 20px;
+		color: #333333;
+	}
+	
+	.tabListItemActive{
+		display: block;
+		//font-weight: bold;
+		background-color: #DFF699;
+		font-family: Arial;
+		font-size: 11px;
+		padding-top:5px;
+		height: 20px;
+		color: #333333;
+	}
+	
+	.tabPanelIcon {float: right;margin-top: 0px; position: absolute !important; right: 8px; top:0px}
+	
+	.tabContentCoverage { 
+		position: absolute; 
+		width: 100%; 
+		height: 100%; 
+		top: 0px; 
+		left: 0px; 
+		background-color: #CFD2D5;
+		opacity: 0.7;
+		filter: Alpha(opacity=70); 
+	}
+	
+/* Static tabs*/	
+	
+.sip-static-pnl-searchContainerNoScroll, .sip-static-pnl-searchContainer {width: 100%;}
+.sip-static-pnl-searchTabsContainer {
+	width: 100%;
+	height: 24px;
+	position: relative;
+	margin-bottom: -1px;
+	z-index: 1;
+	overflow: hidden;
+}
+.sip-static-pnl-searchContainerNoScroll .sip-static-pnl-searchTabsContainer {
+	width: 100%;
+	height: 24px;
+	position: relative;
+	margin-bottom: -1px;
+	z-index: 1;
+}
+.sip-static-pnl-searchContainerNoScroll .sip-static-pnl-arrowLeft, .sip-static-pnl-searchContainerNoScroll .sip-static-pnl-arrowRight {display: none;}
+.sip-static-pnl-searchContainerNoScroll .sip-static-pnl-arrowLeftDis, .sip-static-pnl-searchContainerNoScroll .sip-static-pnl-arrowRightDis {display: none;}
+.sip-static-pnl-arrowLeft {
+	position: absolute; 
+	left: 0px;
+	top: 0px;
+	width:24px; 
+	height: 24px;
+	z-index: 1;
+}
+.sip-static-pnl-arrowLeftDis {
+	position: absolute; 
+	left: 0px;
+	top: 0px;
+	width:24px; 
+	height: 24px;
+	z-index: 1;
+}
+.sip-static-pnl-arrowRight {
+	position: absolute; 
+	right: 24px;
+	top: 0px; 
+	width:24px; 
+	height: 24px;
+	z-index: 1;
+}
+.sip-static-pnl-arrowRightDis {
+	position: absolute; 
+	right: 24px;
+	top: 0px; 
+	width:24px; 
+	height: 24px;
+	z-index: 1;
+}
+
+.sip-static-pnl-contextArrowRight {
+	float: right; 
+	height: 24px;
+	width: 24px; 
+	position : absolute;  
+	top : 0px; 
+	right: 0px;
+	z-index: 1;
+}
+
+.sip-static-pnl-contextArrowRightClicked {
+	float: right; 
+	height: 24px;
+	width: 24px; 
+	position : absolute;  
+	top : 0px; 
+	right: 0px;
+	z-index: 1;
+}
+
+.sip-static-pnl-searchContainerNoScroll .sip-static-pnl-tabsContainerScroll {
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+	margin-left: 0px;
+}
+.sip-static-pnl-tabsContainerScroll {
+	width: 96%;
+	overflow: hidden;
+	margin-left: 12px;
+	position: relative;
+}
+.sip-static-pnl-tabContainerActive {
+	height: 24px; 
+	float: left; 
+	margin-right: 2px;
+	z-index: 1;
+}
+.sip-static-pnl-tabContainerActive .sip-static-pnl-left {
+	height: 20px !important; 	
+	float: left; 
+	margin-right: 0px;
+	padding: 4px 4px 0px 8px;
+	white-space: nowrap;
+	font-weight: bold;
+	text-overflow: ellipsis;
+}
+.sip-static-pnl-tabContainerActive .sip-static-pnl-right {
+	width: 5px; 
+	height: 24px; 
+	overflow: hidden; 
+	position: relative; 
+	float: left;
+}
+.sip-static-pnl-tabContainerActive .sip-static-pnl-right div{
+	height: 24px; 
+	overflow: hidden; 
+	position: absolute; 
+	width: 730px; 
+	right: 0px;
+	float: left; 
+}
+.sip-static-pnl-tabContainerInactive {
+	height: 24px;
+	float: left;
+	margin-right: 2px;
+	margin-top: 0px;
+	cursor: pointer;
+}
+.sip-static-pnl-tabContainerInactive .sip-static-pnl-left {
+	height: 20px !important;
+	float: left;
+	padding: 4px 4px 0px 8px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.sip-static-pnl-tabContainerInactive .sip-static-pnl-right {
+	width: 5px; 
+	height: 24px; 
+	overflow: hidden; 
+	position: relative; 
+	float: left;
+	z-index: 0;
+}
+.sip-static-pnl-tabContainerInactive .sip-static-pnl-right div {
+	height: 24px; 
+	overflow: hidden; 
+	position: absolute; 
+	width: 730px; 
+	right: 0px;
+	float: left;
+	z-index: -1;
+}
+.sip-static-pnl-disabled .sip-static-pnl-left{
+	color: #a2a3a4 !important;
+}
+
+.sip-static-pnl-leftActive {
+	font-weight: bold;
+}
+
+.sip-static-pnl-content-container {width: 100%; height: 100%; visibility: hidden; table-layout: fixed; overflow: hidden;}
+.sip-static-pnl-content {background-color: white;}	
+.sip-static-pnl-bg-left-top {width: 10px; height: 10px;}
+.sip-static-pnl-bg-top {width: auto; height: 10px;}
+.sip-static-pnl-bg-right-top {width: 10px; height: 10px;}
+.sip-static-pnl-bg-right-top-noround {width: 10px; height: 10px;}
+
+.sip-static-pnl-bg-left {width: 10px; height: 100%;}
+.sip-static-pnl-bg-right {width: 10px; height: 100%;}
+
+.sip-static-pnl-bg-left-bottom {width: 10px; height: 10px;}
+.sip-static-pnl-bg-bottom {width: auto; height: 10px;}
+.sip-static-pnl-bg-right-bottom {width: 10px; height: 10px;}
+	
+]]>
+
+</f:verbatim>
+
+
+<u:selector name=".containerActive .left">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/sip-static-pnl-active-tab.png" />
+    </u:style>
+   	<u:style name="background-repeat" value="no-repeat" />
+	<u:style name="background-position" value="top left" />
+</u:selector>
+
+<u:selector name=".containerActive .right">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/sip-static-pnl-active-tab.png" />
+    </u:style>
+    <u:style name="background-repeat" value="no-repeat" />
+	<u:style name="background-position" value="top right" />
+</u:selector>
+
+<u:selector name=".containerInActive .left">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/sip-static-pnl-inactive-tab.png" />
+    </u:style>
+    <u:style name="background-repeat" value="no-repeat" />
+	<u:style name="background-position" value="top left" />
+</u:selector>
+
+<u:selector name=".containerInActive .right">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/sip-static-pnl-inactive-tab.png" />
+    </u:style>
+    <u:style name="background-repeat" value="no-repeat" />
+	<u:style name="background-position" value="top right" />
+</u:selector>
+
+
+<u:selector name=".arrowLeftDis">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/arrow-left-dis.png" />
+    </u:style>
+    <u:style name="background-repeat" value="no-repeat" />
+</u:selector>
+
+<u:selector name=".arrowLeft">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/arrow-left.png" />
+    </u:style>
+    <u:style name="background-repeat" value="no-repeat" />
+</u:selector>
+
+<u:selector name=".arrowRight">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/arrow-right.png" />
+    </u:style>
+    <u:style name="background-repeat" value="no-repeat" />
+</u:selector>
+
+<u:selector name=".arrowRightDis">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/arrow-right-dis.png" />
+    </u:style>
+    <u:style name="background-repeat" value="no-repeat" />
+</u:selector>
+
+<u:selector name=".contextArrowRight">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/arrow-context.png" />
+    </u:style>
+    <u:style name="background-repeat" value="no-repeat" />
+</u:selector>
+
+<u:selector name=".contextArrowRightClicked">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/arrow-context-onclick.png" />
+    </u:style>
+    <u:style name="background-repeat" value="no-repeat" />
+</u:selector>
+
+<u:selector name=".tabListLeft">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/LeftSide.png" />
+    </u:style>
+    <u:style name="background-position" value="right top" />
+    <u:style name="background-repeat" value="repeat-y" />
+</u:selector>
+
+<u:selector name=".tabListRight">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/RightSide.png" />
+    </u:style>
+    <u:style name="background-position" value="left top" />
+    <u:style name="background-repeat" value="repeat-y" />
+</u:selector>
+
+<u:selector name=".tabListLeftCorner">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/cornerLeft.png" />
+    </u:style>
+    <u:style name="background-position" value="right top" />
+    <u:style name="background-repeat" value="no-repeat" />
+</u:selector>
+
+<u:selector name=".tabListRightCorner">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/cornerRight.png" />
+    </u:style>
+    <u:style name="background-repeat" value="no-repeat" />
+    <u:style name="background-position" value="left top" />
+</u:selector>
+
+<u:selector name=".tabListBottom">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/bottomSide.png" />
+    </u:style>
+    <u:style name="background-position" value="left top" />
+    <u:style name="background-repeat" value="repeat-x" />
+</u:selector>
+
+<u:selector name=".tabListTop">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/TopSide.png" />
+    </u:style>
+    <u:style name="background-position" value="left top" />
+    <u:style name="background-repeat" value="repeat-x" />
+</u:selector>
+
+<u:selector name=".spn_panel_bottom_container">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/sip-static-pnl-top.png" />
+    </u:style>
+     <u:style name="background-position" value="left top" />
+    <u:style name="background-repeat" value="repeat-x" />
+</u:selector>
+
+
+/* Static tabs*/
+
+
+<u:selector name=".sip-static-pnl-arrowLeft">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/arrow-left.png" />
+    </u:style>
+    <u:style name="background-repeat" value="no-repeat" />
+</u:selector>
+
+<u:selector name=".sip-static-pnl-arrowLeftDis">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/arrow-left-dis.png" />
+    </u:style>
+    <u:style name="background-repeat" value="no-repeat" />
+</u:selector>
+
+<u:selector name=".sip-static-pnl-arrowRight">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/arrow-right.png" />
+    </u:style>
+    <u:style name="background-repeat" value="no-repeat" />
+</u:selector>
+
+<u:selector name=".sip-static-pnl-arrowRightDis">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/arrow-right-dis.png" />
+    </u:style>
+    <u:style name="background-repeat" value="no-repeat" />
+</u:selector>
+
+
+<u:selector name=".sip-static-pnl-contextArrowRight">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/arrow-context.png" />
+    </u:style>
+    <u:style name="background-repeat" value="no-repeat" />
+</u:selector>
+
+<u:selector name=".sip-static-pnl-contextArrowRightClicked">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/arrow-context-onclick.png" />
+    </u:style>
+    <u:style name="background-repeat" value="no-repeat" />
+</u:selector>
+
+<u:selector name=".sip-static-pnl-tabContainerActive .sip-static-pnl-left">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/sip-static-pnl-active-tab.png" />
+    </u:style>
+    <u:style name="background-repeat" value="no-repeat" />
+    <u:style name="background-position" value="left" />
+    <u:style name="font-family" value="Arial" />
+    <u:style name="font-size" value="11px" />
+    <u:style name="font-weight" skin="bold" />
+    <u:style name="color" value="#333333" />
+</u:selector>
+
+<u:selector name=".sip-static-pnl-tabContainerActiveSelected .sip-static-pnl-left">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/sip-static-pnl-active-tab-select.png" />
+    </u:style>
+</u:selector>
+
+<u:selector name=".sip-static-pnl-tabContainerActive .sip-static-pnl-right div">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/sip-static-pnl-active-tab.png" />
+    </u:style>
+</u:selector>
+<u:selector name=".sip-static-pnl-tabContainerActiveSelected .sip-static-pnl-right div">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/sip-static-pnl-active-tab-select.png" />
+    </u:style>
+</u:selector>
+
+<u:selector name=".sip-static-pnl-tabContainerInactive .sip-static-pnl-left">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/sip-static-pnl-inactive-tab.png" />
+    </u:style>
+    <u:style name="background-repeat" value="no-repeat" />
+    <u:style name="background-position" value="left" />
+    <u:style name="font-family" value="Arial" />
+    <u:style name="font-size" value="11px" />
+    <u:style name="font-weight" value="normal" />
+    <u:style name="color" value="#333333" />
+</u:selector>
+
+<u:selector name=".sip-static-pnl-tabContainerInactiveSelected .sip-static-pnl-left">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/sip-static-pnl-inactive-tab-select.png" />
+    </u:style>
+</u:selector>
+
+
+<u:selector name=".sip-static-pnl-tabContainerInactive .sip-static-pnl-right div">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/sip-static-pnl-inactive-tab.png" />
+    </u:style>
+    <u:style name="background-repeat" value="no-repeat" />
+</u:selector>
+
+<u:selector name=".sip-static-pnl-tabContainerInactiveSelected .sip-static-pnl-right div">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/sip-static-pnl-inactive-tab-select.png" />
+    </u:style>
+</u:selector>
+
+<u:selector name=".sip-static-pnl-bg-left-top">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/sip-static-pnl-left-top.png" />
+    </u:style>
+</u:selector>
+
+<u:selector name=".sip-static-pnl-bg-top">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/sip-static-pnl-top.png" />
+	</u:style>
+	<u:style name="background-repeat" value="repeat-x" />
+    <u:style name="background-position" value="left top" />
+</u:selector>
+
+<u:selector name=".sip-static-pnl-bg-right-top">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/sip-static-pnl-right-top.png" />
+	</u:style>
+</u:selector>
+
+<u:selector name=".sip-static-pnl-bg-right-top-noround">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/sip-static-pnl-right-top.png" />
+	</u:style>
+</u:selector>
+
+<u:selector name=".sip-static-pnl-bg-left">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/sip-static-pnl-left.png" />
+	</u:style>
+	<u:style name="background-repeat" value="repeat-y" />
+    <u:style name="background-position" value="left top" />
+</u:selector>
+
+<u:selector name=".sip-static-pnl-bg-right">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/sip-static-pnl-right.png" />
+	</u:style>
+	<u:style name="background-repeat" value="repeat-y" />
+    <u:style name="background-position" value="left top" />
+</u:selector>
+
+<u:selector name=".sip-static-pnl-bg-left-bottom">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/sip-static-pnl-left-bottom.png" />
+	</u:style>
+</u:selector>
+
+<u:selector name=".sip-static-pnl-bg-bottom">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/sip-static-pnl-bottom.png" />
+	</u:style>
+	<u:style name="background-repeat" value="repeat-x" />
+    <u:style name="background-position" value="left top" />
+</u:selector>
+
+<u:selector name=".sip-static-pnl-bg-right-bottom">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/sip-static-pnl-right-bottom.png" />
+	</u:style>
+</u:selector>
+
+</f:template>

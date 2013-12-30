@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE components PUBLIC "-//AJAX4JSF//CDK Generator config/EN"  "http://labs.jboss.com/jbossrichfaces/component-config.dtd">
+
+<components>
+	<component>
+		<name>com.siperian.Icon</name>
+		<family>com.siperian.Icon</family>
+		<classname>
+			com.exadel.siperian.component.html.HtmlIcon
+		</classname>
+		<superclass>
+			com.exadel.siperian.component.UIIcon
+		</superclass>
+		<description>
+			<![CDATA[
+    ]]>
+		</description>
+		<renderer generate="true" override="true">
+			<name>com.exadel.siperian.IconRenderer</name>
+			<template>com/exadel/siperian/htmlIcon.jspx</template>
+		</renderer>
+		<tag>
+			<name>icon</name>
+			<classname>
+				com.exadel.siperian.taglib.IconTag
+			</classname>
+			<superclass>
+				org.ajax4jsf.webapp.taglib.HtmlComponentTagBase
+			</superclass>
+		</tag>
+		<property>
+	    	<name>style</name>
+	    	<classname>java.lang.String</classname>
+	    	<description>CSS style(s) is/are to be applied when this component is rendered</description>
+	    	<defaultvalue><![CDATA[""]]></defaultvalue>
+		</property>
+		<property>
+	    	<name>styleClass</name>
+	    	<classname>java.lang.String</classname>
+	     	<description>Corresponds to the HTML class attribute</description>
+	    	<defaultvalue><![CDATA[""]]></defaultvalue>
+		</property>
+		<property required="true">
+			<name>direction</name>
+			<classname>java.lang.String</classname>
+		</property>
+		<property required="true">
+			<name>type</name>
+			<classname>java.lang.String</classname>
+		</property>
+		<property>
+			<name>disabled</name>
+			<classname>boolean</classname>
+			<defaultvalue>false</defaultvalue>
+		</property>
+	</component>
+</components>

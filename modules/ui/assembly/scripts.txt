@@ -1,0 +1,8 @@
+./com/exadel/siperian/renderkit/html/scripts/panel.js
+./com/exadel/siperian/renderkit/html/scripts/button.js
+./com/exadel/siperian/renderkit/html/scripts/tabPanel2.js
+./com/exadel/siperian/renderkit/html/scripts/horizontalScroller.js
+./com/exadel/siperian/renderkit/html/scripts/toolBar.js
+./com/exadel/siperian/renderkit/html/scripts/vScroller.js
+./com/exadel/siperian/renderkit/html/scripts/verticalScroller.js
+./com/exadel/siperian/renderkit/html/scripts/common_png.js

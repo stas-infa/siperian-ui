@@ -1,0 +1,38 @@
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:rich="http://richfaces.ajax4jsf.org/rich"
+                xmlns:c="http://java.sun.com/jstl/core"
+                xmlns:a4j="https://ajax4jsf.dev.java.net/ajax">
+
+    <!--@elvariable id="child" type="com.siperian.example.Child"-->
+    <!--@elvariable id="idSuffix" type="java.lang.String"-->
+
+    <rich:modalPanel id="mp_#{idSuffix}" autosized="true">
+        <f:facet name="controls">
+            <h:panelGroup>
+                <h:commandLink value="X" style="cursor:pointer"
+                                 onclick="Richfaces.hideModalPanel('mp_#{idSuffix}');return false;"/>
+            </h:panelGroup>
+        </f:facet>
+        <c:forEach items="#{child.selection}" var="property">
+            <h:inputText value="#{property}"/>
+        </c:forEach>
+        <br/>
+        <a4j:commandButton value="Submit" reRender="table_#{idSuffix}, mp_#{idSuffix}"
+                           onclick="Richfaces.hideModalPanel('mp_#{idSuffix}');"/>
+        <h:commandButton value="Revert" 
+                           onclick="Richfaces.hideModalPanel('mp_#{idSuffix}');return false;"/>
+    </rich:modalPanel>
+
+    <h:outputText value="#{child.name}"/>
+    <br/>
+    <rich:dataTable id="table_#{idSuffix}" value="#{child.data}" var="data">
+        <rich:columns value="#{child.columns}" var="column" index="ind">
+            <h:outputText value="#{data[ind]}"/>
+        </rich:columns>
+        <a4j:support event="onRowClick" actionListener="#{child.onRowSelection}" reRender="mp_#{idSuffix}"/>
+    </rich:dataTable>
+    <a4j:commandButton value="Edit selection"
+                       oncomplete="Richfaces.showModalPanel('mp_#{idSuffix}',{left:'auto', top:'auto'})"/>
+</ui:composition>

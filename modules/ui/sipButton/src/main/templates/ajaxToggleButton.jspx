@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:root xmlns:f="http://ajax4jsf.org/cdk/template"
+        xmlns:x=" http://ajax4jsf.org/cdk/x"
+        xmlns:h="http://jsf.exadel.com/header"
+        baseclass="com.exadel.siperian.renderkit.SipAjaxToggleButtonRendererBase"
+        class="com.exadel.siperian.renderkit.html.HtmlSipAjaxToggleButtonRenderer"
+        component="com.exadel.siperian.component.SipUIAjaxToggleButton">
+   <h:styles>
+      /com/exadel/siperian/renderkit/html/css/toggleButton.xcss,
+   </h:styles>
+   <h:scripts>
+      new org.ajax4jsf.javascript.PrototypeScript(),
+      /com/exadel/siperian/renderkit/html/scripts/sipButton.js
+   </h:scripts>
+   <f:clientid var="clientId" />
+   <jsp:declaration><![CDATA[
+   public void encodeLabel(FacesContext context, UIComponent component) throws IOException {
+      ResponseWriter writer = context.getResponseWriter();
+      writer.writeText(convertToString(getValue(component)),null);
+   }
+   ]]></jsp:declaration>
+
+   <jsp:scriptlet>
+   <![CDATA[
+       String onclickhandler = "if (!(this.getAttribute('sipdisabled')=='true') ) {if(/MSIE (7).+Win/.test(navigator.userAgent)){this.setAttribute('sipdisabled','true');};"+getClick1(context,component)+"setTimeout(function(){" + getOnClick(context,component) + ";},250); } else {return false;};";
+       String toggleClassName = isPressedState(context,component) ? "pressed" : "unpressed";
+       variables.setVariable("onclickhandler", onclickhandler);
+       variables.setVariable("toggleClassName", toggleClassName);
+   ]]>
+   </jsp:scriptlet>
+
+<table id="#{clientId}" border="0" cellspacing="0" cellpadding="0">
+<tbody><tr><td>   
+<a href="javascript:void(0);" 
+      onmousedown="#{onclickhandler}" 
+      sipdisabled="#{component.attributes['disabled']}"
+      onkeydown="if(event.keyCode == 32 || event.keyCode == 13){this.onmousedown();return false;}"
+      style="color:transparent !important" id="#{clientId}butLink" onfocus="if (!isIE7()) {this.className='dottedButtonAnchor';}" onblur="if (!isIE7()) {this.className='normalButtonAnchor';}">
+   <div class="siptoggle">
+       <div id="#{clientId}container" class="#{toggleClassName}"
+            x:passThruWithExclusions="value,name,onclick,href,id,class,onmousedown">
+           <table border="0" cellspacing="0" cellpadding="0"><!-- TODO nick - TBODY is missing -->
+               <tr>
+                   <td class="left"><jsp:scriptlet><![CDATA[writer.write("&#160;&#160;&#160;");]]></jsp:scriptlet></td>
+                   <td class="middle"><jsp:scriptlet>encodeLabel(context, component);</jsp:scriptlet><div class="btnstub"/></td>
+                   <td class="right"><jsp:scriptlet><![CDATA[writer.write("&#160;&#160;&#160;");]]></jsp:scriptlet></td>
+               </tr>
+           </table>
+       </div>
+   </div>
+   </a>
+</td></tr>
+</tbody>
+</table>
+
+</f:root>

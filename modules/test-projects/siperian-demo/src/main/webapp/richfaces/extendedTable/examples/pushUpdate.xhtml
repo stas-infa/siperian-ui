@@ -1,0 +1,111 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:extdt="http://siperian.exadel.com/sip">
+
+	<script type="text/javascript">
+        	function patientInfo(firstName, lastName, date, e) {
+        		alert("First name: " + firstName + "; Last name: " + lastName + ";Admission date: " + date);
+        	}
+        	
+        	function highlightPatient(element) {
+        		$(element).setStyle({color:"green"});
+        	}
+        </script>
+
+	<style type="text/css">
+.redBackground {
+	background-color: red;
+}
+
+.rich-filter-input {
+	width: 80%;
+}
+
+table {
+	cell-padding: 10;
+	cell-spacing: 10;
+}
+
+.w50 {
+	width: 60%;
+}
+</style>
+
+	<h:form>
+		<h:panelGrid columns="2" width="800px" columnClasses="w50">
+			<rich:panel>
+
+				<extdt:extendedDataTable id="demoTable"
+					value="#{extendedDataTableBean.dataModel}" var="patient"
+					style="margin: 0 auto;"
+					rows="#{extendedDataTableControlBean.rowsNumber}"
+					width="#{extendedDataTableControlBean.width}"
+					height="#{extendedDataTableControlBean.height}"
+					selectedClass="dataTableSelectedRow" footerClass="demo-footer"
+					sortMode="#{extendedDataTableControlBean.sortMode}"
+					selectionMode="#{extendedDataTableControlBean.selectionMode}"
+					selection="#{extendedDataTableBean.selection}" rowKeyVar="rkvar"
+					tableState="#{extendedDataTableBean.tableState}">
+					<rich:column id="firstName" headerClass="dataTableHeader"
+						style="width: 200px;" label="#{msg['patient.firstName']}"
+						sortable="false">
+						<f:facet name="header">
+							<h:outputText value="#{msg['patient.firstName']}" />
+						</f:facet>
+					</rich:column>
+					<rich:column id="lastName" headerClass="dataTableHeader"
+						style="width: 200px;" label="#{msg['patient.lastName']}"
+						sortable="false">
+						<f:facet name="header">
+							<h:outputText value="#{msg['patient.lastName']}" />
+						</f:facet>
+						<h:outputText value="#{patient.lastName}" />
+					</rich:column>
+					<rich:column id="admissionDate" headerClass="dataTableHeader"
+						style="width: 200px;" label="#{msg['patient.admissionDate']}"
+						sortable="true" sortBy="#{patient.admissionDate}">
+						<f:facet name="header">
+							<h:outputText value="#{msg['patient.admissionDate']}" />
+						</f:facet>
+						<h:outputText value="#{patient.admissionDate}" />
+					</rich:column>
+					<rich:column id="lastUpdate" headerClass="dataTableHeader"
+						style="width: 200px;" label="#{msg['patient.lastUpdate']}"
+						sortable="true" sortBy="#{patient.lastUpdate}">
+						<f:facet name="header">
+							<h:outputText value="#{msg['patient.lastUpdate']}" />
+						</f:facet>
+						<h:outputText value="#{patient.lastUpdate}" />
+					</rich:column>
+				</extdt:extendedDataTable>
+			</rich:panel>
+			<rich:panel>
+				<a4j:push interval="1000" eventProducer="#{eventProvider.addListener}"
+					reRender="demoTable" enabled="#{eventProvider.enabled}" id="push" />
+				<a4j:outputPanel ajaxRendered="true">
+					<rich:panel>
+						<f:facet name="header">
+							<h:outputText value="Push Example" />
+						</f:facet>
+						<h:panelGrid columns="1" id="out">
+							<h:outputText rendered="#{!eventProvider.enabled}"
+								value="Press Start to run push example" />
+							<h:panelGroup>
+								<a4j:commandButton value="Start" action="#{eventProvider.start}"
+									ajaxSingle="true" rendered="#{!eventProvider.enabled}"
+									reRender="push, out" />
+								<a4j:commandButton value="Stop" action="#{eventProvider.stop}"
+									ajaxSingle="true" rendered="#{eventProvider.enabled}"
+									reRender="push, out" />
+							</h:panelGroup>
+						</h:panelGrid>
+					</rich:panel>
+				</a4j:outputPanel>
+			</rich:panel>
+		</h:panelGrid>
+	</h:form>
+</ui:composition>

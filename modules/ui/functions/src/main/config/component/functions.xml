@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE components 
+        PUBLIC "-//AJAX4JSF//CDK Generator config/EN"
+        "http://labs.jboss.com/jbossrichfaces/component-config.dtd">
+
+<components>
+        <function>
+                <name>nl2br</name>
+                <method>com.exadel.siperian.function.SipFunction.nl2br(java.lang.String)</method>
+        </function>
+        <function>
+                <name>enl2br</name>
+                <method>com.exadel.siperian.function.SipFunction.enl2br(java.lang.String)</method>
+        </function>
+        
+
+       
+</components>

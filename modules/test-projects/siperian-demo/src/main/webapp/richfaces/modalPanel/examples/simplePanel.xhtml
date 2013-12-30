@@ -1,0 +1,35 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:sip="http://siperian.exadel.com/sip">
+	<h:form id="secondForm">
+	</h:form>
+	<sip:modalPanel id="mp" minHeight="200" minWidth="450" height="200"
+		width="500" zindex="2000" panelDOMAttachment="body" isModal="false">
+		<f:facet name="header">
+			<h:outputText value="Modal Panel Title" />
+		</f:facet>
+
+		<p>The model panel is open and closed from the javascript function
+		on <i>Siperian</i> object. The following code <a href="#"
+			onclick="Siperian.hideModalPanel('mp')">hide this panel</a>
+		Siperian.hideModalPanel('mp')</p>
+	</sip:modalPanel>
+	<sip:modalPanel id="mp2" minHeight="200" minWidth="450" height="200"
+		width="500" zindex="2000" panelDOMAttachment="form" isModal="false"
+		attachmentFormId="#{rich:clientId('secondForm')}">
+		<f:facet name="header">
+			<h:outputText value="Modal Panel Title" />
+		</f:facet>
+		<a4j:outputPanel>
+		<p>The model panel is open and closed from the javascript function
+		on <i>Siperian</i> object. The following code <a href="#"
+			onclick="Siperian.hideModalPanel('mp2')">hide this panel</a>
+		Siperian.hideModalPanel('mp2')</p>
+	</a4j:outputPanel>
+	</sip:modalPanel>
+
+
+</ui:composition>

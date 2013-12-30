@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:sip="http://siperian.exadel.com/sip">
+<head>
+<a4j:loadScript src="resource:///com/exadel/siperian/ui.pack.js"></a4j:loadScript>
+<script src="${facesContext.externalContext.requestContextPath}/js/tmp.js"/>
+<script src="${facesContext.externalContext.requestContextPath}/js/tmp2.js"></script>
+</head>
+
+<body>
+	
+
+<h:form id="a">
+<a4j:region>
+<a4j:outputPanel id="panel1">
+
+		<h:message for="hi1"></h:message>
+		<rich:message for="hi2"></rich:message>
+		
+		 <h:inputText value="" id="hi1"></h:inputText>
+		 <h:inputText value="" id="hi2"></h:inputText>
+		 <h:inputText value="" id="hi3"></h:inputText>
+		<sip:modalPanel id="pane" minWidth="100" minHeight="100" zindex="110"
+			autosized="true" showCloseButton="false" panelDOMAttachment="form">
+			<f:facet name="header">
+				<h:outputText id="hi" value="Hi!!!" style="margin-left:10px;" />
+			</f:facet>
+			<f:facet name="controls">
+				<a4j:commandButton value="close"
+					oncomplete="Siperian.hideModalPanel('pane');return true;" />
+			</f:facet>
+			<a4j:log hotkey="P"/>
+		</sip:modalPanel>
+	
+
+</a4j:outputPanel>
+<a4j:outputPanel id="panel2">
+There are the panel2
+<h:outputText value="Panel2 Content"></h:outputText>
+<h:panelGrid columns="1">
+	<h:outputText value="Panel2 content"></h:outputText>
+</h:panelGrid>
+</a4j:outputPanel>
+
+
+	<sip:ajaxButton value="open" onclick="Siperian.showModalPanel('pane');" />
+	<a4j:commandButton  value="ReRender panel1" reRender="panel1,panel2,hi1"/>
+
+</a4j:region>
+</h:form>
+</body>
+</html>

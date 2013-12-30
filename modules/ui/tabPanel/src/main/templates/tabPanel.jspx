@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:root xmlns:f="http://ajax4jsf.org/cdk/template"
+	xmlns:c=" http://java.sun.com/jsf/core"
+	xmlns:ui=" http://ajax4jsf.org/cdk/ui"
+	xmlns:u=" http://ajax4jsf.org/cdk/u"
+	xmlns:x=" http://ajax4jsf.org/cdk/x"
+	xmlns:h="http://jsf.exadel.com/header"
+	xmlns:vcp="http://ajax4jsf.org/cdk/vcp"
+	baseclass="com.exadel.siperian.renderkit.TabPanelRendererBase"
+	class="com.exadel.siperian.renderkit.html.TabPanelRenderer"
+	component="com.exadel.siperian.component.UITabPanel">
+
+	<h:styles>
+		/com/exadel/siperian/renderkit/html/css/sipTabPanel.xcss,
+	</h:styles>
+	<h:scripts>
+		new org.ajax4jsf.javascript.PrototypeScript(),
+		new org.ajax4jsf.javascript.AjaxScript(),
+		new org.ajax4jsf.javascript.ImageCacheScript(),
+		/org/richfaces/renderkit/html/scripts/browser_info.js,
+		/org/ajax4jsf/javascript/scripts/form.js,
+		/org/richfaces/renderkit/html/scripts/utils.js,
+		scripts/horizontalScroller.js,
+		scripts/sipTabPanel.js
+	</h:scripts>
+
+	<f:clientid var="clientId" />
+	
+	<f:resource name="/com/exadel/siperian/renderkit/html/images/arrow-context.png" var="arrowContext" />
+	<f:resource name="/com/exadel/siperian/renderkit/html/images/sip-static-pnl-arrow-context.png" var="sipArrowContext" />
+	<f:resource name="/com/exadel/siperian/renderkit/html/images/clear.gif" var="clear" />
+	
+	<f:call name="initVariables" />
+	
+	<jsp:scriptlet>
+		<![CDATA[
+			com.exadel.siperian.renderkit.TabPanelClassBuilder builder = (com.exadel.siperian.renderkit.TabPanelClassBuilder)component.getAttributes().get(TabPanelRendererBase.CLASS_BUILDER_ATTRIBUTE);
+			//variables.setVariable("classBuilder", builder);
+			variables.setVariable("panelClass", builder.getPanelClass());
+			variables.setVariable("headersContainerClass", builder.getHeadersContainerClass());
+			variables.setVariable("scrollContainerClass", builder.getScrollContainerClass());
+			variables.setVariable("contextArrowClass", builder.getTabContextArrowClass());
+		     	]]>
+		</jsp:scriptlet>
+
+<div id="#{clientId}" style="#{component.attributes['style']}">
+<table width="100%" cellpadding="0" cellspacing="0" style="table-layout: fixed; position: relative;"><tr><td>
+	<div class="#{panelClass}">
+			<f:call name="utils.encodePassThruWithExclusions">
+				<f:parameter value="width,height,styleClass,class,id" />
+			</f:call>
+		<input type="hidden" id="#{clientId}:renderedTabName" name="#{clientId}:renderedTabName" value="#{component.attributes['activeTabName']}"></input>
+		<input type="hidden" id="#{clientId}:longRunningTabName" name="#{clientId}:longRunningTabName"></input>
+		<div class="#{headersContainerClass}" id="#{clientId}:tabsContainer">
+				<div class="#{scrollContainerClass}" id="#{clientId}:tabs" style="visibility: hidden">
+					<div style="width: 10000px;">
+						<f:call name="encodeTabs" />
+					</div>
+				</div>
+			<div id="#{clientId}:tabListHeaderDiv" style="visibility: hidden" class="#{contextArrowClass}"></div>
+			<div class="arrowLeftDis" style="visibility: hidden" id="#{clientId}:left"></div>
+			<div class="arrowRight" style="visibility: hidden" id="#{clientId}:right"></div>
+		</div>
+		
+		<jsp:scriptlet><![CDATA[ if (builder.isDynamic()) { ]]></jsp:scriptlet>
+			<div class="spn_panel_bottom_container"></div>
+		<jsp:scriptlet><![CDATA[ } ]]></jsp:scriptlet>
+		
+		<div style="position: relative; width: 100%">
+		
+<jsp:scriptlet>
+		<![CDATA[
+		         if (builder.isDynamic()) {
+			]]>
+		</jsp:scriptlet>
+
+			<div class="spn_content" id="#{clientId}:content">
+			
+				<jsp:scriptlet>
+				<![CDATA[
+		        	 }else {
+		     		]]>
+		</jsp:scriptlet>
+				<table id="#{clientId}:contentContainer" class="sip-static-pnl-content-container" cellpadding="0" cellspacing="0">
+					<tr style="height: 10px">
+						<td class="sip-static-pnl-bg-left-top" align="left" style="width: 10px"></td>
+						<td class="sip-static-pnl-bg-top" style="overflow: hidden"></td>
+						<td id="#{clientId}:rightTop" class="sip-static-pnl-bg-right-top-noround" style="width: 10px" align="right"></td>
+					</tr>
+					<tr>
+						<td class="sip-static-pnl-bg-left"></td>
+						<td class="sip-static-pnl-content" id="#{clientId}:content">
+		<jsp:scriptlet>
+		<![CDATA[
+		         }
+		     	]]>
+		</jsp:scriptlet>
+		
+		<vcp:body>
+			<f:call name="renderChildren" />
+		</vcp:body>
+		
+		<f:clientid var="clientId" />
+	
+		<jsp:scriptlet><![CDATA[
+				 com.exadel.siperian.renderkit.TabPanelClassBuilder builder = (com.exadel.siperian.renderkit.TabPanelClassBuilder)component.getAttributes().get(TabPanelRendererBase.CLASS_BUILDER_ATTRIBUTE);
+				 if (builder == null) {
+					 builder = new com.exadel.siperian.renderkit.TabPanelClassBuilder(component);
+				 }
+		         if (!builder.isDynamic()) {
+			]]>
+		</jsp:scriptlet>
+			
+				</td>
+					<td class="sip-static-pnl-bg-right"></td>
+				</tr> 
+				<tr style="height: 10px">
+					<td class="sip-static-pnl-bg-left-bottom"></td>
+					<td class="sip-static-pnl-bg-bottom"></td>
+					<td class="sip-static-pnl-bg-right-bottom"></td>
+				</tr>
+			</table>
+		
+			<jsp:scriptlet>
+		<![CDATA[
+		         }else {
+		     	]]>
+		</jsp:scriptlet>
+			</div>
+		<jsp:scriptlet><![CDATA[
+		         }
+		 ]]></jsp:scriptlet>
+					
+			<table id="#{clientId}:tabListDiv" class="tabList" style="visibility: hidden;" cellpadding="0" cellspacing="0">
+				<tr>
+					<td><div id="#{clientId}:tabListLeft" class="tabListLeft"></div></td>
+					<td>
+						<div id="#{clientId}:tabListContentDiv" class="tabListContent"></div>
+					</td>
+				</tr>
+				<tr>
+					<td><div id="#{clientId}:tabListCorner" class="tabListCorner"></div></td>
+					<td><div id="#{clientId}:tabListBottom" class="tabListBottom"></div></td>
+				</tr>
+			</table>
+			
+			
+		</div>
+		
+		
+		<script>
+			
+			new TabPanel(
+					'#{clientId}', 
+					'#{this:getContainerId(context, component)}',
+					'#{this:getActiveTabId(component)}',
+					#{this:getTabsLoaded(context, component)},
+					#{component.attributes['maxTabWidth']},
+					#{this:writeEventHandlerFunction(context, component, 'ontabchange')},
+					"#{component.attributes['ontabclosed']}",
+					#{this:getTabsInfo(context, component)},
+					'#{arrowContext}',
+					"#{component.attributes['markupTemplate']}",
+					#{component.attributes['maxCountOfTabsLoadedOnClient']},
+					#{this:getAddNewTabScript(context, component)});
+		</script>
+	
+		
+		<br style="clear:both;display:none;"/>
+		<f:call name="resetVariables" />
+	</div>
+	</td>
+	</tr></table></div>
+	
+</f:root>
+
+

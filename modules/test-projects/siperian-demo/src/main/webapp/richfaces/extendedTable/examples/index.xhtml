@@ -1,0 +1,293 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:c="http://java.sun.com/jstl/core"
+      xmlns:extdt="http://siperian.exadel.com/sip">
+
+	<ui:composition>
+	        <style type="text/css">        
+            .leftColumn {
+                width: 50%;
+                height: 100%;
+            }
+            
+            .rightColumn {
+                width: 50%;
+                height: 100%;
+            }
+            
+            table {
+                cell-padding: 10;
+                cell-spacing: 10;
+            }
+            
+            #mainPanel2 {
+                width: 100%;
+                height: 100%;
+            }
+        
+            #leftPanel2 {
+                width: 100%;
+                height: 100%;
+            }
+            
+            #rightPanel2 {
+                width: 100%;
+                height: 100%;
+            }
+            
+            .greenCol {
+            	background-color : green;
+            }
+        </style>
+    <script type="text/javascript" src="#{facesContext.externalContext.request.contextPath}/js/functions.js"/>
+    <h:panelGrid style="table-layout: fixed;" columns="2" id="mainPanel2" columnClasses="leftColumn, rightColumn">
+    <rich:spacer></rich:spacer>
+    <rich:spacer></rich:spacer>
+    <rich:panel id="leftPanel2">
+    <h:form id="form3">
+        <extdt:extendedDataTable id="demoTable"
+        		binding="#{extendedDataTableBean.extendedDataTable}"
+                value="#{extendedDataTableBean.dataModel}"
+                var="patient"
+                style="margin: 0 auto;"
+                rows="#{extendedDataTableControlBean.rowsNumber}"
+                width="#{extendedDataTableControlBean.width}"
+                height="#{extendedDataTableControlBean.height}"
+                selectedClass="extdt-table-row-selected"
+                footerClass="demo-footer"
+                sortMode="#{extendedDataTableControlBean.sortMode}"
+                selectionMode="#{extendedDataTableControlBean.selectionMode}"
+                onRowContextMenu="if (#{rich:component('demoTable')}.selectionManager.selection.selectionIsChanged != true) { #{rich:component('mm')}.show(event); }"
+                selection="#{extendedDataTableBean.selection}"
+                rowKeyVar="rkvar"
+                tableState="#{extendedDataTableBean.tableState}"
+                scrollable="#{extendedDataTableControlBean.scrollable}"                
+                hoverRowClass="extdt-table-row-hover"
+                rowClasses="extdt-table-row-1,extdt-table-row-2"
+                horizontalScrolling="true">
+            <rich:column id="firstName"
+                    headerClass="dataTableHeader"
+                    styleClass="greenCol"
+                    width="25%"
+                    label="#{msg['patient.firstName']}"
+                    sortable="true"
+                    canHide="false"
+                    sortBy="#{patient.firstName}"
+                    filterBy="#{patient.firstName}"
+                    filterEvent="onkeyup">
+                <f:attribute name="_ignoreDupResponses" value="true" />
+                <f:attribute name="_requestDelay" value="500" />
+                <f:attribute name="_oncomplete" value="setCaretToEnd(event);" />
+                <f:facet name="header">
+                    <h:outputText value="#{msg['patient.firstName']}" />
+                </f:facet>
+                <h:outputText id="text" value="#{patient.firstName}" >
+                    <rich:toolTip for="text" direction="top-right">
+                        <h:outputText value="sasasasasasa" />
+                    </rich:toolTip>
+                </h:outputText>
+            </rich:column>
+            <rich:column id="lastName"
+                    headerClass="dataTableHeader"
+                    width="25%"
+                    label="#{msg['patient.lastName']}"
+                    sortable="true"
+                    sortBy="#{patient.lastName}"
+                    filterBy="#{patient.lastName}"
+                    filterEvent="onkeyup">
+               <f:attribute name="_ignoreDupResponses" value="true" />
+               <f:attribute name="_requestDelay" value="500" />
+               <f:attribute name="_oncomplete" value="setCaretToEnd(event);" />
+                <f:facet name="header">
+                    <h:outputText value="#{msg['patient.lastName']}" />
+                </f:facet>
+                <h:outputText value="#{patient.lastName}" />
+            </rich:column>
+            <rich:column id="admissionDate"
+                    headerClass="dataTableHeader"
+                    width="50%"
+                    label="#{msg['patient.admissionDate']}"
+                    sortable="true"
+                    sortBy="#{patient.admissionDate}">
+                <f:facet name="header">
+                    <h:outputText value="#{msg['patient.admissionDate']}" />
+                </f:facet>
+                <h:outputText value="#{patient.admissionDate}" />
+            </rich:column>
+            <f:facet name="footer" style="padding:0px">
+							<rich:datascroller								 
+								pagesVar="pages" 
+								rendered="#{extendedDataTableControlBean.paginated}"
+								pageIndexVar="pageIndex"
+								id="datascroller"								
+								fastControls="hide"								 
+								for="demoTable"
+								style="width: #{extendedDataTableControlBean.width}"
+								>
+								<f:facet name="previous">
+									<h:outputText value="&lt;" />
+								</f:facet>
+								<f:facet name="previous_disabled">
+									<h:outputText value="&lt;" />
+								</f:facet>
+								<f:facet name="pages">
+									<h:panelGroup>
+										<h:outputText value="Page " />
+										<input type="text" id="pagerInput" value="#{pageIndex}" style="width:20px" class="rich-filter-input" maxlength="5" />
+										<h:outputText value=" of  #{pages} " />
+										<h:outputLink value="#"
+											onclick="Event.fire(this, 'rich:datascroller:onscroll', {'page': isNaN(Number($('pagerInput').value)) ? #{pageIndex} : Math.floor(Number($('pagerInput').value))});">
+											<h:outputText value="Go" />
+										</h:outputLink>
+									</h:panelGroup>
+								</f:facet>								
+								<f:facet name="next">
+									<h:outputText value="&gt;" />
+								</f:facet>			
+								<f:facet name="next_disabled">
+									<h:outputText value="&gt;" />
+								</f:facet>
+							</rich:datascroller>
+			</f:facet>
+    <a4j:support id="gg" event="onselectionchange" 
+    					 eventsQueue="selectionchange"
+    					 requestDelay="100"
+    					 action="#{extendedDataTableBean.takeSelection}" 
+    					 reRender="selectedPatients, mm"
+    					 oncomplete="if (event.type == 'contextmenu') #{rich:component('mm')}.show(event);">
+    </a4j:support>
+    <a4j:support id="ff" event="onscroll" eventsQueue="gg" requestDelay="400">
+    	<a4j:actionparam name="crack" value="crack"></a4j:actionparam>
+    </a4j:support>
+        </extdt:extendedDataTable>
+        
+        <rich:contextMenu id="mm" submitMode="ajax" attached="false">
+        	<c:forEach items="#{extendedDataTableBean.selectedItems}" var="item">
+        		<rich:menuItem value="#{item.firstName}"></rich:menuItem>
+        	</c:forEach>
+        </rich:contextMenu>
+            <br/>
+    <a4j:commandLink reRender="demoTable" value="Rerender"></a4j:commandLink>
+        
+        </h:form>
+    </rich:panel>
+    <rich:panel id="rightPanel2">
+    <h:form>
+        <h:panelGrid columns="2">
+            <h:outputLabel value="#{msg['table.width']}" for="tableWidthInput" />
+            <h:inputText 
+                id="tableWidthInput" 
+                value="#{extendedDataTableControlBean.width}" />
+            <h:outputLabel value="#{msg['table.height']}" for="tableHeightInput" />
+            <h:inputText 
+                id="tableHeightInput" 
+                value="#{extendedDataTableControlBean.height}" />
+            <h:outputLabel value="#{msg['table.patientsNumber']}" for="tablePatientsNumberInput" />
+            <h:inputText 
+                id="tablePatientsNumberInput" 
+                value="#{extendedDataTableBean.patientsNumber}" />
+            <h:outputLabel value="#{msg['table.sortMode']}" for="tableSortModeSelect" />
+            <h:selectOneMenu
+                    id="tableSortModeSelect"
+                    value="#{extendedDataTableControlBean.sortMode}"
+                >
+                <f:selectItems value="#{extendedDataTableControlBean.sortModeSelectItems}"/>
+            </h:selectOneMenu>
+            <h:outputLabel value="#{msg['table.selectionMode']}" for="tableSelectionModeSelect" />
+            <h:selectOneMenu
+                    id="tableSelectionModeSelect"
+                    value="#{extendedDataTableControlBean.selectionMode}"
+                >
+                <f:selectItems value="#{extendedDataTableControlBean.selectionModeSelectItems}"/>
+            </h:selectOneMenu>
+            <h:outputLabel value="#{msg['table.paginated']}" for="paginatedChecxbox" />
+            <h:selectBooleanCheckbox 
+                id="paginatedCheckbox"
+                value="#{extendedDataTableControlBean.paginated}" />
+                
+            <h:outputLabel value="#{msg['table.scrollable']}" for="scrollableChecxbox" />
+            <h:selectBooleanCheckbox 
+                id="scrollableCheckbox"
+                value="#{extendedDataTableControlBean.scrollable}" />
+            <h:outputLabel value="#{msg['table.rowsNumber']}" for="tableRowsNumberInput" />
+            <h:inputText 
+                id="tableRowsNumberInput" 
+                value="#{extendedDataTableControlBean.rowsNumber}" />
+        </h:panelGrid>
+        <a4j:commandButton value="#{msg['table.update']}" reRender="mainPanel2">
+        </a4j:commandButton>
+        <a4j:commandButton value="#{msg['table.testComponentState']}"
+                action="#{extendedDataTableBean.clearState}"
+            >
+        </a4j:commandButton><br /><br />
+        <rich:panel>
+        	<f:facet name="header">
+        		<h:outputText value="Columns visibility" />
+        	</f:facet>
+        	<a4j:region>
+        		<h:selectBooleanCheckbox value="#{extendedDataTableBean.firtstNameColumnVisible}" id="fnVisible">
+        			<h:outputLabel value="#{msg['patient.firstName']}" for="fnVisible" />
+        		</h:selectBooleanCheckbox>
+        		<h:selectBooleanCheckbox value="#{extendedDataTableBean.lastNameColumnVisible}" id="lnVisible">
+        			<h:outputLabel value="#{msg['patient.lastName']}" for="lnVisible" />
+        		</h:selectBooleanCheckbox>
+        		<h:selectBooleanCheckbox value="#{extendedDataTableBean.dateColumnVisible}" id="dateVisible">
+        			<h:outputLabel value="#{msg['patient.admissionDate']}" for="dateVisible" />
+        		</h:selectBooleanCheckbox>
+        		<br /><br />
+        		<a4j:commandButton value="#{msg['table.apply.btn']}" 
+        			action="#{extendedDataTableBean.applyColumnsVisibility}" reRender="mainPanel2" />
+        	</a4j:region>
+        </rich:panel>
+        
+        <rich:panel>
+        	<f:facet name="header">
+        		<h:outputText value="Columns order" />
+        	</f:facet>
+        		<h:selectOneMenu value="#{extendedDataTableBean.columnsOrder}">
+        			<f:selectItems value="#{extendedDataTableBean.possibleOrders}" />
+        		</h:selectOneMenu>
+        		<br /><br />
+        		<a4j:commandButton value="#{msg['table.apply.btn']}" 
+        			action="#{extendedDataTableBean.applyColumnsOrder}" reRender="mainPanel2" />
+        </rich:panel>
+        
+        <rich:spacer height="5px" width="100%">
+        </rich:spacer>
+        <rich:dataTable id="selectedPatients" value="#{extendedDataTableBean.selectedItems}" var="selectedPatient">
+            <f:facet name="header">
+                <h:outputText value="#{msg['table.selectedPatients']}" />
+            </f:facet>
+            <rich:column id="selectedFirstName"
+                    headerClass="dataTableHeader"
+                    label="#{msg['patient.firstName']}">
+                <f:facet name="header">
+                    <h:outputText value="#{msg['patient.firstName']}" />
+                </f:facet>
+                <h:outputText value="#{selectedPatient.firstName}" />
+            </rich:column>
+            <rich:column id="selectedLastName"
+                    headerClass="dataTableHeader"
+                    label="#{msg['patient.lastName']}">
+                <f:facet name="header">
+                    <h:outputText value="#{msg['patient.lastName']}" />
+                </f:facet>
+                <h:outputText value="#{selectedPatient.lastName}" />
+            </rich:column>
+        </rich:dataTable>
+        <rich:messages>
+        </rich:messages>
+        <a4j:commandButton value="Set Second Row Selected" reRender="demoTable" action="#{extendedDataTableBean.setSecondSelected}"></a4j:commandButton>
+    </h:form>
+    </rich:panel>
+    </h:panelGrid>
+		
+
+	</ui:composition>
+
+</html>

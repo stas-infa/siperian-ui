@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE components PUBLIC "-//AJAX4JSF//CDK Generator config/EN"  "http://labs.jboss.com/jbossrichfaces/component-config.dtd">
+
+<components>
+	<component>
+		<name>com.exadel.siperian.UITimeline</name>
+		<family>com.exadel.siperian.Timeline</family>
+		<classname>
+			com.exadel.siperian.component.html.HtmlTimeline
+		</classname>
+		<superclass>
+			com.exadel.siperian.component.UITimeline
+		</superclass>
+		<description>
+			<![CDATA[
+  	]]>
+		</description>
+		<renderer generate="true" override="true">
+			<name>com.exadel.siperian.TimelineRenderer</name>
+			<template>com/exadel/siperian/htmlTimeline.jspx</template>
+		</renderer>
+		<tag>
+			<name>timeline</name>
+			<classname>
+				com.exadel.siperian.taglib.TimelineTag
+			</classname>
+			<superclass>
+				org.ajax4jsf.webapp.taglib.HtmlComponentTagBase
+			</superclass>
+		</tag>
+		<property>
+			<name>width</name>
+			<classname>java.lang.String</classname>
+			<defaultvalue>"100%"</defaultvalue>
+		</property>
+		<property>
+			<name>height</name>
+			<classname>java.lang.String</classname>
+			<defaultvalue>"250"</defaultvalue>
+		</property>
+		<property>
+			<name>styleClass</name>
+			<classname>java.lang.String</classname>
+		</property>
+		<property>
+			<name>dataModel</name>
+			<classname>com.exadel.siperian.model.TimeLineDataModel</classname>
+		</property>
+		<property>
+			<name>fromDate</name>
+			<classname>java.util.Date</classname>
+		</property>
+		<property>
+			<name>flashWmode</name>
+			<classname>java.lang.String</classname>
+			<defaultvalue>"transparent"</defaultvalue>
+		</property>
+		<property>
+			<name>toDate</name>
+			<classname>java.util.Date</classname>
+		</property>
+		<property>
+			<name>maximumZoomResolution</name>
+			<classname>java.lang.Integer</classname>
+			<description>A configurable parameter to define the smallest visible interval supported</description>
+		</property>
+		<property>
+			<name>eventBoxColors</name>
+			<classname>java.lang.String</classname>
+			<description>Set of colors should be defined with list of Color objects or list of String color values</description>
+		</property>
+		<property>
+			<name>eventMenuId</name>
+			<classname>java.lang.String</classname>
+			<description>The menu identifier this menu will be show when we click by event</description>
+		</property>
+		<property>
+			<name>popupMenuId</name>
+			<classname>java.lang.String</classname>
+			<description>Global menu identifier</description>
+		</property>
+		<property>
+			<name>swimLaneClass</name>
+			<classname>java.lang.String</classname>
+			<description>swinlane css class</description>
+		</property>
+		<property>
+			<name>groupTooltipTemplate</name>
+			<classname>java.lang.String</classname>
+			<description>The attribute defines content of the tooltip</description>
+		</property>
+		<property>
+			<name>eventBoxWidth</name>
+			<classname>java.lang.Integer</classname>
+			<description>The attribute defines width of the Event box as well as width of Group box in pixels</description>
+		</property>
+		<property>
+			<name>eventBoxSuperposition</name>
+			<classname>java.lang.String</classname>
+			<description>The attribute defines allowed percentage of superposition the Event boxes. On exceeding the value Event boxes need to be displayed as Event group</description>
+		</property>
+		<property>
+			<name>timlineStylesheet</name>
+			<classname>java.lang.String</classname>
+			<description>path to the file where template for the group tooltip located.</description>
+		</property>
+		<property>
+			<name>eventStyleClass</name>
+			<classname>java.lang.String</classname>
+			<description>common css style class for events on scroller</description>
+			<defaultvalue>"sip-timeline-event"</defaultvalue>	
+		</property>
+		<property>
+			<name>groupStyleClass</name>
+			<classname>java.lang.String</classname>
+			<description>common css style class for groups</description>
+			<defaultvalue>"sip-timeline-group"</defaultvalue>	
+		</property>
+		<property>
+			<name>groupHoverStyleClass</name>
+			<classname>java.lang.String</classname>
+			<description>common css style class for groups when group is hovered</description>
+			<defaultvalue>"sip-timeline-grouphover"</defaultvalue>
+		</property>
+		<property>
+			<name>groupSelectedStyleClass</name>
+			<classname>java.lang.String</classname>
+			<description>common css style class for groups when group is selected</description>
+			<defaultvalue>"sip-timeline-groupselect"</defaultvalue>
+		</property>
+		<property>
+			<name>maxDisplaedEventsInToolTip</name>
+			<classname>java.lang.Integer</classname>
+			<description>maximum count of events that will displayed in tooltip if 0(by default) then unlimited </description>
+			<defaultvalue>0</defaultvalue>
+		</property>
+		<property>
+			<name>timelineState</name>
+			<classname>com.exadel.siperian.model.ITimeLineState</classname>
+			<description>store state for the timeline component.</description>
+		</property>
+		<property>
+			<name>onzoomerchange</name>
+			<classname>java.lang.String</classname>
+			<description>defined an javascript handler that will invoke when timeline zoomer change.</description>
+		</property>
+		<property>
+			<name>ontimelineinit</name>
+			<classname>java.lang.String</classname>
+			<description>defined an javascript handler that will invoke when timeline inited.</description>
+		</property>
+		<property>
+			<name>showFlashPlayerInstall</name>
+			<classname>boolean</classname>
+			<description>if true then if user not have a flash player will display link to the flash player. By default false</description>
+			<defaultvalue>true</defaultvalue>
+		</property>
+		<property>
+			<name>zoomerIndent</name>
+			<classname>java.lang.Integer</classname>
+			<description>zoomer indent from first event in timeline. By default 10</description>
+			<defaultvalue>10</defaultvalue>
+		</property>
+		<property>
+			<name>eventInterval</name>
+			<classname>java.lang.String</classname>
+			<description>Interval between two events used for groups union.</description>
+			<defaultvalue>"0"</defaultvalue>
+		</property>
+		<property>
+			<name>eventInterval</name>
+			<classname>java.lang.String</classname>
+			<description>Interval between two events used for groups union.</description>
+			<defaultvalue>"0"</defaultvalue>
+		</property>
+		<property>
+			<name>globalMenuItems</name>
+			<classname>java.lang.String</classname>
+			<description>Global menu items for Safari browser flash menu.</description>
+		</property>
+		<property>
+			<name>eventMenuItems</name>
+			<classname>java.lang.String</classname>
+			<description>Menu items for events .</description>
+		</property>
+	
+	</component>
+</components>

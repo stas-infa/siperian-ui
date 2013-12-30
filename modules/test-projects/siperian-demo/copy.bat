@@ -1,0 +1,1 @@
+xcopy "src/main/webapp" "target/siperian-demo" /D /S /E /Y

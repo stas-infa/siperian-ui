@@ -1,0 +1,235 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:sip="http://siperian.exadel.com/sip">
+
+<ui:composition>
+	<f:view>
+		<style type="text/css">
+			.redHighlight {
+				color: red;
+			}
+			
+			.greenHighlight {
+				color: green;
+			}
+			
+			.leftColumn {
+				width: 50%;
+				height: 100%;
+			}
+			
+			.rightColumn {
+				width: 50%;
+				height: 100%;
+			}
+			
+			table {
+				cell-padding: 10;
+				cell-spacing: 10;
+			}
+			
+			#mainPanel {
+				width: 100%;
+				height: 100%;
+			}
+			
+			#leftPanel {
+				width: 100%;
+				height: 100%;
+			}
+			
+			#rightPanel {
+				width: 100%;
+				height: 100%;
+			}
+			
+			.rich-datascr-button{
+				width: 35px;
+				height: 25px;
+				border: 0px;
+				background: none;
+				
+			}
+			.dr-dscr-t{
+				border: 0px;
+				background: none;
+				
+			}
+			</style>
+<!--    <script type="text/javascript" src="#{facesContext.externalContext.request.contextPath}/js/functions.js"/>
+	    <script type="text/javascript" src="#{facesContext.externalContext.request.contextPath}/js/jsTracer.js"/>
+	    <script type="text/javascript" src="#{facesContext.externalContext.request.contextPath}/js/profiler.js"/>
+ -->	    
+<!--    //reset the pager to point of the first page when filter is changed
+		Event.observe(document,'dom:loaded',
+	    	function (){	    	
+			$$('input.rich-filter-input')
+				.each( function(input) {	
+                			Event.observe(input,'keyup', 
+                				function() {
+                					$('form4:demoTablePaging:pagerInput').value=-1;
+                				}
+                			);
+    	       			});
+    		}
+    	);-->	    
+	    
+<a4j:outputPanel ajaxRendered="false">	
+				<h:form id="form4">
+				ABC122
+			<h:panelGrid columns="1" cellpadding="5" cellspacing="0" width="100%" style="background-color: #d5e1f5; border-bottom: 1px solid #004e82;">
+				<h:panelGroup>
+					<h:graphicImage width="10" style="border:0;" value="/images/empty.gif"/>
+					<a4j:commandLink reRender="form4,tableRegion" actionListener="#{extendedDataTableControlBean.changeRegionVisibility}"><h:graphicImage rendered="#{!extendedDataTableControlBean.showRegion}" style="border:0;" id="toggleArrowUp" value="/images/toggle_arrow_up.gif"/><h:graphicImage rendered="#{extendedDataTableControlBean.showRegion}" style="border:0;" id="toggleArrow" value="/images/toggle_arrow_down.gif"/></a4j:commandLink>
+		    		<h:outputText value=" Search Results: " style="color:#524342; font-family:Verdana; font-size:12px; font-weight:normal;" /><h:outputText value="Organizations" style="color:#1f4065; font-family:Verdana; font-size:12px; font-weight:normal;"/> 
+				</h:panelGroup> 	              	
+			</h:panelGrid>		
+<a4j:outputPanel ajaxRendered="true">
+	</a4j:outputPanel>		
+<a4j:outputPanel  rendered="#{extendedDataTableControlBean.showRegion}" ajaxRendered="true">
+	<h:outputText value="Value 1"></h:outputText>
+</a4j:outputPanel>	
+			<a4j:outputPanel id="tableRegion" rendered="#{extendedDataTableControlBean.showRegion}" ajaxRendered="false">				
+			 		<sip:extendedDataTable id="demoTablePaging"
+						binding="#{extendedDataTableTaskBean.extendedDataTable}"
+						value="#{extendedDataTableTaskBean.dataModel}" var="task"
+						style="margin: 0 auto;" rows="20" width="400px" height="500px"
+						sortMode="single" selectedClass="dataTableSelectedRow"
+						scrollable="false"
+						footerClass="demo-footer" rowKeyVar="rkvar" 						
+                		hoverRowClass="extdt-table-row-hover"
+                		rowClasses="extdt-table-row-1,extdt-table-row-2">
+						
+					        <!-- <rich:columns value="#{extendedDataTableTaskBean.fieldDescriptors}" var="descriptor" 					        		 
+				                     label="#{descriptor.name}"
+				                     sortable="true"
+				                     filterEvent="onkeyup"				                     
+				                     sortBy="#{descriptor.name}">
+					            <f:facet name="header">
+					                <h:outputText value="#{descriptor.name}"/>
+					            </f:facet>          					
+	           					<h:outputText value="#{task[descriptor.name]}"/>
+	           					
+	       					</rich:columns>-->
+					    						
+						 <!-- <c:forEach items="#{extendedDataTableTaskBean.fieldDescriptors}" var="descriptor">						
+					        <rich:column 
+				                     label="#{descriptor.name}"
+				                     sortable="true"
+				                     filterEvent="onkeyup"
+				                     sortBy="#{descriptor.name}">
+					            <f:facet name="header">
+					                <h:outputText value="#{descriptor.name}"/>
+					            </f:facet>	           					
+	           					<h:outputText value="#{task[descriptor.name]}"/>
+	       					</rich:column>
+					    </c:forEach>-->
+					    
+					    
+ 						<rich:column id="id" headerClass="dataTableHeader" width="10%"
+							label="id">
+							<f:facet name="header">
+								<h:outputText value="id" />
+							</f:facet>
+							<h:outputText value="#{task.id}" />
+						</rich:column>
+
+						<rich:column id="priority" headerClass="dataTableHeader"
+							width="20%" label="priority" sortable="true"
+							sortBy="#{task.priority}" filterBy="#{task.priority}"
+							filterEvent="onkeyup"
+							style='background-color:#{task.priority eq "Critical"?"red":"grey"}'>
+						 <f:attribute name="_ignoreDupResponses" value="true" />
+                         <f:attribute name="_requestDelay" value="500" />
+                         <f:attribute name="_oncomplete" value="setCaretToEnd(event);" />
+							<f:facet name="header">
+								<h:outputText value="priority" />
+							</f:facet>
+							<h:outputText value="#{task.priority}" />
+						</rich:column>
+						<rich:column id="subject" headerClass="dataTableHeader"
+							width="45%" label="subject" sortable="true"
+							sortBy="#{task.subject}" filterBy="#{task.subject}"
+							filterEvent="onkeyup">
+						<f:attribute name="_ignoreDupResponses" value="true" />
+               		    <f:attribute name="_requestDelay" value="500" />
+                        <f:attribute name="_oncomplete" value="setCaretToEnd(event);" />
+							<f:facet name="header">
+								<h:outputText value="subject" />
+							</f:facet>
+							<h:outputText value="#{task.subject}" />
+						</rich:column>
+						<rich:column id="status" headerClass="dataTableHeader" width="25%"
+							label="status">
+							<f:facet name="header">
+								<h:outputText value="status" />
+							</f:facet>
+							<h:outputText value="#{task.status}"
+								styleClass="#{extendedDataTableTaskBean.highlightColors[task.status]}" />
+						</rich:column>
+						<f:facet name="footer">
+							<rich:datascroller								 
+								pagesVar="pages" 
+								pageIndexVar="pageIndex"
+								id="datascroller"								
+								fastControls="hide" 
+								for="demoTablePaging">
+								<f:facet name="previous">
+									<sip:icon direction="left" type="single"/>
+								</f:facet>
+								<f:facet name="previous_disabled">
+									<sip:icon direction="left" type="single" disabled="true"/>
+								</f:facet>
+								<f:facet name="first">
+									<sip:icon direction="left" type="double" />
+								</f:facet>
+								<f:facet name="first_disabled">
+									<sip:icon direction="left" type="double"  disabled="true"/>
+								</f:facet>
+								<f:facet name="pages">
+									<h:panelGroup>
+										<h:outputText value="Page " />
+										<input type="text" id="pagerInput" value="#{pageIndex}" class="rich-filter-input" style="width:20px" maxlength="5" />
+                                        <script type="text/javascript" >
+                                            Event.observe($(document), "dom:loaded", function() {
+                                               $("pagerInput").value = "#{pageIndex}"
+                                            });
+                                        </script>
+                                        <h:outputText value=" of  #{pages} " />
+										<h:outputLink value="#"
+											onclick="Event.fire(this, 'rich:datascroller:onscroll', {'page': isNaN(Number($('pagerInput').value)) ? #{pageIndex} : Math.floor(Number($('pagerInput').value))});">
+											<h:outputText value="Go" />
+										</h:outputLink>
+										<h:graphicImage width="6" style="border:0;" value="/images/empty.gif"/>
+									</h:panelGroup>									
+								</f:facet>								
+								<f:facet name="next">
+									<sip:icon direction="right" type="single" />
+								</f:facet>			
+								<f:facet name="next_disabled">
+									<sip:icon direction="right" type="single" disabled="true"/>
+								</f:facet>
+								<f:facet name="last">
+									<sip:icon direction="right" type="double" />
+								</f:facet>
+								<f:facet name="last_disabled">
+									<sip:icon direction="right" type="double"  disabled="true"/>
+								</f:facet>
+							</rich:datascroller>
+						</f:facet>
+					</sip:extendedDataTable>
+					
+</a4j:outputPanel>		
+<a4j:outputPanel  rendered="#{extendedDataTableControlBean.showRegion}" ajaxRendered="true">
+	<h:outputText value="Value 1"></h:outputText>
+</a4j:outputPanel>				
+				</h:form>
+	</a4j:outputPanel>
+	</f:view>
+</ui:composition>
+</html>

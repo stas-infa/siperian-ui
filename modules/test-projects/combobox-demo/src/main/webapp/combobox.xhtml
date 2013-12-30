@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:sip="http://siperian.exadel.com/sip">
+
+<f:view>
+	<h:form id="form">
+					<sip:comboBox 
+						value="#{userBean.comboboxValue}"
+						behaviourStrategy="siperian"
+						directInputSuggestions="true"
+						defaultLabel="DefaultLabel"
+						suggestionValues="#{userBean.comboboxSuggestionValues}" 
+						selectFirstOnUpdate="true"
+						enableManualInput="true">
+					</sip:comboBox>
+	</h:form>
+</f:view>
+
+</html>

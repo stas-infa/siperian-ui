@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:sip="http://siperian.exadel.com/sip">
+
+	<ui:composition>
+		<script language="javascript" src="js/functions.js"/>
+	
+        <sip:panel style="width:100%;height:100%" id="panel1">
+        	<h3>Main panel</h3>
+        	<div align="center" style="font-size: 18px;font-weight: bold;">There are the panel header</div>
+       
+        				 <sip:panel id="panel2" style="width:100%;height:200px;">
+   			
+        		 
+        					<h3>First panel</h3>
+        					<h:inputText value="First Input"></h:inputText>
+        			
+   						</sip:panel>
+        				<div>
+        					Spacer
+        				</div>
+        				 <sip:panel id="panel3" style="width:100%;height:200px;">
+   			
+        		 
+        				
+        					<h3>Second Panel</h3>
+        					<h:commandButton value="Submit"></h:commandButton>
+   						</sip:panel>
+       	 </sip:panel>
+    
+		
+	<input id="panelIds" type="hidden" value="panel1,panel2,panel3"/>
+	</ui:composition>
+
+</html>

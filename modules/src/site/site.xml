@@ -1,0 +1,30 @@
+<project name="Siperian-Components">
+	<skin>
+		<groupId>org.apache.maven.skins</groupId>
+		<artifactId>maven-stylus-skin</artifactId>
+		<version>1.0.1</version>
+	</skin>
+	<bannerLeft>
+		<name>Exadel Inc.</name>
+		<src>images/exadellogo.gif</src>
+		<href>http://www.exadel.com</href>
+	</bannerLeft>
+	<poweredBy>
+		<logo name="Maven" href="http://maven.apache.org/"
+			img="http://maven.apache.org/images/logos/maven-feather.png"/>
+	</poweredBy>
+	<version position="left"/>
+	<publishDate format="dd MMM yyyy" />
+	<body>
+		<menu name="Main Menu">
+			<item name="Introduction" href="index.html"/>
+			<item name="News" href="news.html"/>
+			<item name="Features" href="features.html"/>
+			<item name="Installation" href="installation.html"/>
+			<item name="Configuration" href="configuration.html"/>
+			<item name="FAQ" href="faq.html"/>
+		</menu>
+		<menu ref="modules"/>
+		<menu ref="reports"/>
+	</body>
+</project>

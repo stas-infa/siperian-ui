@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE components PUBLIC "-//AJAX4JSF//CDK Generator config/EN"  "http://labs.jboss.com/jbossrichfaces/component-config.dtd">
+
+<components>
+	<component>
+		<name>com.siperian.richfaces.DoublePanel</name>
+		<family>com.siperian.richfaces.DoublePanel</family>
+		<classname>
+			com.exadel.siperian.component.html.HtmlDoublePanel
+		</classname>
+		<superclass>
+			com.exadel.siperian.component.UIDoublePanel
+		</superclass>
+		<description>
+			<![CDATA[
+    ]]>
+		</description>
+		<renderer generate="true" override="true">
+			<name>com.exadel.siperian.renderkit.DoublePanelRendererBase</name>
+			<template>com/siperian/htmlDoublePanel.jspx</template>
+		</renderer>
+		<tag>
+			<name>doublePanel</name>
+			<classname>
+				com.exadel.siperian.taglib.DoublePanelTag
+			</classname>
+			<superclass>
+				org.ajax4jsf.webapp.taglib.HtmlComponentTagBase
+			</superclass>
+		</tag>
+		&ui_component_attributes;
+		&html_events;
+		&html_style_attributes;
+		<property>
+			<name>leftPanelWidth</name>
+			<classname>java.lang.Integer</classname>
+			<description>
+				Css width of left panel
+			</description>
+			<defaultvalue>300</defaultvalue>
+		</property>
+		<property>
+			<name>rightPanelMinWidth</name>
+			<classname>java.lang.Integer</classname>
+			<description>
+				Css min width of right panel
+			</description>
+			<defaultvalue>300</defaultvalue>
+		</property>
+		<property>
+			<name>defaultHeight</name>
+			<classname>java.lang.Integer</classname>
+			<description>
+				Default panel height
+			</description>
+			<defaultvalue>600</defaultvalue>
+		</property>
+	</component>
+</components>

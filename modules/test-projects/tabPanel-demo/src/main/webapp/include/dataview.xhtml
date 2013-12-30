@@ -1,0 +1,31 @@
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:rich="http://richfaces.ajax4jsf.org/rich"
+                xmlns:c="http://java.sun.com/jstl/core"
+                xmlns:a4j="https://ajax4jsf.dev.java.net/ajax">
+
+<!--@elvariable id="uiBean" type="com.siperian.example.UIBean"-->
+    <h:inputText value="#{uiBean.firstName}"/>
+    <br/>
+    <h:inputText value="#{uiBean.lastName}"/>
+    <br/>
+    <a4j:commandButton value="Submit"/>
+
+<rich:tabPanel switchType="ajax">
+
+    <c:forEach items="#{uiBean.children}" var="child">
+
+        <rich:tab label="#{child.name}">
+
+            <ui:include src="#{child.viewFileName}">
+                <ui:param name="child" value="#{child}"/>
+                <ui:param name="idSuffix" value="#{uiBean.lastName}_#{child.name}"/>
+            </ui:include>
+
+        </rich:tab>
+
+    </c:forEach>
+
+</rich:tabPanel>
+</ui:composition>

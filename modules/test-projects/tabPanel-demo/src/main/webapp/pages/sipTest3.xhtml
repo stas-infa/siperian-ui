@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:sip="http://siperian.exadel.com/sip"
+      xmlns:c="http://java.sun.com/jstl/core"
+      xmlns:b="http://siperian.exadel.com/b"
+      xmlns:extdt="http://siperian.exadel.com/extDataTable">
+      <head>
+      	<a4j:loadScript src="resource:///js/calendarUtils.js" />
+      	<a4j:loadScript src="resource:///js/common_png.js" />
+      </head>
+	<body>
+	
+	<h:form>
+		<h:panelGroup id="panel">
+		<sip:forEach items="#{bean3.list}" var="var" varStatus="i">
+			<c:if test="#{var != null}">
+				<h:inputText id="ii#{i.index}" value="#{var.code}" />
+			</c:if>
+		</sip:forEach>
+		</h:panelGroup>
+		
+		<a4j:commandLink value="Submit" />
+		<a4j:commandLink actionListener="#{bean3.test}" value="Deleet" reRender="panel"/>
+		<a4j:commandLink actionListener="#{bean3.init}" value="Init" reRender="panel"/>
+	</h:form>
+	
+	<h:form>
+		<a4j:commandLink actionListener="#{bean3.listener}" reRender="panel1" value="Test" />
+	</h:form>
+		
+	</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:b="http://siperian.exadel.com/sip">
+
+	<ui:composition>
+		<h:form>
+<style type="text/css">
+.sip-button-menu{
+    padding: 0 !important;
+    background-color: #FFFFFF !important;
+    background-image: none !important
+}
+</style>	
+		<rich:panel>
+			<h:panelGrid columns="2" >
+				<h:outputText value="Name:"/>
+				<h:inputText value="#{userBean.name}" required="true"/>
+				<h:outputText value="Age:"/>
+				<h:inputText value="#{userBean.age}" required="true"/>
+				<b:button id="contextButton" contextButton="true" value="save contextButton" style="width:200px"/>
+				<b:button id="globalButton" contextButton="false" value="save globalButton" style="width:200px"/>
+				<b:ajaxButton icon="/images/icons/redo.gif" id="ajaxСontextButton" contextButton="true" value="ajax save contextButton" reRender="#{userBean.reRenderList}"/>
+				<b:ajaxButton icon="/images/icons/redo.gif" id="ajaxGlobalButton" contextButton="false" value="ajax save globalButton" reRender="#{userBean.reRenderList}"/>
+				<b:button id="contextButton2" contextButton="true" value="disabled contextButton" disabled="true"  />
+				<b:button id="globalButton2" contextButton="false" value="disabled globalButton" disabled="true"  />
+				<b:ajaxButton icon="/images/icons/redo.gif" id="ajaxContextButton2" contextButton="true" disabled="true" style="width:200px" value="ajax disabled button" reRender="#{userBean.reRenderList}" iconAlign="right"/>
+				<b:ajaxButton icon="/images/icons/redo.gif" id="ajaxGlobalButton2" contextButton="false" disabled="true" style="width:200px" value="ajax disabled button" reRender="#{userBean.reRenderList}" iconAlign="right"/>
+				<b:ajaxToggleButton value="Ajax Toggle Button" reRender="#{userBean.reRenderList}"
+                                    pressedState="#{userBean.opened}"/>
+			</h:panelGrid>
+			<h:panelGrid styleClass="sip-btn-container">
+			<br/>
+			<a href="javascript: SipButton.enable(#{rich:element('contextButton2')})">Enable contextButton</a>
+			<a href="javascript: SipButton.disable(#{rich:element('contextButton2')})">Disable contextButton</a>
+			<a href="javascript: SipButton.enable(#{rich:element('globalButton2')})">Enable globalButton</a>
+			<a href="javascript: SipButton.disable(#{rich:element('globalButton2')})">Disable globalButton</a>
+			<br/>
+			<rich:dropDownMenu id="ddmenu" submitMode="none" styleClass="sip-button-menu" direction="top-left" jointPoint="tr" >
+				<f:facet name="label">
+					<b:button id="moreactionId1" value="more actions" icon="/images/btn_arrow.gif" onclick="return;" iconAlign="right" />				
+				</f:facet>				
+				<rich:menuItem value="Item 1" />
+				<rich:menuItem value="Item 2" />
+			</rich:dropDownMenu>
+			
+			</h:panelGrid>
+			<rich:messages></rich:messages>
+		</rich:panel>
+		<a4j:commandLink value="Rerender" reRender="contextButton, globalButton"></a4j:commandLink>
+		<rich:panel id="panel">
+			<h:panelGrid columns="2">
+				<h:outputText value="Name:"/>
+				<h:outputText value="#{userBean.name}"/>
+				<h:outputText value="Age:"/>
+				<h:outputText value="#{userBean.age}"/>
+			</h:panelGrid>
+		</rich:panel>
+		
+		</h:form>
+	</ui:composition>
+
+</html>

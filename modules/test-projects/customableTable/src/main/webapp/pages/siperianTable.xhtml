@@ -1,0 +1,55 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j" xmlns:rich="http://richfaces.org/rich"
+	xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:sip="http://exadel.com/siperian">
+	<head>
+		<title>Siperian version of the extendedDataTable</title>
+		<style type="text/css">
+.left_panel {
+			width: 250px;
+		         }
+</style>
+	</head>
+	<body>
+		<rich:dragIndicator id="indicator" />
+		<h:form id="form">
+			<h:panelGrid columns="2" id="grid" columnClasses="left_panel,right_panel"
+				styleClass="panel">
+				<rich:listShuttle id="selector" var="item"
+					sourceValue="#{capitalsBean.availableColumns}" targetValue="#{capitalsBean.visibleColumns}"
+					converter="columnsConverter">
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Columns" />
+						</f:facet>
+						<h:outputText value="#{item.name}" />
+					</h:column>
+					<a4j:support event="onlistchanged" reRender="gridPanel" />
+					<a4j:support event="onorderchanged" reRender="gridPanel" />
+				</rich:listShuttle>
+				<a4j:outputPanel id="gridPanel" layout="block">
+					<sip:extendedDataTable value="#{capitalsBean.capitalWrappers}"
+						width="580px" height="200px" sortMode="single" selectionMode="single"
+						columnClasses="table_cell" var="cap" id="table" rows="15"
+						styleClass="table">
+						<rich:columns var="cell" value="#{capitalsBean.visibleColumns}">
+							<f:facet name="header">
+								<h:panelGroup id="columnHead#{cell.order}" layout="block">
+									<h:outputText id="cellWidth#{cell.order}" value="#{cell.name}" />
+								</h:panelGroup>
+							</f:facet>
+							<h:outputText id="cell#{cell.order}" styleClass="table_cell_content"
+								value="#{cap[cell.order]}" />
+						</rich:columns>
+					</sip:extendedDataTable>
+				</a4j:outputPanel>
+				<f:facet name="footer">
+					<rich:datascroller id="scr" for="table" reRender="gridPanel" />
+				</f:facet>
+			</h:panelGrid>
+			<rich:messages />
+		</h:form>
+	</body>
+</html>

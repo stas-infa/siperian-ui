@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE components PUBLIC "-//AJAX4JSF//CDK Generator config/EN"  "http://labs.jboss.com/jbossrichfaces/component-config.dtd">
+<components>
+	<component>
+		<name>com.exadel.siperian.HtmlSipButton</name>
+		<family>javax.faces.Command</family>
+		<classname>com.exadel.siperian.component.html.HtmlSipButton</classname>
+		<superclass>javax.faces.component.UICommand</superclass>
+		<test/>
+		<description>
+			<![CDATA[]]>
+		</description>
+		<renderer generate="true" override="true">
+			<name>com.exadel.siperian.HtmlSipButtonRenderer</name>
+			<template>button.jspx</template>
+		</renderer>
+		<tag>
+			<name>button</name>
+			<classname>com.exadel.siperian.taglib.SipButtonTag</classname>
+			<superclass>org.ajax4jsf.webapp.taglib.HtmlComponentTagBase</superclass>
+			<test/>
+		</tag>
+		&html_universal_attributes;
+		&ui_command_attributes;
+		&html_anchor_attributes;
+		&html_events;
+		<property>
+			<name>disabled</name>
+			<classname>boolean</classname>
+			<description></description>
+		</property>
+		<property>
+			<name>iconAlign</name>
+			<classname>java.lang.String</classname>
+			<description>the align on the button icon right/left</description>
+			<defaultvalue><![CDATA["left"]]></defaultvalue>
+		</property>
+		<property>
+			<name>icon</name>
+			<classname>java.lang.String</classname>
+			<description>Absolute or relative URL of the image to be displayed for this button.</description>
+		</property>		
+		<property>
+			<name>contextButton</name>
+			<classname>java.lang.Boolean</classname>
+			<description>This button is for context components and events (unlike standart: save, cancel and so on) and defines palette of a button</description>
+		</property>
+	</component>
+	<component>
+		<name>com.exadel.siperian.HtmlSipAjaxButton</name>
+		<family>javax.faces.Command</family>
+		<classname>com.exadel.siperian.component.html.HtmlSipAjaxButton</classname>
+		<superclass>com.exadel.siperian.component.SipUIAjaxCommandButton</superclass>
+		<test/>
+		<description>
+			<![CDATA[]]>
+		</description>
+		<renderer generate="true" override="true">
+			<name>com.exadel.siperian.renderkit.SipAjaxButtonRendererBase</name>
+			<template>ajaxButton.jspx</template>
+		</renderer>
+		<tag>
+			<name>ajaxButton</name>
+			<classname>com.exadel.siperian.taglib.SipAjaxButtonTag</classname>
+			<superclass>org.ajax4jsf.webapp.taglib.UIComponentTagBase</superclass>
+			<test/>
+		</tag>
+		&ui_command_attributes;
+		&html_events;
+		&html_universal_attributes;
+		&html_anchor_attributes;
+		&html_style_attributes;
+		&ajax_component_attributes;
+		<property>
+			<name>ignoreDupResponses</name>
+			<classname>boolean</classname>
+			<description>
+				Attribute allows to ignore an Ajax Response produced by a request if the newest 'similar' request is
+				in a queue already. ignoreDupResponses="true" does not cancel the request while it is processed on the server,
+				but just allows to avoid unnecessary updates on the client side if the response isn't actual now
+			</description>
+		</property>
+		<property>
+			<name>timeout</name>
+			<classname>int</classname>
+			<description>Timeout ( in ms ) for request.</description>
+		</property>
+		<property>
+			<name>disabled</name>
+			<classname>boolean</classname>
+			<defaultvalue>false</defaultvalue>
+			<description>If true, disable this component on page.</description>
+		</property>
+		<property>
+			<name>icon</name>
+			<classname>java.lang.String</classname>
+			<description>Absolute or relative URL of the image to be displayed for this button.</description>
+		</property>
+		<property>
+			<name>iconAlign</name>
+			<classname>java.lang.String</classname>
+			<description>the align on the button icon right/left</description>
+			<defaultvalue><![CDATA["left"]]></defaultvalue>
+		</property>		
+		<property>
+			<name>contextButton</name>
+			<classname>java.lang.Boolean</classname>
+			<description>This button is for context components and events (unlike standart: save, cancel and so on) and defines palette of a button</description>
+		</property>
+	</component>
+    <component>
+        <name>com.exadel.siperian.HtmlSipAjaxToggleButton</name>
+        <family>javax.faces.Command</family>
+        <classname>com.exadel.siperian.component.html.HtmlSipAjaxToggleButton</classname>
+        <superclass>com.exadel.siperian.component.SipUIAjaxToggleButton</superclass>
+        <test/>
+        <description>
+            <![CDATA[Component that represents button with two states: Pressed and Unpressed. Each click on component
+            changes state to opposed.]]>
+        </description>
+        <renderer generate="true" override="true">
+            <name>com.exadel.siperian.renderkit.SipAjaxToggleButtonRendererBase</name>
+            <template>ajaxToggleButton.jspx</template>
+        </renderer>
+        <tag>
+            <name>ajaxToggleButton</name>
+            <classname>com.exadel.siperian.taglib.SipAjaxToggleButtonTag</classname>
+            <superclass>org.ajax4jsf.webapp.taglib.UIComponentTagBase</superclass>
+            <test/>
+        </tag>
+        &ui_command_attributes;
+        &html_events;
+        &html_universal_attributes;
+        &html_anchor_attributes;
+        &html_style_attributes;
+        &ajax_component_attributes;
+        <property>
+            <name>ignoreDupResponses</name>
+            <classname>boolean</classname>
+            <description>
+                Attribute allows to ignore an Ajax Response produced by a request if the newest 'similar' request is
+                in a queue already. ignoreDupResponses="true" does not cancel the request while it is processed on the server,
+                but just allows to avoid unnecessary updates on the client side if the response isn't actual now
+            </description>
+        </property>
+        <property>
+            <name>timeout</name>
+            <classname>int</classname>
+            <description>Timeout ( in ms ) for request.</description>
+        </property>
+        <property>
+            <name>pressedState</name>
+            <classname>boolean</classname>
+            <defaultvalue>false</defaultvalue>
+            <description>If true, component is displayed in a "pressed" state.</description>
+        </property>
+    </component>
+</components>

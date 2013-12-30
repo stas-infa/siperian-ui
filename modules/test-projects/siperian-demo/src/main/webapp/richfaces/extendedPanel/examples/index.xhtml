@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:sip="http://siperian.exadel.com/sip">
+
+<ui:composition>
+	<script type="text/javascript"
+		src="#{facesContext.externalContext.request.contextPath}/js/functions.js" />
+	<script
+		src="#{facesContext.externalContext.requestContextPath}/js/common_png.js"></script>
+	<script type="text/javascript">
+        	function patientInfo(firstName, lastName, date, e) {
+        		alert("First name: " + firstName + "; Last name: " + lastName + ";Admission date: " + date);
+        	}
+        	
+        	function highlightPatient(element) {
+        		$(element).setStyle({color:"green"});
+        	}
+        	if(window.attachEvent){
+        		//window.attachEvent('onload',SipPanel.onResizePanel);
+        	}
+        	
+        
+        	
+        </script>
+
+	<style type="text/css">
+</style>
+	<h:form id="form1">
+		<table width="100%" height="100%">
+			<tr height="100%">
+				<td valign="top" align="left" width="30%" height="100%"><sip:panel
+					id="panel2" style="width:300px;" minWidth="300px">
+
+
+					<h3>First panel</h3>
+					<h:panelGrid columns="2">
+						<h:column>
+        							Username:
+        						</h:column>
+						<h:column>
+							<h:inputText value=""></h:inputText>
+						</h:column>
+						<h:column>
+        							Passport:
+        						</h:column>
+						<h:column>
+							<h:inputText value=""></h:inputText>
+						</h:column>
+						<h:column>
+        							Code
+        						</h:column>
+						<h:column>
+							<rich:inplaceInput value="" defaultLabel="Please Enter code here" />
+						</h:column>
+						<h:column>
+        							Date 1
+        						</h:column>
+						<h:column>
+							<h:inputText value="25/20/05"></h:inputText>
+						</h:column>
+						<h:column>
+        							Date 2
+        				</h:column>
+						<h:column>
+							<h:inputText value="25/20/05"></h:inputText>
+						</h:column>
+						<h:column>
+							Save Passport
+						</h:column>
+						<h:column>
+							<h:selectBooleanCheckbox></h:selectBooleanCheckbox>
+						</h:column>
+						<h:column>
+							<h:commandButton value="Log In"></h:commandButton>
+						</h:column>
+
+
+						<h:column>
+							<h:commandLink value="Forget Passport ?" style="font-size:10px"></h:commandLink>
+						</h:column>
+
+
+					</h:panelGrid>
+
+				</sip:panel></td>
+
+				<td align="left" width="70%" height="100%" valign="top">
+					
+					<sip:panel minWidth="300px">
+						<h3>Main panel</h3>
+						<ui:repeat value="#{userBean.tableCounter}" var="bar">
+						<div style="overflow: auto; height: 180px"><rich:dataTable
+							value="#{extendedDataTableBean.dataModel}" var="patient">
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="First Name" />
+								</f:facet>
+
+								<h:outputText id="text" value="#{patient.firstName}"
+									escape="true" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="Last Name" />
+								</f:facet>
+								<h:outputText value="#{patient.lastName}" escape="true" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="Admission Date" />
+								</f:facet>
+								<h:outputText value="#{patient.admissionDate}" escape="true" />
+							</h:column>
+						</rich:dataTable>
+							
+						</div>
+						</ui:repeat>
+				
+					</sip:panel>
+
+			</td>
+			</tr>
+		</table>
+		<table width="100%" height="100%">
+			<tr>
+				<td><h:commandButton action="#{userBean.addTableToPanel}"
+					value="Add"></h:commandButton></td>
+				<td><h:commandButton action="#{userBean.removeTableFromPanel}"
+					value="Remove"></h:commandButton></td>
+			</tr>
+		</table>
+
+	</h:form>
+</ui:composition>
+</html>

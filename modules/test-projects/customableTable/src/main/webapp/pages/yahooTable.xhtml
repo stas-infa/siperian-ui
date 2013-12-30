@@ -1,0 +1,243 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j" xmlns:rich="http://richfaces.org/rich"
+	xmlns:s="http://jboss.com/products/seam/taglib" xmlns:c="http://java.sun.com/jsp/jstl/core">
+	<head><title>Yahoo UI table</title></head>
+	<ui:composition template="/layout/template.xhtml">
+		<ui:param name="Yahoo UI table" value="Title" />
+		<!-- Page header -->
+		<ui:define name="header">
+			<a4j:loadStyle src="/css/datatable.css" />
+			<h1><a href="javascript:(function(){var mode=document.compatMode,m;if(mode){if(mode=='BackCompat')m='quirks';else if(mode=='CSS1Compat')m='Standards Compliance';else m='Almost Standards Compliance';alert('The document is being rendered in '+m+' mode.');}})();">Yahoo UI based table</a></h1>
+		</ui:define>
+		<!-- content -->
+		<ui:define name="content">
+			<style type="text/css">
+	.yui-skin-sam .yui-dt-liner {
+					white-space: nowrap;
+					}
+
+    .yui-dt-resizeable .yui-dt-liner {
+					overflow: hidden;
+					}
+
+    .yui-dt0-col-title .yui-dt-liner {
+					width: 168px;
+					}
+    .yui-dt0-col-amount .yui-dt-liner {
+					width: 268px;
+					}
+</style>
+		<div id="basic" class="yui-dt">
+			<div style="display: none;" class="yui-dt-mask"></div>
+			<table summary="" class="yui-table yui-skin-sam">
+				<colgroup>
+					<col width="100*"/>
+					<col width="100*"/>
+					<col width="100*"/>
+					<col width="100*"/>
+					<col width="100*"/>
+				</colgroup>
+				<thead>
+					<tr class="yui-dt-first yui-dt-last">
+						<th
+							class="yui-dt0-col-id yui-dt-col-id yui-dt-sortable yui-dt-resizeable yui-dt-first"
+							colspan="1" rowspan="1" id="yui-dt0-th-id">
+							<div class="yui-dt-resizerliner">
+								<div class="yui-dt-liner" id="yui-dt0-th-id-liner">
+									<span class="yui-dt-label">
+										<a href="yui-dt0-href-id" title="Click to sort ascending"
+											class="yui-dt-sortable">id</a>
+									</span>
+								</div>
+								<div
+									style="left: auto; right: 0pt; top: auto; bottom: 0pt; height: 24px;"
+									class="yui-dt-resizer" id="yui-dt0-th-id-resizer"></div>
+							</div>
+						</th>
+						<th
+							class="yui-dt0-col-date yui-dt-col-date yui-dt-sortable yui-dt-resizeable"
+							colspan="1" rowspan="1" id="yui-dt0-th-date">
+							<div class="yui-dt-resizerliner">
+								<div class="yui-dt-liner" id="yui-dt0-th-date-liner">
+									<span class="yui-dt-label">
+										<a href="yui-dt0-href-date" title="Click to sort descending"
+											class="yui-dt-sortable">date</a>
+									</span>
+								</div>
+								<div
+									style="left: auto; right: 0pt; top: auto; bottom: 0pt; height: 24px;"
+									class="yui-dt-resizer" id="yui-dt0-th-date-resizer"></div>
+							</div>
+						</th>
+						<th
+							class="yui-dt0-col-quantity yui-dt-col-quantity yui-dt-sortable yui-dt-resizeable"
+							colspan="1" rowspan="1" id="yui-dt0-th-quantity">
+							<div class="yui-dt-resizerliner">
+								<div class="yui-dt-liner" id="yui-dt0-th-quantity-liner">
+									<span class="yui-dt-label">
+										<a href="yui-dt0-href-quantity" title="Click to sort ascending"
+											class="yui-dt-sortable">quantity</a>
+									</span>
+								</div>
+								<div
+									style="left: auto; right: 0pt; top: auto; bottom: 0pt; height: 24px;"
+									class="yui-dt-resizer" id="yui-dt0-th-quantity-resizer"></div>
+							</div>
+						</th>
+						<th
+							class="yui-dt0-col-amount yui-dt-col-amount yui-dt-sortable yui-dt-resizeable"
+							colspan="1" rowspan="1" id="yui-dt0-th-amount">
+							<div class="yui-dt-resizerliner">
+								<div class="yui-dt-liner" id="yui-dt0-th-amount-liner">
+									<span class="yui-dt-label">
+										<a href="yui-dt0-href-amount" title="Click to sort ascending"
+											class="yui-dt-sortable">amount</a>
+									</span>
+								</div>
+								<div
+									style="left: auto; right: 0pt; top: auto; bottom: 0pt; height: 24px;"
+									class="yui-dt-resizer" id="yui-dt0-th-amount-resizer"></div>
+							</div>
+						</th>
+						<th
+							class="yui-dt0-col-title yui-dt-col-title yui-dt-sortable yui-dt-resizeable yui-dt-last"
+							colspan="1" rowspan="1" id="yui-dt0-th-title">
+							<div class="yui-dt-resizerliner">
+								<div class="yui-dt-liner" id="yui-dt0-th-title-liner">
+									<span class="yui-dt-label">
+										<a href="yui-dt0-href-title" title="Click to sort ascending"
+											class="yui-dt-sortable">title</a>
+									</span>
+								</div>
+								<div
+									style="left: auto; right: 0pt; top: auto; bottom: 0pt; height: 24px;"
+									class="yui-dt-resizer" id="yui-dt0-th-title-resizer"></div>
+							</div>
+						</th>
+					</tr>
+				</thead>
+				<caption>DataTable Caption</caption>
+				<tbody style="display: none;" class="yui-dt-message">
+					<tr class="yui-dt-first yui-dt-last">
+						<td class="yui-dt-loading" colspan="5">
+							<div class="yui-dt-liner">Loading...</div>
+						</td>
+					</tr>
+				</tbody>
+				<tbody style="" class="yui-dt-data" tabindex="0">
+					<tr class="yui-dt-first yui-dt-even" id="yui-rec0" style="">
+						<td
+							class="yui-dt0-col-id yui-dt-col-id yui-dt-sortable yui-dt-resizeable yui-dt-first"
+							headers="yui-dt0-th-id ">
+							<div class="yui-dt-liner">po-0167</div>
+						</td>
+						<td
+							class="yui-dt0-col-date yui-dt-col-date yui-dt-sortable yui-dt-resizeable"
+							headers="yui-dt0-th-date ">
+							<div class="yui-dt-liner">03/24/1980</div>
+						</td>
+						<td
+							class="yui-dt0-col-quantity yui-dt-col-quantity yui-dt-sortable yui-dt-resizeable"
+							headers="yui-dt0-th-quantity ">
+							<div class="yui-dt-liner">1</div>
+						</td>
+						<td
+							class="yui-dt0-col-amount yui-dt-col-amount yui-dt-sortable yui-dt-resizeable"
+							headers="yui-dt0-th-amount ">
+							<div class="yui-dt-liner">$4.00</div>
+						</td>
+						<td
+							class="yui-dt0-col-title yui-dt-col-title yui-dt-sortable yui-dt-resizeable yui-dt-last"
+							headers="yui-dt0-th-title ">
+							<div class="yui-dt-liner">A Book About Nothing</div>
+						</td>
+					</tr>
+					<tr class="yui-dt-odd" id="yui-rec1" style="">
+						<td
+							class="yui-dt0-col-id yui-dt-col-id yui-dt-sortable yui-dt-resizeable yui-dt-first"
+							headers="yui-dt0-th-id ">
+							<div class="yui-dt-liner">po-0783</div>
+						</td>
+						<td
+							class="yui-dt0-col-date yui-dt-col-date yui-dt-sortable yui-dt-resizeable"
+							headers="yui-dt0-th-date ">
+							<div class="yui-dt-liner">01/03/1983</div>
+						</td>
+						<td
+							class="yui-dt0-col-quantity yui-dt-col-quantity yui-dt-sortable yui-dt-resizeable"
+							headers="yui-dt0-th-quantity ">
+							<div class="yui-dt-liner">0</div>
+						</td>
+						<td
+							class="yui-dt0-col-amount yui-dt-col-amount yui-dt-sortable yui-dt-resizeable"
+							headers="yui-dt0-th-amount ">
+							<div class="yui-dt-liner">$12.12</div>
+						</td>
+						<td
+							class="yui-dt0-col-title yui-dt-col-title yui-dt-sortable yui-dt-resizeable yui-dt-last"
+							headers="yui-dt0-th-title ">
+							<div class="yui-dt-liner">The Meaning of Life</div>
+						</td>
+					</tr>
+					<tr class="yui-dt-even" id="yui-rec2" style="">
+						<td
+							class="yui-dt0-col-id yui-dt-col-id yui-dt-sortable yui-dt-resizeable yui-dt-first"
+							headers="yui-dt0-th-id ">
+							<div class="yui-dt-liner">po-0297</div>
+						</td>
+						<td
+							class="yui-dt0-col-date yui-dt-col-date yui-dt-sortable yui-dt-resizeable"
+							headers="yui-dt0-th-date ">
+							<div class="yui-dt-liner">12/12/1978</div>
+						</td>
+						<td
+							class="yui-dt0-col-quantity yui-dt-col-quantity yui-dt-sortable yui-dt-resizeable"
+							headers="yui-dt0-th-quantity ">
+							<div class="yui-dt-liner">12</div>
+						</td>
+						<td
+							class="yui-dt0-col-amount yui-dt-col-amount yui-dt-sortable yui-dt-resizeable"
+							headers="yui-dt0-th-amount ">
+							<div class="yui-dt-liner">$1.25</div>
+						</td>
+						<td
+							class="yui-dt0-col-title yui-dt-col-title yui-dt-sortable yui-dt-resizeable yui-dt-last"
+							headers="yui-dt0-th-title ">
+							<div class="yui-dt-liner">This Book Was Meant to Be Read Aloud</div>
+						</td>
+					</tr>
+					<tr class="yui-dt-last yui-dt-odd" id="yui-rec3" style="">
+						<td
+							class="yui-dt0-col-id yui-dt-col-id yui-dt-sortable yui-dt-resizeable yui-dt-first"
+							headers="yui-dt0-th-id ">
+							<div class="yui-dt-liner">po-1482</div>
+						</td>
+						<td
+							class="yui-dt0-col-date yui-dt-col-date yui-dt-sortable yui-dt-resizeable"
+							headers="yui-dt0-th-date ">
+							<div class="yui-dt-liner">03/11/1985</div>
+						</td>
+						<td
+							class="yui-dt0-col-quantity yui-dt-col-quantity yui-dt-sortable yui-dt-resizeable"
+							headers="yui-dt0-th-quantity ">
+							<div class="yui-dt-liner">6</div>
+						</td>
+						<td
+							class="yui-dt0-col-amount yui-dt-col-amount yui-dt-sortable yui-dt-resizeable"
+							headers="yui-dt0-th-amount ">
+							<div class="yui-dt-liner">$3.50</div>
+						</td>
+						<td
+							class="yui-dt0-col-title yui-dt-col-title yui-dt-sortable yui-dt-resizeable yui-dt-last"
+							headers="yui-dt0-th-title ">
+							<div class="yui-dt-liner">Read Me Twice</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			</div>
+		</ui:define>
+	</ui:composition>
+</html>

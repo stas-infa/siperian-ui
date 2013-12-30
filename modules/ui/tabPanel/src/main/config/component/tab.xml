@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE components PUBLIC "-//AJAX4JSF//CDK Generator config/EN"  "http://labs.jboss.com/jbossrichfaces/component-config.dtd">
+
+<components>	
+	<component generate="true">
+		<name>com.exadel.siperian.Tab</name>
+		<family>com.exadel.siperian.Tab</family>
+		<classname>com.exadel.siperian.component.html.HtmlTab</classname>
+		<superclass>com.exadel.siperian.component.UITab</superclass>
+		<test/>
+		<description>
+			<![CDATA[A tab section within a tab panel]]>
+		</description>
+		<renderer generate="true" override="true">
+			<name>com.exadel.siperian.TabRenderer</name>
+			<template>tab.jspx</template>
+		</renderer>
+		<tag>
+			<name>tab</name>
+			<classname>com.exadel.siperian.taglib.TabTag</classname>
+			<superclass>
+				org.ajax4jsf.webapp.taglib.HtmlComponentTagBase
+			</superclass>
+			<test/>
+		</tag>
+
+    	&html_style_attributes;
+		&ui_component_attributes;
+		&ui_command_attributes;
+		&ajax_component_attributes;
+		&html_event_handler_attributes;	
+	    <property hidden="true">
+	    	<name>value</name>
+	    	<classname>java.lang.Object</classname>
+	    </property>
+		<property hidden="true">
+			<name>actionExpression</name>
+		</property>		
+	    <property>
+	    	<name>name</name>
+	    	<classname>java.lang.Object</classname>
+	    	<description>Attribute defines tab name. Default value is &quot;getId()&quot;.</description>
+	    	<defaultvalue>getId()</defaultvalue>
+	    </property>
+	    <property >
+	    	<name>disabled</name>
+	    	<classname>boolean</classname>
+	    	<description>Disables a tab in a tab panel</description>
+	    </property>
+	    <property>
+	    	<name>label</name>
+	    	<classname>java.lang.String</classname>
+	    	<description>Text for the actual "tab" in a tab section</description>
+	    </property>
+		<property>
+			<name>title</name>
+			<classname>java.lang.String</classname>
+			<description>HTML: An advisory title for this element. Often displayed as a tooltip</description>
+		</property>		
+	    <property hidden="true">
+	    	<name>labelWidth</name>
+	    	<classname>java.lang.String</classname>
+	    	<description>Length for the actual "tab" in a tab section defined in pixels. If it is not defined, the
+	    	length is calculated basing on a tab label text length</description>
+	    </property>
+	    <property>
+	    	<name>switchType</name>
+	    	<classname>java.lang.String</classname>
+	    	<description>Tab switch algorithm. Possible values are  "client", "server", "ajax", "page".</description>
+	    </property>
+	    <property hidden="true">
+	    	<name>active</name>
+	    	<classname>boolean</classname>
+	    </property>
+        <property>
+            <name>ontableave</name>
+            <classname>java.lang.String</classname>
+            <description>
+                Event must occurs on the tab which has been left 
+            </description>
+            <defaultvalue><![CDATA[""]]></defaultvalue>
+        </property>
+        <property>
+            <name>ontabenter</name>
+            <classname>java.lang.String</classname>
+            <description>
+                Event must occur on the tab which has been entered 
+            </description>
+            <defaultvalue><![CDATA[""]]></defaultvalue>
+        </property>
+        
+        <property>
+        	<name>onlabelkeypress</name>
+        	<classname>java.lang.String</classname>
+        	<description>
+        		A JavaScript event handler; a key within label is pressed and released
+        	</description>
+        </property>
+        
+        <property>
+        	<name>onlabeldblclick</name>
+        	<classname>java.lang.String</classname>
+        	<description>
+        		A JavaScript event handler; a pointer within label is double-clicked
+        	</description>
+        </property>
+        
+        <property>
+        	<name>onlabelkeyup</name>
+        	<classname>java.lang.String</classname>
+        	<description>
+        		A JavaScript event handler; a key within label is released
+        	</description>
+        </property>
+        
+        <property>
+        	<name>onlabelclick</name>
+        	<classname>java.lang.String</classname>
+        	<description>
+        		A JavaScript event handler; a label of the tab is clicked
+        	</description>
+        </property>
+        
+        <property>
+        	<name>onlabelkeydown</name>
+        	<classname>java.lang.String</classname>
+        	<description>
+        		A JavaScript event handler; a key within label is pressed down
+        	</description>
+        </property>
+        
+        <property>
+        	<name>onlabelmouseup</name>
+        	<classname>java.lang.String</classname>
+        	<description>
+        		A JavaScript event handler; a pointer within label is released
+        	</description>
+        </property>
+        
+        <property>
+        	<name>onlabelmousedown</name>
+        	<classname>java.lang.String</classname>
+        	<description>
+        		A JavaScript event handler; a pointer within label is pressed down
+        	</description>
+        </property>
+        
+        <property>
+        	<name>onlabelmousemove</name>
+        	<classname>java.lang.String</classname>
+        	<description>
+        		A JavaScript event handler; a pointer is moved within label
+        	</description>
+        </property>
+        <property>
+	    	<name>tabCloseable</name>
+	    	<classname>java.lang.Boolean</classname>
+	    	<defaultvalue>true</defaultvalue>
+	    </property>
+	     <property>
+	    	<name>longRunning</name>
+	    	<classname>java.lang.Boolean</classname>
+	    	<defaultvalue>false</defaultvalue>
+	    </property>
+  	</component>
+</components>

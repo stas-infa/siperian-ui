@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:root xmlns:f="http://ajax4jsf.org/cdk/template"
+	xmlns:vcp=" http://jsf.exadel.com/vcp"
+	xmlns:c=" http://java.sun.com/jsf/core"
+	xmlns:ui=" http://ajax4jsf.org/cdk/ui"
+	xmlns:u=" http://ajax4jsf.org/cdk/u"
+	xmlns:x=" http://ajax4jsf.org/cdk/x"
+	class="com.exadel.siperian.renderkit.html.ToolBarRenderer"
+	baseclass="com.exadel.siperian.renderkit.html.ToolBarRendererBase"
+	component="org.richfaces.component.UIToolBar">
+<h:styles>css/sipToolBar.xcss</h:styles>
+<h:scripts>
+		new org.ajax4jsf.javascript.PrototypeScript(),
+		scripts/toolBar.js
+</h:scripts>
+<f:resource name="/com/exadel/siperian/renderkit/html/images/toolbar_left.png" var="left" />
+<f:resource name="/com/exadel/siperian/renderkit/html/images/toolbar_right.png" var="right" />
+<f:resource name="/com/exadel/siperian/renderkit/html/images/clear.gif" var="clear" />
+<f:clientid var="clientId" />
+<jsp:scriptlet>
+<![CDATA[
+	variables.setVariable("isDisabled", isDisabled(component));
+	variables.setVariable("isHighlighted", isHighlighted(component));
+]]>
+</jsp:scriptlet>
+<div id="#{clientId}" class="siptoolbar">
+<table border="0" cellpadding="0" cellspacing="0" width="#{component.attributes['width']}" 
+	height="30" class="#{component.attributes['styleClass']}"
+	style="#{component.attributes['style']}"
+	onclick="#{component.attributes['onclick']}"
+	ondblclick="#{component.attributes['ondblclick']}"
+	onkeydown="#{component.attributes['onkeydown']}"
+	onkeypress="#{component.attributes['onkeypress']}"
+	onkeyup="#{component.attributes['onkeyup']}"
+	onmousedown="#{component.attributes['onmousedown']}"
+	onmousemove="#{component.attributes['onmousemove']}"
+	onmouseout="#{component.attributes['onmouseout']}"
+	onmouseover="#{component.attributes['onmouseover']}"
+	onmouseup="#{component.attributes['onmouseup']}">
+	<tr valign="middle">
+		<td><img src="#{left}" width="10" height="30"/></td>
+		<vcp:body />
+		<td><img src="#{right}" width="10" height="30"/></td>
+	</tr>
+</table>
+<f:clientid var="clientId" />
+<script>
+new ToolBar("#{clientId}", #{isDisabled}, '#{left}', #{this:getDisabledGroupsNumbers(component)}, #{isHighlighted});
+</script>
+</div>
+</f:root>

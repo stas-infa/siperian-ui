@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://java.sun.com/jstl/core"
+      xmlns:sip="http://siperian.exadel.com/sip"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://siperian.exadel.com/b"
+        xmlns:rich="http://richfaces.ajax4jsf.org/rich"
+                xmlns:a4j="https://ajax4jsf.dev.java.net/ajax">
+
+<!--@elvariable id="testReRender" type="com.siperian.dsapp.jsf.test.TestReRender"-->
+<head><title>This is a test page for ajaxButton rerender</title></head>
+<body>
+Test set.   <br/>
+<h:form id="aF">
+
+	<sip:timeline />
+
+    <h:panelGrid columns="1" styleClass="property-container" id="pageparent">
+        <a4j:outputPanel ajaxRendered="false" id="editParent">
+            <h:inputText value="#{testReRender.value}" id="testInput">
+                <f:validateLength maximum="5"/>
+            </h:inputText>
+        </a4j:outputPanel>
+        <h:outputText value="#{testReRender.errorMessage}" id="field1"/>
+        <h:outputText value="#{testReRender.value}" id="field2"/>
+        <h:outputText value="Below are fields for tracing values:"/>
+        <a4j:outputPanel ajaxRendered="true" id="selfUpdatePanel">
+            <h:panelGrid columns="1">
+                <h:outputText value="Have errors: #{testReRender.haveErrors}"/>
+                <h:outputText value="#{testReRender.errorMessage}" id="field1auto"/>
+                <h:outputText value="#{testReRender.value}" id="field2auto"/>
+            </h:panelGrid>
+        </a4j:outputPanel>
+        <b:ajaxButton id="btn1" value="click" reRender="#{testReRender.haveErrors ? 'field1' : 'field2'}"/>
+        <a4j:commandButton id="btn2" value="click1" reRender="#{testReRender.haveErrors ? 'field1' : 'field2'}"/>
+        <a4j:commandLink value="clean" action="#{testReRender.clear}" ajaxSingle="true" reRender="pageparent"/>
+    </h:panelGrid>
+</h:form>
+</body>
+</html>

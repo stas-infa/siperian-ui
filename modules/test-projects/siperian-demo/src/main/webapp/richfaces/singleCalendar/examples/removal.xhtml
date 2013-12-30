@@ -1,0 +1,89 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:sip="http://siperian.exadel.com/sip">
+
+<ui:composition>
+
+
+
+
+
+<style>
+	html,body {
+		height: 100%;
+	}	
+
+	body {
+		margin: 0;
+	}
+
+
+	.richCalendarInputClass{
+		display:none;
+	}
+	.richCalendarButtonClass{
+		display:none;
+	}
+</style>
+
+	<rich:calendar datePattern="dd/MM/yyyy" id="calendar"
+		inputClass="richCalendarInputClass"
+		buttonClass="richCalendarButtonClass"
+		onchanged="#{rich:component('calendar')}.customInput.value=event.rich.component.getSelectedDateString();" />
+	<script>
+		#{rich:component('calendar')}.customExpand=customExpand;
+	</script>
+	<rich:panel>
+		<f:facet name="header">
+			<h:outputText value="Single calendar options" />
+		</f:facet>
+		<h:form id="myform">
+			<h:panelGrid cellpadding="0" cellspacing="0" columns="1">
+				<h:outputText value="Editable calendar" />
+				<h:panelGrid cellpadding="0" cellspacing="0" columns="2">
+					<h:inputText value="#{userBean.name}" id="input" />
+					<h:graphicImage
+						value="resource:///org.richfaces.renderkit.html.iconimages.CalendarIcon"
+						onclick="#{rich:component('calendar')}.customExpand(event, #{rich:element('input')}, #{rich:element('button')});"
+						id="button" />
+				</h:panelGrid>
+				<h:outputText value="Read Only with popup" />
+				<h:panelGrid cellpadding="0" cellspacing="0" columns="2">
+					<h:inputText value="#{userBean.name}" id="input2" onfocus="this.setAttribute('readOnly', true);"
+						onclick="#{rich:component('calendar')}.customExpand(event, #{rich:element('input2')}, #{rich:element('button2')});" />
+					<h:graphicImage
+						value="resource:///org.richfaces.renderkit.html.iconimages.CalendarIcon"
+						onclick="#{rich:component('calendar')}.customExpand(event, #{rich:element('input2')}, #{rich:element('button2')});"
+						id="button2" />
+				</h:panelGrid>
+				<h:outputText value="Disabled Calendar" />
+				<h:panelGrid cellpadding="0" cellspacing="0" columns="2">
+					<h:inputText value="#{userBean.name}" id="input3" disabled="true" />
+					<h:graphicImage
+						value="resource:///org.richfaces.renderkit.html.iconimages.DisabledCalendarIcon"
+						id="button3" />
+				</h:panelGrid>
+			</h:panelGrid>
+			<a4j:commandLink value="Submit"></a4j:commandLink>
+		
+			<rich:spacer height="250px" width="100%"/>
+			<rich:comboBox>
+				<f:selectItem itemValue="abc" itemLabel="abc"/>
+			</rich:comboBox>
+			<rich:spacer height="250px" width="100%"/>
+			<sip:ajaxButton  value="Test button"></sip:ajaxButton>
+		</h:form>
+	</rich:panel>
+
+
+
+</ui:composition>
+
+</html>

@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>Timeline</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="language" content="en" />
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	
+	<script src="js/prototype-1.6.0.3.js" type="text/javascript"></script>
+	<script src="file:///d:\work\siperian\trunk\modules\ui\timeline\src\main\resources\com\exadel\siperian\renderkit\html\js\swfobject.js" type="text/javascript"></script>
+	<script src="file:///d:\work\siperian\trunk\modules\ui\timeline\src\main\resources\com\exadel\siperian\renderkit\html\js\timeline.js" type="text/javascript"></script>
+	<script src="file:///d:\work\siperian\trunk\modules\ui\timeline\src\main\resources\com\exadel\siperian\renderkit\html\js\rightClick.js" type="text/javascript"></script>
+
+
+	<style>
+		html, body { height:100%; }
+		body { margin:0; }
+	</style>
+	<script>
+var Utils = {};	
+Utils.execOnLoad = function(func, condition, timeout) {
+	
+	if (condition()) {
+		func();		
+	} else {
+		window.setTimeout(
+			function() {
+				Utils.execOnLoad(func, condition, timeout);
+			},
+			timeout
+		);
+	}
+};
+		function getVisibleInt() {
+			var callResult = $("form:timlineFlash").component.getVisibleInterval();
+			document.getElementById('inputText').value = callResult.fromDateNumber;
+			document.getElementById('inputText2').value = callResult.toDateNumber;
+		}
+		function setVisibleInt() {
+			var callResult = $("form:timlineFlash").component.setVisibleInterval(new Date(parseInt(document.getElementById('inputText').value)), new Date(parseInt(document.getElementById('inputText2').value)));
+		}
+		function showEventType() {
+			var callResult = $("form:timlineFlash").component.showEventType(document.getElementById('inputText').value);
+		}
+		function hideEventType() {
+			var callResult = $("form:timlineFlash").component.hideEventType(document.getElementById('inputText').value);
+		}
+		function switchEventTypes() {
+			var callResult = $("form:timlineFlash").component.switchEventTypes();
+		}		
+		function getVisibleEventsNumber() {
+			var callResult = $("form:timlineFlash").component.getVisibleEventsNumber((new Date(2008,2,3)).getTime(), (new Date(2008,2,10)).getTime());
+			document.getElementById('inputText').value = callResult;
+		}
+		function zoomIn() {
+			var callResult = $("form:timlineFlash").component.zoomIn(2);
+		}
+		function zoomOut() {
+			var callResult = $("form:timlineFlash").component.zoomOut(2);
+		}
+		
+	</script>
+</head>
+<body>
+	<div><input type="text" id="inputText" value="2008/03/01"/>
+		 <input type="text" id="inputText2" value="2008/04/01"/>
+		 <input type="button" id="getVisibleInt" value="Get Visible Interval" onClick="getVisibleInt();"/>
+		 <input type="button" id="setVisibleInt" value="Set Visible Interval" onClick="setVisibleInt();"/>
+		 <input type="button" id="showEventType" value="Show Event Type" onClick="showEventType();"/>
+		 <input type="button" id="hideEventType" value="Hide Event Type" onClick="hideEventType();"/>
+ 		 <input type="button" id="switchEventTypes" value="Switch Event Type" onClick="switchEventTypes();"/>
+		 <input type="button" id="getVisibleEN" value="Get Visible Events NUmber" onClick="getVisibleEventsNumber();"/>
+		 <input type="button" id="zoomIn" value="Zoom In" onClick="zoomIn();"/>
+		 <input type="button" id="zoomOut" value="Zoom Out" onClick="zoomOut();"/>
+    </div>
+	<input type="hidden" id="form:timlineFlash:flashContent" value="dfsdsfsdf"/>
+<div id="form:timlineFlash" style="z-index:1000;">
+	<div id="form:timlineFlash:flashContainer" style="z-index:10001;position:absolute;top:0px;left:0px;">
+		<h1>Timeline</h1>
+		<p>Alternative content</p>
+		<p><a href="http://www.adobe.com/go/getflashplayer"><img 
+			src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" 
+			alt="Get Adobe Flash player" /></a></p>
+	</div>
+</div>
+<script>new Timeline('form:timlineFlash', 'Timeline.swf','expressInstall.swf',"100%","250", "transparent","","",null/*"css/styles.css"*/,null,null,null,3);</script>
+<!--div style="position:absolute; top:100px; left:400px; background-color:#ff0000;width:100px;height:50px;" onclick="$('form:timlineFlash').component.disable(false);">bla-bla</div>
+<div style="height:500px;z-index:0;position:absolute;background-color: gold;top:50px;left:50px;height:50px;" onclick="$('form:timlineFlash').component.disable(true);">
+	THere are the div
+	THere are the div
+	THere are the div
+	THere are the div
+
+</div-->
+</body>
+</html>

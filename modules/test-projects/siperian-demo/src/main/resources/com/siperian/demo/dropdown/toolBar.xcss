@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:template xmlns:f='http:/jsf.exadel.com/template'
+   xmlns:u='http:/jsf.exadel.com/template/util' 
+   xmlns="http://www.w3.org/1999/xhtml" >
+   <f:verbatim><![CDATA[
+<u:selector name=".dr-toolbar-ext">
+	background-color: none !important;
+	background-image:none !important;
+	background-position: none none !important;
+	border: 0px none none !important;
+</u:selector>
+
+<u:selector name=".dr-toolbar-int">
+
+</u:selector>
+]]>R
+
+</f:verbatim>
+
+</f:template>

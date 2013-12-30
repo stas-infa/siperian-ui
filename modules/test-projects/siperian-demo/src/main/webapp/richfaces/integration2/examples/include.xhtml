@@ -1,0 +1,44 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:sip="http://siperian.exadel.com/sip">
+
+<sip:tabPanel id="staticPanel#{status.index}" style="z-index: 1" markupTemplate="static" maxTabWidth="204" height="150px">
+			<sip:tab label="Search" id="search#{status.index}">
+				<div style="padding: 20px">
+				<sip:verticalScroller for="list1#{status.index}" height="60" />
+				<rich:dataTable id="list1#{status.index}" value="#{verticalScroller.list2}" rows="1">
+					<rich:column>
+						<h:outputText value="#{verticalScroller.time}"></h:outputText>
+					</rich:column>
+				</rich:dataTable>
+				</div>
+			</sip:tab>
+			<sip:tab label="Saved queries" id="savedQueries#{status.index}">
+				<div style="padding: 20px">
+				<sip:verticalScroller for="list2#{status.index}" height="60" />
+				<rich:dataTable id="list2#{status.index}" value="#{verticalScroller.list2}" rows="1">
+					<rich:column>
+						<h:outputText value="#{verticalScroller.time}"></h:outputText>
+					</rich:column>
+				</rich:dataTable>
+				</div>
+			</sip:tab>
+			<sip:tab label="Query Builder" id="queryBuilder#{status.index}">
+				<div style="padding: 20px">
+				<sip:verticalScroller for="list3#{status.index}" height="60" />
+				<rich:dataTable id="list3#{status.index}" value="#{verticalScroller.list2}" rows="1">
+					<rich:column>
+						<h:outputText value="#{verticalScroller.time}"></h:outputText>
+					</rich:column>
+				</rich:dataTable>
+				</div>
+			</sip:tab>
+</sip:tabPanel>
+		
+				<sip:ajaxButton value="Rerender Static panel" id="ajaxButton#{status.index}" reRender="staticPanel#{status.index}" />
+</html>

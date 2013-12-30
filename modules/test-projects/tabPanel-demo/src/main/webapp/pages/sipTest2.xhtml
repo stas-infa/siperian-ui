@@ -1,0 +1,29 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:sip="http://siperian.exadel.com/sip"
+      xmlns:c="http://java.sun.com/jstl/core"
+      xmlns:extdt="http://siperian.exadel.com/extDataTable">
+
+<script type="text/javascript">
+	
+</script>
+<a4j:loadScript src="resource:///js/common_png.js" />
+<a4j:loadScript src="resource:///js/calendarUtils.js" />
+	
+		<a href="javascript: void(0)" onclick="Siperian.showModalPanel('#{rich:clientId('panel')}')">Open</a>
+		<sip:modalPanel id="panel" moveable="true">
+			<f:facet name="header">
+				Header
+			</f:facet>
+			<div style="height: 200px; width: 400px">
+				Text
+				<a href="javascript: void(0)" onclick="Siperian.hideModalPanel('#{rich:clientId('panel')}')">Close</a>
+			</div>
+		</sip:modalPanel>
+
+	
+</ui:composition>

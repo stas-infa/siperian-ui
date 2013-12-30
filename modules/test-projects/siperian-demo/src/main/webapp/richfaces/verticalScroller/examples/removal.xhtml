@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:sip="http://siperian.exadel.com/sip">
+
+<ui:composition>
+<h:form>
+	<table>
+		<tr>
+			<td>
+				<sip:verticalScroller for="list" page="#{verticalScroller.page}" action="#{verticalScroller.action}" reRender="listHolder" height="400"/>
+			</td>
+			<td>
+				<h:panelGroup layout="block" id="listHolder">
+					<a4j:repeat id="list" rows="1" value="#{verticalScroller.list}" var="var">
+						<h:outputText value="#{var}"></h:outputText>
+					</a4j:repeat>
+				</h:panelGroup>
+			</td>
+		</tr>
+	</table>
+</h:form>
+</ui:composition>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:c="http://java.sun.com/jstl/core"
+      xmlns:sip="http://siperian.exadel.com/sip">
+
+<ui:composition>
+
+
+
+
+
+    <style>
+
+    </style>
+
+    <h:form id="form">
+
+
+        <rich:panel>
+            <h:panelGrid columns="1">
+                <c:forEach var="item" items="#{userBean.comboboxItems}">
+                    <h:column>
+                        <rich:comboBox value="#{item.comboboxValue}" suggestionValues="#{item.comboboxSuggestionValues}" defaultLabel="Select a city..."/>
+                        <div style="height:200px"></div>
+
+                        <sip:comboBox
+
+                                value="#{item.comboboxValue}"
+                                behaviourStrategy="siperian"
+                                directInputSuggestions="true"
+                                defaultLabel="DefaultLabel"
+                                suggestionValues="#{item.comboboxSuggestionValues}"
+                                selectFirstOnUpdate="true"
+                                enableManualInput="true">
+                        </sip:comboBox>
+                    </h:column>
+                </c:forEach>
+
+
+            </h:panelGrid>
+            <h:panelGrid columns="1">
+                <rich:calendar></rich:calendar>
+            </h:panelGrid>
+            <h:commandButton  value="Submit"></h:commandButton>
+        </rich:panel>
+    </h:form>
+</ui:composition>
+
+</html>

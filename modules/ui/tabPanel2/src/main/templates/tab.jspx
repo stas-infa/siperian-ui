@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:root 
+	xmlns:f="http://ajax4jsf.org/cdk/template" 
+	xmlns:c=" http://java.sun.com/jsf/core" 
+	xmlns:ui=" http://ajax4jsf.org/cdk/ui"
+	xmlns:u=" http://ajax4jsf.org/cdk/u"
+	xmlns:x=" http://ajax4jsf.org/cdk/x"
+	xmlns:vcp="http://ajax4jsf.org/cdk/vcp"
+	class="com.exadel.siperian.renderkit.html.TabRenderer"
+	baseclass="com.exadel.siperian.renderkit.TabRendererBase"
+	component="javax.faces.component.UIComponent" 
+	>
+	
+	<f:clientid var="clientId"/>
+	
+	<div id="#{clientId}" style="#{component.attributes['style']}; #{this:getTabDisplay(context, component)}" class="#{component.attributes['styleClass']}">
+		<vcp:body>
+				<f:call name="renderChildren" />
+		</vcp:body>
+	</div>
+	
+</f:root>

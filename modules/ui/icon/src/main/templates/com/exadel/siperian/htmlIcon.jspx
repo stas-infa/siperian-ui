@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:root 
+	xmlns:f="http://ajax4jsf.org/cdk/template" 
+	xmlns:c=" http://java.sun.com/jsf/core" 
+	xmlns:ui=" http://ajax4jsf.org/cdk/ui"
+	xmlns:u=" http://ajax4jsf.org/cdk/u"
+	xmlns:h=" http://ajax4jsf.org/cdk/h"
+	xmlns:x=" http://ajax4jsf.org/cdk/x"
+	class="com.exadel.siperian.IconRenderer"
+	baseclass="com.exadel.siperian.renderkit.IconRenderBase"
+	component="com.exadel.siperian.component.UIIcon">
+	<h:scripts>
+		new org.ajax4jsf.javascript.PrototypeScript()
+	</h:scripts>
+	<h:styles>
+		/com/exadel/siperian/renderkit/html/css/icon.xcss,
+	</h:styles>
+	<f:clientid var="clientId"/>
+
+	<a href="javascript:void(0);" id="#{clientId}iconLink" style="color:transparent !important">
+    <div id="#{clientId}" class="icon" x:passThruWithExclusions="name,id,class">
+	<jsp:scriptlet>
+		<![CDATA[
+			boolean disabled = getUtils().isBooleanAttribute(component, "disabled");
+			if(!disabled){
+		]]>
+	</jsp:scriptlet> 
+		<div id="#{clientId}container"
+			 class="iconCommon">
+			<table border="0" cellspacing="0" cellpadding="0">
+   				<tr>
+ 					<td class="left"><jsp:scriptlet><![CDATA[writer.write("&#160;&#160;");]]></jsp:scriptlet></td>
+   					<td class="middle">	
+	   						<img id="#{clientId}IconImage" class="iconImage" width="16" height="16" border="0" >
+								<jsp:scriptlet>
+									<![CDATA[
+										String src = getIconURI(context, component);
+										getUtils().writeAttribute(writer, "src", src);	    
+									]]>
+								</jsp:scriptlet> 
+							</img>
+					</td>
+       			    <td class="right"><jsp:scriptlet><![CDATA[writer.write("&#160;&#160;");]]></jsp:scriptlet></td>
+				</tr>
+			</table>
+		</div>
+	<jsp:scriptlet>
+		<![CDATA[
+			}else{
+		]]>
+	</jsp:scriptlet> 
+			<table class="disabled" border="0" cellspacing="0" cellpadding="0">
+   				<tr>
+ 					<td class="left"><jsp:scriptlet><![CDATA[writer.write("&#160;&#160;");]]></jsp:scriptlet></td>
+   					<td class="middle">
+	   						<img id="#{clientId}IconImage" class="iconImage" width="16" height="16" border="0">
+								<jsp:scriptlet>
+									<![CDATA[
+										String src = getIconURI(context, component);
+										getUtils().writeAttribute(writer, "src", src);	    
+									]]>
+								</jsp:scriptlet> 
+							</img>
+					</td>
+       			    <td class="right"><jsp:scriptlet><![CDATA[writer.write("&#160;&#160;");]]></jsp:scriptlet></td>
+				</tr>
+			</table>
+	<jsp:scriptlet>
+		<![CDATA[
+			}
+		]]>
+	</jsp:scriptlet>
+	 
+</div>
+</a>
+</f:root>

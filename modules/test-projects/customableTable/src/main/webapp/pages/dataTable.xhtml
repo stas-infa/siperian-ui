@@ -1,0 +1,76 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j" xmlns:rich="http://richfaces.org/rich"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+	<head>
+		<title>rich:dataTable manipuletion and extJs integration</title>
+<link rel="stylesheet" type="text/css" href="../../css/ext-all.css" />
+		<style type="text/css">
+.table_cell span {
+			display: block;
+			overflow: hidden;
+			text-align: left;
+			white-space: nowrap;
+	         }
+.panel		{
+			width: 90%;
+	         }
+.table		{
+			width: 90%;
+	         }
+.left_panel {
+			width: 250px;
+		         }
+</style>
+<script type="text/javascript" src="../../script/ext-base.js"></script>
+<script type="text/javascript" src="../../script/ext-all.js"></script>
+<script type="text/javascript" src="../../script/from-markup.js"></script>
+	</head>
+	<body>
+<rich:dragIndicator id="indicator" />
+		<h:form id="form">
+			<h:panelGrid columns="2" id="grid" columnClasses="left_panel,right_panel" styleClass="panel">
+				<rich:listShuttle id="selector" var="item"
+					sourceValue="#{capitalsBean.availableColumns}" targetValue="#{capitalsBean.visibleColumns}"
+					converter="columnsConverter">
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Columns" />
+						</f:facet>
+						<h:outputText value="#{item.name}" />
+					</h:column>
+					<a4j:support event="onlistchanged" reRender="gridPanel" />
+					<a4j:support event="onorderchanged" reRender="gridPanel" />
+				</rich:listShuttle>
+				<a4j:outputPanel id="gridPanel" layout="block" >
+				<rich:dataTable value="#{capitalsBean.capitalWrappers}" columnClasses="table_cell"
+					var="cap" id="table" rows="10" styleClass="table">
+					<rich:columns var="cell" value="#{capitalsBean.visibleColumns}" >
+						<f:facet name="header">
+							<h:panelGroup id="columnHead#{cell.order}" layout="block">
+								<rich:dragSupport dragType="column" dragValue="#{cell.order}" dragIndicator=":indicator">
+								</rich:dragSupport>
+								<rich:dropSupport acceptedTypes="column" dropListener="#{capitalsBean.reorder}" dropValue="#{cell.order}" reRender="grid">
+								</rich:dropSupport>
+								<h:outputText id="cellWidth#{cell.order}" value="#{cell.name}"/>
+								<h:inputText value="#{capitalsBean.columnWidths[cell.order]}"  size="4">
+					<a4j:support event="onchange" reRender="gridPanel" eventsQueue="width" requestDelay="500" />
+								</h:inputText>
+							</h:panelGroup>
+						</f:facet>
+						<h:outputText id="cell#{cell.order}" styleClass="table_cell_content" style="width: #{capitalsBean.columnWidths[cell.order]}px ;"
+							value="#{cap[cell.order]}" />
+					</rich:columns>
+				</rich:dataTable>
+				</a4j:outputPanel>
+					<f:facet name="footer">
+						<rich:datascroller id="scr" for="table" reRender="gridPanel"/>
+					</f:facet>
+			</h:panelGrid>
+			<button id="create-grid" type="button">Create Ext-JS grid from DataTable markup</button>			
+			<rich:messages />
+		</h:form>
+	</body>
+</html>

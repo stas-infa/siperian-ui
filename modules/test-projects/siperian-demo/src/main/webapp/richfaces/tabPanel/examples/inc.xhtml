@@ -1,0 +1,28 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:sip="http://siperian.exadel.com/sip">
+<div style="padding: 20px">
+					<h:panelGrid columns="2">
+						<h:outputText value="State Name"/>
+						<h:inputText value="#{cap.state}"/>
+						<h:outputText value="State Capital"/>
+						<h:inputText value="#{cap.name}"/>
+						<h:outputText value="State TimeZone"/>
+						<h:inputText value="#{cap.timeZone}"/>
+					</h:panelGrid><br/>
+					</div>
+					<div style="padding: 10px">
+						<a4j:commandLink style="color: green;" value="Set Long Running" 
+								onclick="#{rich:component('tapPanel')}.setLongRunning('#{cap.name}');"
+								reRender="pushId, label#{i.index}"
+								actionListener="#{capitalsBean.addLongRunning}">
+								<a4j:actionparam name="_long_running_tab_name" value="#{cap.name}"></a4j:actionparam>
+								<a4j:actionparam name="_long_running_rerender_id" value="tabc#{i.index}, label#{i.index}"></a4j:actionparam>
+						</a4j:commandLink>
+					</div>
+</ui:composition>

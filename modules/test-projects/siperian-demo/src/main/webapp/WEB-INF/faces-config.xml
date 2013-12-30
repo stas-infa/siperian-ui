@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<!DOCTYPE faces-config PUBLIC "-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.1//EN"
+                              "http://java.sun.com/dtd/web-facesconfig_1_1.dtd">
+<faces-config>
+
+	<managed-bean>
+		<managed-bean-name>skinBean</managed-bean-name>
+		<managed-bean-class>com.siperian.demo.common.SkinBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>skin</property-name>
+			<property-class>java.lang.String</property-class>
+			<value>blueSky</value>
+		</managed-property>
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>componentNavigator</managed-bean-name>
+		<managed-bean-class>com.siperian.demo.common.ComponentNavigator</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>extendedDataTableBean</managed-bean-name>
+		<managed-bean-class>com.siperian.demo.extendedDataTable.beans.ExtendedDataTableBB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>extendedDataTableControlBean</managed-bean-name>
+		<managed-bean-class>com.siperian.demo.extendedDataTable.beans.ExtendedDataTableControlBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>capitalsBean</managed-bean-name>
+		<managed-bean-class>com.siperian.demo.capitals.CapitalsBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>userBean</managed-bean-name>
+		<managed-bean-class>com.siperian.demo.user.UserBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>versionBean</managed-bean-name>
+		<managed-bean-class>com.siperian.demo.common.VersionBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>extendedDataTableTaskBean</managed-bean-name>
+		<managed-bean-class>com.siperian.demo.extendedDataTable.beans.ExtendedDataTableTaskBB</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+		<managed-property>
+			<property-name>dataModel</property-name>
+			<property-class>org.ajax4jsf.model.ExtendedDataModel</property-class>
+			<value>#{extendedDataTableModel}</value>
+		</managed-property>
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>extendedDataTableModel</managed-bean-name>
+		<managed-bean-class>com.siperian.demo.extendedDataTable.model.task.ModifiableDataModel</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>dataProvider</property-name>
+			<property-class>com.siperian.demo.extendedDataTable.model.task.DataProviderImpl</property-class>
+			<value>#{taskDataProvider}</value>
+		</managed-property>
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>taskDataProvider</managed-bean-name>
+		<managed-bean-class>com.siperian.demo.extendedDataTable.model.task.CachedDataProviderImpl</managed-bean-class>
+		<!-- 	<managed-bean-class>
+			com.siperian.demo.extendedDataTable.model.task.DataProviderImpl
+			</managed-bean-class>-->
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>eventProvider</managed-bean-name>
+		<managed-bean-class>com.siperian.demo.extendedDataTable.model.impl.PushBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>verticalScroller</managed-bean-name>
+		<managed-bean-class>com.siperian.demo.extendedDataTable.verticalScroller.VerticalScrollerBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>tabPanelBean</managed-bean-name>
+		<managed-bean-class>com.siperian.demo.tabPanel.TabPanelBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>toolBarBean</managed-bean-name>
+		<managed-bean-class>com.siperian.demo.toolBar.ToolBarBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>logBean</managed-bean-name>
+		<managed-bean-class>com.siperian.demo.common.LogBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>timeLineBean</managed-bean-name>
+		<managed-bean-class>com.siperian.demo.timeline.TimeLineBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<converter>
+		<converter-id>CustomConverter</converter-id>
+		<converter-class>com.siperian.demo.user.CustomConverter</converter-class>
+	</converter>
+	<lifecycle>
+		<phase-listener>com.siperian.demo.user.ModalPanelPhaseListener</phase-listener>
+	</lifecycle>
+
+	<application>
+		<message-bundle>com.siperian.demo.messages</message-bundle>
+		<locale-config>
+			<default-locale>en</default-locale>
+			<supported-locale>ru</supported-locale>
+			<supported-locale>de</supported-locale>
+		</locale-config>
+	</application>
+</faces-config>

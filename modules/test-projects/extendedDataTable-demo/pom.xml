@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.exadel.siperian</groupId>
+        <artifactId>test-projects</artifactId>
+		<version>9.5-SNAPSHOT</version>	
+	</parent>
+
+  <groupId>com.exadel.siperian.test-projects</groupId>
+  <artifactId>extendedDataTable-sample</artifactId>
+  <packaging>war</packaging>
+  <name>Siperian extendedDataTable-sample Maven Webapp</name>
+  <build>
+    <finalName>extendedDataTable-sample</finalName>
+  </build>
+  <dependencies>
+    <dependency>
+      <groupId>com.exadel.siperian.ui</groupId>
+      <artifactId>extendedDataTable</artifactId>
+      <version>9.5-SNAPSHOT</version>   
+    </dependency>
+  </dependencies>
+</project>

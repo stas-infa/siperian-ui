@@ -1,0 +1,384 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:sip="http://siperian.exadel.com/sip">
+<ui:composition>
+	<style>
+html,body {
+	height: 100%;
+}
+
+body {
+	margin: 0;
+}
+.timeLineClass{
+	overflow:auto; 
+	height:250px;
+}
+</style>
+	<f:verbatim>
+
+
+
+		<script type="text/javascript">
+		var flashId = "form:timlineFlash";
+		function switchEvents() {
+			var value = document.getElementById('eventTypesCheckBoxes');
+			if(value!=void(0)){
+				var values = value.getElementsByTagName("input");
+				var json='{';
+				//var hash= new Object;
+				var isFirst = true;
+				for(var i in values){
+					var inp  = values[i];
+					if(inp.type=="checkbox"){
+						if(!isFirst){
+							json+=',';
+						}
+						json+=inp.id+':'+inp.checked;
+						isFirst=false;
+					}
+				}
+				json+='}';
+				//alert('json='+json);
+				var hash= json.evalJSON();
+				
+			}
+		
+			/*for( var j in values){
+				var inp = values[i];
+				if(new Boolean(inp.checked)){
+					TimelineUtil.showEventType(this.flashComponent,inp);
+				}else{
+				   TimelineUtil.hideEventType(this.flashComponent,inp);
+				}
+			}*/
+			
+			
+			FlashTimeline.getComponent(flashId).switchEventTypes(hash);
+		}	
+		function getVisibleInt() {
+			var callResult = FlashTimeline.getComponent(flashId).getVisibleInterval();
+			document.getElementById('inputText').value = callResult.fromDateNumber;
+			document.getElementById('inputText2').value = callResult.toDateNumber;
+		}
+		function setVisibleInt() {
+			var dateFrom = $('form:viewFrom').component.getSelectedDate();
+			var dateTo   = $('form:viewTo').component.getSelectedDate();
+		
+			FlashTimeline.getComponent(flashId).setVisibleInterval(dateFrom==void(0) ? null : dateFrom,dateTo == null ? null : dateTo);
+		}
+		function getVisibleEventsNumber() {
+			var dateFrom = $('form:numberViewFrom').component.getSelectedDate();
+			var dateTo   = $('form:numberViewTo').component.getSelectedDate();
+			
+			var callResult = FlashTimeline.getComponent(flashId).getVisibleEventsNumber(dateFrom == void(0) ? null : dateFrom, dateTo == void(0) ? null : dateTo);
+			$('form:visibleEventsCallResult').value=callResult;
+			//document.getElementById('inputText').value = callResult;
+		}
+		function menuItemHandler(text){
+			alert(text);
+		}
+		
+		function showEventType() {
+		
+			var callResult = FlashTimeline.getComponent(flashId).showEventType($F('showSelect'));
+		}
+		function hideEventType() {
+	
+			var callResult = FlashTimeline.getComponent(flashId).hideEventType($F('hideSelect'));
+		}
+		function onzoomerChange(){
+			//alert('onzoomerChange');
+			var fromCalendar = $('form:topFromCalendar').component;
+			var toCalendar   = $('form:topToCalendar').component;
+			var visibleInterval = FlashTimeline.getComponent(flashId).getVisibleInterval();
+			fromCalendar.selectDate(visibleInterval.fromDate,false,null); 
+			toCalendar.selectDate(visibleInterval.toDate,false,null); 
+		
+		}
+		function ontimelineinit(){
+			onzoomerChange();
+		}
+	
+
+	
+	</script>
+
+	</f:verbatim>
+
+			<sip:modalPanel id="mp22" autosized="true" minWidth="200" zindex="22300"
+                    panelDOMAttachment="body" onbeforeshow="return;" onbeforehide="return;">
+         
+              <a href="javascript:void(0)"     onclick="Siperian.hideModalPanel('mp22'); return false;">
+					Me hide
+		  	   </a>
+
+        </sip:modalPanel>
+	<a href="javascript:void(0);" onclick="Siperian.showModalPanel('mp')">Open</a>
+	<a4j:outputPanel ajaxRerendered="true">
+		<script type="text/javascript">
+			function showRuler(){
+				var date = 1155815160000;"#{timeLineBean.date}";
+				alert("date="+date);	
+				FlashTimeline.getComponent(flashId).setVerticalRuller(date);
+			}
+			function hideRuler(){
+				FlashTimeline.getComponent(flashId).hideVerticalRuller();
+			}
+		</script>
+	</a4j:outputPanel>
+	<sip:modalPanel minHeight="800" minWidth="900" autosized="true" id="mp" >
+
+		<h:form id="form">
+
+		<rich:panel>
+			<f:facet name="header">
+				<h:outputText value="Timeline options">
+
+				</h:outputText>
+			</f:facet>
+		<a href="javascript:void(0)" onclick="FlashTimeline.getComponent(flashId).removeEventHandlers();return false;">Remove event handler</a>
+			<a4j:outputPanel ajaxRendered="true">
+				<h:panelGrid columns="1">
+					<h:messages></h:messages>
+				</h:panelGrid>
+			</a4j:outputPanel>
+			<a4j:outputPanel id="realDates" >
+				<h:panelGrid columns="1">
+					<h:outputText value="N/A" rendered="#{timeLineBean.swfData.fromDateWithIndent==null}"/>
+
+					<h:outputText value="N/A" rendered="#{timeLineBean.swfData.toDateWithIndent == null}"/>
+
+					<h:outputText value="Date From: #{timeLineBean.swfData.fromDateWithIndent}" rendered="#{timeLineBean.swfData.fromDateWithIndent!=null}">
+						<f:convertDateTime pattern="MM/dd/yyyy HH:mm"/>
+					</h:outputText>
+					<h:outputText value="Date to: #{timeLineBean.swfData.toDateWithIndent}" rendered="#{timeLineBean.swfData.toDateWithIndent !=null}">
+						<f:convertDateTime pattern="MM/dd/yyyy HH:mm" />
+					</h:outputText>
+				</h:panelGrid>
+			</a4j:outputPanel>
+			<h:panelGrid columns="2">
+				<h:column>
+					<h:outputText value="From date1:"></h:outputText>
+				</h:column>
+				<h:column>
+					<rich:calendar id="topFromCalendar" value="#{timeLineBean.zoomerFromDate}"
+						datePattern="MM/dd/yyyy HH:mm" mode="client"></rich:calendar>
+				</h:column>
+				<h:column>
+					<h:outputText value="To date:"></h:outputText>
+				</h:column>
+				<h:column>
+					<rich:calendar id="topToCalendar" value="#{timeLineBean.zoomerToDate}"
+						datePattern="MM/dd/yyyy HH:mm" mode="client">
+					</rich:calendar>
+				</h:column>
+				<h:column>
+					<a4j:commandButton actionListener="#{timeLineBean.actionListener}"
+						reRender="swfTimeLinePanel" value="Show Xml" />
+				<a4j:commandLink 
+						reRender="swfTimeLinePanel" value="ReRender" />
+
+				</h:column>
+			</h:panelGrid>
+			<h:panelGrid columns="2">
+				<h:outputText value="Count of swim lines:"></h:outputText>
+				<h:selectOneMenu value="#{timeLineBean.countOfSwimLines}">
+					<f:selectItems value="#{timeLineBean.swimLineValues}" />
+				</h:selectOneMenu>
+			</h:panelGrid>
+		</rich:panel>
+		<a4j:outputPanel ajaxRendered="true" >		
+		<rich:panel rendered="#{not empty timeLineBean.swfData.clickedEventIds}">
+			<f:facet name="header">
+				<h:outputText value="Last clicked event ids">
+
+				</h:outputText>
+			</f:facet>
+			<ui:repeat value="#{timeLineBean.swfData.clickedEventIds}" var="event">
+				<h:outputText value=" #{event}  " style="color:red;font-weight:bold;"/>
+			</ui:repeat>
+		</rich:panel>
+		</a4j:outputPanel>
+
+		<a4j:outputPanel ajaxRendered="false" id="swfTimeLinePanel"
+			>
+		
+			<sip:timeline dataModel="#{timeLineBean.swfData}" 
+				fromDate="#{timeLineBean.fromDate}"
+				timelineState="#{timeLineBean.state}"
+				toDate="#{timeLineBean.toDate}" 
+				styleClass="timeLineClass"
+				eventMenuId="#{rich:clientId('eventMenu')}"
+				popupMenuId="#{rich:clientId('timelineMenu')}"
+				globalMenuItems="Global Menu1:menuItemHandler('Global Menu 1 Click');Global Menu2:menuItemHandler('Global Menu 2 Click');"
+				eventMenuItems="Event Menu1:menuItemHandler('Event Menu 1 Click');Event Menu2:menuItemHandler('Event Menu 2 Click');"
+				ontimelineinit="ontimelineinit()"
+				onzoomerchange="onzoomerChange()"
+				groupStyleClass="group"
+				groupHoverStyleClass="hovergroup"
+				groupSelectedStyleClass="selectedgroup"
+				maxDisplaedEventsInToolTip="2"
+				showFlashPlayerInstall="true"
+				eventInterval="5px"
+				timlineStylesheet="${facesContext.externalContext.requestContextPath}/css/timeline.css"
+				zoomerIndent="10"
+				id="timlineFlash" />
+		
+			<a4j:commandButton style="display:none"
+				oncomplete="showRuler();"
+				ajaxSingle="true"
+				id="hiddenAjaxButton"
+				></a4j:commandButton>
+		
+			<rich:contextMenu attached="false" id="eventMenu" submitMode="none">
+				<rich:menuItem value="Zoom In"
+					onclick="FlashTimeline.getComponent(flashId).zoomIn(2);document.getElementById('form:hiddenAjaxButton').click();"
+					id="zin1"></rich:menuItem>
+				<rich:menuItem value="Zoom Out"
+					onclick="FlashTimeline.getComponent(flashId).zoomOut(2);document.getElementById('form:hiddenAjaxButton').click();"
+					id="zout1"></rich:menuItem>
+				<rich:menuItem value="Show Ruller"
+					onclick="document.getElementById('form:hiddenAjaxButton').click();"
+					id="showRuller1"></rich:menuItem>
+				<rich:menuItem value="Hide Ruller"
+					onclick="hideRuler();return false;"
+					id="hideRuller1"></rich:menuItem>
+			</rich:contextMenu>
+			<rich:contextMenu attached="false" id="timelineMenu"
+				submitMode="none">
+				<rich:menuItem value="11111111Global Zoom In"
+					onclick="Siperian.showModalPanel('mp22');return false;"
+					id="zin2"></rich:menuItem>
+				<rich:menuItem value="Global Zoom Out"
+					onclick="FlashTimeline.getComponent(flashId).zoomOut(2);return false;"
+					id="zout2"></rich:menuItem>
+			</rich:contextMenu>
+		</a4j:outputPanel>
+		<rich:panel id="additionalOptions">
+			<f:facet name="header">
+				<h:outputText value="Timeline additional options" />
+			</f:facet>
+			<h:panelGrid columns="3">
+				<h:column>
+					<a4j:commandButton id="getVisibleInt" value="Get Visible Interval"
+						onclick="getVisibleInt();return false" reRender="swfTimeLinePanel" />
+
+				</h:column>
+				<h:column>
+					<input type="text" id="inputText" value=""/>
+				</h:column>
+				<h:column>
+					<input type="text" id="inputText2" value=""/>
+				</h:column>
+			</h:panelGrid>
+			<h:panelGrid columns="4">
+				<h:column>
+					<a4j:commandButton id="visibleEventsNumber"
+						value="Get Visible Events Number"
+						onclick="getVisibleEventsNumber();return false;"
+						reRender="swfTimeLinePanel" />
+
+				</h:column>
+				<h:column>
+					<rich:calendar id="numberViewFrom" mode="client"
+						datePattern="MM/dd/yyyy" />
+
+				</h:column>
+				<h:column>
+					<rich:calendar id="numberViewTo" mode="client"
+						datePattern="MM/dd/yyyy" />
+				</h:column>
+				<h:column>
+					<h:inputText id="visibleEventsCallResult" value="" size="4"
+						maxlength="4"></h:inputText>
+				</h:column>
+			</h:panelGrid>
+
+			<h:panelGrid columns="3">
+
+				<a4j:commandButton id="setVisibleIntButton"
+					value="Set Visible Interval" onclick="setVisibleInt();return false" />
+
+				<rich:calendar id="viewFrom" datePattern="MM/dd/yyyy HH:mm" mode="ajax" reRender="realDates">
+					
+				</rich:calendar>
+
+				<rich:calendar id="viewTo" mode="ajax" datePattern="MM/dd/yyyy HH:mm" />
+			</h:panelGrid>
+
+			<h:panelGrid columns="2">
+				<h:column>
+					<a4j:commandButton id="showEventTypeButton" value="Show Event type"
+						onclick="showEventType();return false" />
+				</h:column>
+				<h:column>
+					<select id="showSelect">
+						<c:forEach var="item" items="#{timeLineBean.swfData.eventTypes}">
+							<option name="#{item.eventTypeId}">#{item.eventTypeId}</option>
+						</c:forEach>
+					</select>
+				</h:column>
+			</h:panelGrid>
+			<h:panelGrid columns="2">
+				<h:column>
+					<a4j:commandButton id="hideEventTypeButton" value="Hide Event type"
+						onclick="hideEventType();return false" />
+				</h:column>
+				<h:column>
+					<select id="hideSelect">
+						<c:forEach var="item" items="#{timeLineBean.swfData.eventTypes}">
+							<option name="#{item.eventTypeId}">#{item.eventTypeId}</option>
+						</c:forEach>
+					</select>
+				</h:column>
+
+
+			</h:panelGrid>
+
+
+			<h:panelGrid columns="1">
+				<h:column>
+					<a4j:commandButton type="button" id="zoomIn" value="Zoom In"
+						onclick="FlashTimeline.getComponent(flashId).zoomIn(1.2);return false;" />
+				</h:column>
+				<h:column>
+					<a4j:commandButton type="button" id="zoomOut" value="Zoom Out"
+						onclick="FlashTimeline.getComponent(flashId).zoomOut(1.2);return false" />
+				</h:column>
+			</h:panelGrid>
+			<h:panelGrid columns="2">
+				<h:column>
+					<a4j:commandButton id="switchEventTypesButton"
+						value="Switch Event Type" onclick="switchEvents();return false" />
+				</h:column>
+				<h:column>
+					<div id="eventTypesCheckBoxes"><c:forEach var="item"
+						items="#{timeLineBean.swfData.eventTypes}">
+						<h:outputText value="#{item.eventTypeId}" />
+						<input id="#{item.eventTypeId}" type="checkbox" checked="true" />
+					</c:forEach></div>
+				</h:column>
+			</h:panelGrid>
+
+
+		</rich:panel>
+		<rich:panel>
+
+		</rich:panel>
+
+
+	</h:form>
+	</sip:modalPanel>
+
+
+</ui:composition>
+
+</html>

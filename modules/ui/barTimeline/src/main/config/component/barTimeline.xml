@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE components PUBLIC "-//AJAX4JSF//CDK Generator config/EN"  "http://labs.jboss.com/jbossrichfaces/component-config.dtd">
+
+<components>
+	<component>
+		<name>com.exadel.siperian.BarTimeline</name>
+		<family>com.exadel.siperian.Timeline</family>
+		<classname>
+			com.exadel.siperian.component.html.HtmlBarTimeline
+		</classname>
+		<superclass>
+			com.exadel.siperian.component.UIBarTimeline
+		</superclass>
+		<description>"src/main/config/component/barTimeline.xml"
+			<![CDATA[
+  	]]>
+		</description>
+		<renderer generate="true" override="true">
+			<name>com.exadel.siperian.BarTimelineRenderer</name>
+			<template>htmlBarTimeline.jspx</template>
+		</renderer>
+		<tag>
+			<name>barTimeline</name>
+			<classname>
+				com.exadel.siperian.taglib.BarTimelineTag
+			</classname>
+			<superclass>
+				org.ajax4jsf.webapp.taglib.HtmlComponentTagBase
+			</superclass>
+		</tag>
+		<property>
+			<name>locale</name>
+			<classname>java.lang.Object</classname>
+			<defaultvalue>"en_EN"</defaultvalue>
+		</property>
+		<property>
+			<name>width</name>
+			<classname>java.lang.String</classname>
+			<defaultvalue>"100%"</defaultvalue>
+		</property>
+		<property>
+			<name>height</name>
+			<classname>java.lang.String</classname>
+			<defaultvalue>"250"</defaultvalue>
+		</property>
+		<property>
+			<name>styleClass</name>
+			<classname>java.lang.String</classname>
+		</property>
+		<property>
+			<name>dataModel</name>
+			<classname>com.exadel.siperian.model.BarTimelineDataModel</classname>
+		</property>
+		<property>
+			<name>flashWmode</name>
+			<classname>java.lang.String</classname>
+			<defaultvalue>"transparent"</defaultvalue>
+		</property>
+		<property>
+			<name>timelineStylesheet</name>
+			<classname>java.lang.String</classname>
+			<description>path to the file where template for the group tooltip located.</description>
+		</property>
+		<property>
+			<name>ontimelineinit</name>
+			<classname>java.lang.String</classname>
+			<description>js handler</description>
+		</property>
+		<property>
+			<name>oncontextmenu</name>
+			<classname>java.lang.String</classname>
+			<description>js handler</description>
+		</property>
+		<property>
+			<name>onzoomerchange</name>
+			<classname>java.lang.String</classname>
+			<description>js handler</description>
+		</property>
+	</component>
+</components>

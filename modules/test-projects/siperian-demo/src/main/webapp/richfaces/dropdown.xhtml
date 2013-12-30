@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+<ui:composition template="/templates/main.xhtml">
+	<ui:define name="title">Drop Down Menu</ui:define>
+	<ui:define name="body">
+	
+		<style type="text/css">
+.empty {
+	
+}
+#linkDiv{}
+#linkDiv 
+.dr-toolbar-ext{
+	background-color: undefined !important;
+	background-image:none !important;
+	background-position: none none !important;
+	border: 0px none none !important;
+	
+}
+.dr-toolbar-int{
+	padding:0px;
+}
+.menu_item_link {}
+.menu_item_link a{	font-family:Verdana,; font-size:11px;  color:#524342; text-decoration : none;font-weight:normal;}
+.menu_item_link  a:hover{font-family:Verdana; font-size:11px; color:#524342; text-decoration : none;}
+
+
+.shell_bluetoolbar_exterior {
+	height: 22px;
+	width: 100%;
+	background:
+		url(#{facesContext.externalContext.request.contextPath}/images/shell_bg_bluetoolbar.gif)
+		repeat-x top left #BFCEE8;
+	position: relative;
+}
+    .pic {
+        margin-bottom: -4px;
+        margin-right: 2px;
+    }
+
+   .rich-ddmenu-label-select{
+    	background-color: #7e99bf !important;
+    	background-image: url('#{facesContext.externalContext.request.contextPath}/images/ddm_selected.gif') !important;
+    	background-repeat:repeat-x !important;
+    	background-position: top left !important;
+    	width:100% !important;
+   		height:100% !important;
+   		border: 0px none !important;
+   		padding-top: 4px !important;
+   		padding-bottom: 4px !important;		
+   		padding-right:0px !important;
+   		padding-left:2px !important;   		
+   		color:#FFFFFF !important;   		
+    }
+   div.rich-ddmenu-label-select div.sip-menu-item-img{
+   		background-image: url('#{facesContext.externalContext.request.contextPath}/images/ddm_arrow_selected.gif')
+   }
+    
+   .rich-ddmenu-label-unselect{		
+       	padding-top: 4px !important;
+       	padding-bottom: 4px !important;
+   		padding-right:0px !important;
+   		padding-left:2px !important;
+		color:#524342 !important; 
+		width: 100% !important;  		
+    }
+	div.rich-ddmenu-label-unselect div.sip-menu-item-img{
+		background-image: url('#{facesContext.externalContext.request.contextPath}/images/ddm_arrow.gif')		
+	}    
+    .dr-menu-label{
+    	padding-left:5px;
+    }
+    .dr-label-text-decor{
+    	font-family:Verdana;
+    	font-size:12px;
+    	font-weight:normal;
+
+    
+    }
+    .dr-menu-list-border_my{
+    	border:0px !important;
+    	display: none !important;
+    }
+	.sip-menu-item-img{
+		background-position: right center;
+		background-repeat: no-repeat;
+		padding-right: 13px;
+		
+	}
+
+</style>
+
+		<a4j:loadStyle
+			src="resource:///com/siperian/demo/dropdown/menucomponents.xcss" />
+	<a4j:loadStyle
+			src="resource:///com/siperian/demo/dropdown/toolBar.xcss" />
+
+		<h:form id="dropdownmenu_form">
+			<div class="shell_bluetoolbar_exterior">
+
+			<rich:toolBar id="data"
+				separatorClass="separator_sip"
+				itemSeparator="/images/ddm_divider.gif" style="background-color: transparent;
+	background-image:url(#{facesContext.externalContext.request.contextPath}/images/shell_bg_bluetoolbar.gif) !important;
+	background-position: top left !important;
+	background-repeat:repeat-x;
+	border: 0px;!important;">
+			
+				
+					<rich:dropDownMenu id="ddmenu1" submitMode="ajax" showDelay="100000000">
+						<f:facet name="label">
+						<h:panelGroup>
+							<h:outputText value="Group 1" escape="false"/>					
+						</h:panelGroup>
+					</f:facet>
+					</rich:dropDownMenu>
+			
+				<rich:dropDownMenu id="ddmenu2" submitMode="ajax"  selectItemClass="dr-menu-label-select,rich-ddmenu-label-select"																							
+						onmousemove="RichFaces.Menu.Items.replaceClasses($(this),['dr-menu-label-unselect', 'rich-ddmenu-label-unselect'], ['dr-menu-label-select','rich-ddmenu-label-select'])">
+					<f:facet name="label">
+						<h:panelGroup styleClass="sip-menu-item-img" layout="block">
+							<h:outputText value="Group 2 " escape="false"/>							
+						</h:panelGroup>
+					</f:facet>
+					<rich:menuItem value="Item 1" ajaxSingle="true" />
+					<rich:menuGroup value="Item 2...">
+						<rich:menuItem submitMode="ajax" value="Save" />
+						<rich:menuItem submitMode="ajax" value="Save All" />
+					</rich:menuGroup>
+					<rich:menuItem value="Item 2" ajaxSingle="true" />
+					<rich:menuItem value="Item 3" ajaxSingle="true" />
+					<rich:menuItem value="Item 4" ajaxSingle="true" />
+				</rich:dropDownMenu>
+				<rich:dropDownMenu  id="ddmenu3" submitMode="ajax"
+						onmousemove="RichFaces.Menu.Items.replaceClasses($(this),['dr-menu-label-unselect', 'rich-ddmenu-label-unselect'], ['dr-menu-label-select','rich-ddmenu-label-select'])">
+					<f:facet name="label">
+						<h:panelGroup styleClass="sip-menu-item-img" layout="block">					
+								<h:outputText value="Group 3 Group 3 Group3 long"/>
+						</h:panelGroup>
+					</f:facet>
+					<rich:menuGroup value="Item 1...">
+						<rich:menuItem submitMode="ajax" value="Load" />
+					</rich:menuGroup>
+				</rich:dropDownMenu>
+			</rich:toolBar>
+			
+			</div>
+		
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+</html>

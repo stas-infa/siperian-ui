@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:root xmlns:f="http://ajax4jsf.org/cdk/template"
+	xmlns:c=" http://java.sun.com/jsf/core"
+	xmlns:ui=" http://ajax4jsf.org/cdk/ui"
+	xmlns:u=" http://ajax4jsf.org/cdk/u"
+	xmlns:x=" http://ajax4jsf.org/cdk/x"
+	xmlns:h="http://jsf.exadel.com/header"
+	xmlns:vcp="http://ajax4jsf.org/cdk/vcp"
+	baseclass="org.ajax4jsf.renderkit.AjaxCommandRendererBase"
+	class="com.exadel.siperian.renderkit.html.HtmlSipAjaxButtonRenderer"
+	component="org.ajax4jsf.component.UIAjaxCommandLink">
+	<h:styles>
+		/com/exadel/siperian/renderkit/html/css/button.xcss,
+	</h:styles>
+	<h:scripts>
+		new org.ajax4jsf.javascript.PrototypeScript(),
+		scripts/button.js
+	</h:scripts>
+	<f:clientid var="clientId" />
+	<jsp:declaration><![CDATA[
+	                          
+	//TODO nick - move this to Java code                          
+    public void encodeIcon(FacesContext context, UIComponent component) throws IOException {
+    	ResponseWriter writer = context.getResponseWriter();
+    	String icon =	(String) component.getAttributes().get("icon");
+		if(icon != null){
+			icon = context.getApplication().getViewHandler().getResourceURL(context, icon);
+			icon = context.getExternalContext().encodeResourceURL(icon);
+			writer.startElement("img", component);
+			
+			//TODO nick - img requires "alt" attribute
+			
+			writer.writeURIAttribute("src", icon, null);
+			writer.writeAttribute("width", "9", null);
+			writer.writeAttribute("height", "9", null);
+			writer.endElement("img");
+		}
+    }
+	]]></jsp:declaration>
+	<!-- TODO nick - not used anywhere -->
+	<f:resource name="/com/exadel/siperian/renderkit/html/images/st.png" var="icon" />
+	<f:resource name="/com/exadel/siperian/renderkit/html/images/clear.gif" var="clear" />
+	<jsp:scriptlet>
+	</jsp:scriptlet>
+	<!-- TODO nick - what this table is for? -->
+<table border="0" cellspacing="0" cellpadding="0"><!-- TODO nick - TBODY is missing --><tr><td>	
+	<div id="#{clientId}" class="button">
+	<jsp:scriptlet>
+		<![CDATA[
+		    //TODO nick - can be rewritten without scriptlet at all     
+			if (getUtils().isBooleanAttribute(component, "disabled")) {
+		]]>		                                               
+	</jsp:scriptlet>
+    			<table class="disabled" border="0" cellspacing="0" cellpadding="0"><!-- TODO nick - TBODY is missing -->
+    				<tr>
+  						<td class="left"><jsp:scriptlet><![CDATA[writer.write("&#160;&#160;&#160;");]]></jsp:scriptlet></td>
+    					<td class="middle"><jsp:scriptlet>encodeIcon(context, component);</jsp:scriptlet>#{this:getValue(component)}</td>
+        			    <td class="right"><jsp:scriptlet><![CDATA[writer.write("&#160;&#160;&#160;");]]></jsp:scriptlet></td>
+					</tr>
+				</table>
+	<jsp:scriptlet>
+		<![CDATA[
+			} else {
+		]]>
+	</jsp:scriptlet>    
+				<!-- TODO nick - A element cannot contain table -->
+    			<a id="#{clientId}container"
+    				href="#"
+    				class="inactive"
+    				onclick="#{this:getOnClick(context,component)}"
+    				x:passThruWithExclusions="value,name,onclick,href,id,class"><!-- TODO nick - styleClass shouldn't be encoded also -->
+    				<table border="0" cellspacing="0" cellpadding="0"><!-- TODO nick - TBODY is missing -->
+    					<tr>
+  							<td class="left"><jsp:scriptlet><![CDATA[writer.write("&#160;&#160;&#160;");]]></jsp:scriptlet></td>
+    						<td class="middle"><jsp:scriptlet>encodeIcon(context, component);</jsp:scriptlet>#{this:getValue(component)}</td>
+        				    <td class="right"><jsp:scriptlet><![CDATA[writer.write("&#160;&#160;&#160;");]]></jsp:scriptlet></td>
+						</tr>
+					</table>
+				</a>
+	<jsp:scriptlet>
+		<![CDATA[
+			}
+		]]>
+	</jsp:scriptlet>
+	<script type="text/javascript">
+			new Button("#{clientId}", '#{clear}');
+	</script>
+	</div>
+</td></tr></table>
+</f:root>

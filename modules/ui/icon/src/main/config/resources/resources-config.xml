@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resource-config>
+ <resource class="com.exadel.siperian.renderkit.html.images.DoubleDownDisabledIcon">
+  <name>com.exadel.siperian.renderkit.html.images.DoubleDownDisabledIcon.png</name>
+ </resource>
+  <resource class="com.exadel.siperian.renderkit.html.images.DoubleDownIcon">
+  <name>com.exadel.siperian.renderkit.html.images.DoubleDownIcon.png</name>
+ </resource>
+  <resource class="com.exadel.siperian.renderkit.html.images.DoubleLeftDisabledIcon">
+  <name>com.exadel.siperian.renderkit.html.images.DoubleLeftDisabledIcon.png</name>
+ </resource>
+  <resource class="com.exadel.siperian.renderkit.html.images.DoubleLeftIcon">
+  <name>com.exadel.siperian.renderkit.html.images.DoubleLeftIcon.png</name>
+ </resource>
+  <resource class="com.exadel.siperian.renderkit.html.images.DoubleRightDisabledIcon">
+  <name>com.exadel.siperian.renderkit.html.images.DoubleRightDisabledIcon.png</name>
+ </resource>
+  <resource class="com.exadel.siperian.renderkit.html.images.DoubleRightIcon">
+  <name>com.exadel.siperian.renderkit.html.images.DoubleRightIcon.png</name>
+ </resource>
+  <resource class="com.exadel.siperian.renderkit.html.images.DoubleUpDisabledIcon">
+  <name>com.exadel.siperian.renderkit.html.images.DoubleUpDisabledIcon.png</name>
+ </resource>
+  <resource class="com.exadel.siperian.renderkit.html.images.DoubleUpIcon">
+  <name>com.exadel.siperian.renderkit.html.images.DoubleUpIcon.png</name>
+ </resource>
+  <resource class="com.exadel.siperian.renderkit.html.images.SingleDownDisabledIcon">
+  <name>com.exadel.siperian.renderkit.html.images.SingleDownDisabledIcon.png</name>
+ </resource>
+  <resource class="com.exadel.siperian.renderkit.html.images.SingleDownIcon">
+  <name>com.exadel.siperian.renderkit.html.images.SingleDownIcon.png</name>
+ </resource>
+  <resource class="com.exadel.siperian.renderkit.html.images.SingleLeftDisabledIcon">
+  <name>com.exadel.siperian.renderkit.html.images.SingleLeftDisabledIcon.png</name>
+ </resource>
+  <resource class="com.exadel.siperian.renderkit.html.images.SingleLeftIcon">
+  <name>com.exadel.siperian.renderkit.html.images.SingleLeftIcon.png</name>
+ </resource>
+  <resource class="com.exadel.siperian.renderkit.html.images.SingleRightDisabledIcon">
+  <name>com.exadel.siperian.renderkit.html.images.SingleRightDisabledIcon.png</name>
+ </resource>
+  <resource class="com.exadel.siperian.renderkit.html.images.SingleRightIcon">
+  <name>com.exadel.siperian.renderkit.html.images.SingleRightIcon.png</name>
+ </resource>
+  <resource class="com.exadel.siperian.renderkit.html.images.SingleUpDisabledIcon">
+  <name>com.exadel.siperian.renderkit.html.images.SingleUpDisabledIcon.png</name>
+ </resource>
+  <resource class="com.exadel.siperian.renderkit.html.images.SingleUpIcon">
+  <name>com.exadel.siperian.renderkit.html.images.SingleUpIcon.png</name>
+ </resource>
+</resource-config>

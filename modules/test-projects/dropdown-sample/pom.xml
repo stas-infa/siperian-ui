@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.exadel.siperian</groupId>
+		<artifactId>test-projects</artifactId>
+		<version>${siperian-ui.version}</version>
+	</parent>
+	<groupId>com.exadel.siperian.test-projects</groupId>
+	<artifactId>dropdown-sample</artifactId>
+	<packaging>war</packaging>
+	<name>Siperian Sample dropDownMenu</name>
+
+	<build>
+		<finalName>dropDownMenuSample</finalName>
+	</build>
+	<dependencies>
+		<dependency>
+			<groupId>com.exadel.siperian.ui</groupId>
+			<artifactId>siperian-ui</artifactId>
+			<version>${siperian-ui.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.richfaces.ui</groupId>
+			<artifactId>richfaces-ui</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.richfaces.framework</groupId>
+			<artifactId>richfaces-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.richfaces.framework</groupId>
+			<artifactId>richfaces-impl</artifactId>
+		</dependency>
+	</dependencies>
+</project>

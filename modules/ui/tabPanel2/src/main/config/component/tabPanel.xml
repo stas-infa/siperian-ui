@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE components PUBLIC "-//AJAX4JSF//CDK Generator config/EN"  "http://labs.jboss.com/jbossrichfaces/component-config.dtd"
+[
+<!ENTITY listeners SYSTEM "listener.ent">
+]>
+
+<components>
+	<component>
+		<name>com.exadel.siperian.TabPanel</name>
+		<family>com.exadel.siperian.TabPanel</family>
+		<classname>com.exadel.siperian.component.html.HtmlTabPanel</classname>
+		<superclass>com.exadel.siperian.component.UITabPanel</superclass>
+		<test/>
+		<description>
+			<![CDATA[A tab panel displaying tabs for grouping content of a panel.
+    ]]>
+		</description>
+		<renderer generate="true" override="true">
+			<name>com.exadel.siperian.TabPanelRenderer</name>
+			<template>tabPanel.jspx</template>
+		</renderer>
+		<tag>
+			<name>tabPanel</name>
+			<classname>com.exadel.siperian.taglib.TabPanelTag</classname>
+			<superclass>com.exadel.siperian.taglib.TabPanelTagBase</superclass>
+			<test/>
+		</tag>
+		<taghandler generate="true">
+			<classname>com.exadel.siperian.taglib.TabPanelTagHandler</classname>
+			<superclass>com.exadel.siperian.taglib.TabPanelTagHandlerBase</superclass>
+			
+		</taghandler>
+		&html_attributes;
+	    &html_events;
+		&ui_component_attributes;
+		&ui_input_attributes;
+	    <property>
+	    	<name>converterMessage</name>
+	    	<classname>java.lang.String</classname>
+	    	<description>
+			A ValueExpression enabled attribute that, if present, will be used as the text of the converter message, replacing any message that comes from the converter
+			</description>
+	    </property>
+	    <property>
+	    	<name>requiredMessage</name>
+	    	<classname>java.lang.String</classname>
+	    	<description>
+			A ValueExpression enabled attribute that, if present, will be used as the text of the validation message for the "required" facility, if the "required" facility is used
+			</description>
+	    </property>
+	    <property>
+	    	<name>validatorMessage</name>
+	    	<classname>java.lang.String</classname>
+	    	<description>
+			 	A ValueExpression enabled attribute that, if present, will be used as the text of the validator message, replacing any message that comes from the validator
+			</description>
+	    </property>			
+		<property>
+	    	<name>width</name>
+	    	<classname>java.lang.String</classname>
+	    	<description>Width of a tab panel defined in pixels or in percents. 
+	    	The default value is 100%</description>
+	    	<defaultvalue>"100%"</defaultvalue>
+	    </property>
+	    <property>
+	    	<name>height</name>
+	    	<classname>java.lang.String</classname>
+	    	<description>Height of a tab panel defined in pixels or in percents</description>
+	    	<defaultvalue>"100%"</defaultvalue>
+	    </property>
+	    <property>
+	    	<name>switchType</name>
+	    	<classname>java.lang.String</classname>
+	      <description><![CDATA[Tab switch algorithm: "client", "server"(default), "ajax"]]></description>
+	    	<defaultvalue>DEFAULT_METHOD</defaultvalue>
+	    </property>
+ 		<property hidden="true" >
+			<name>localValueSet</name>
+		</property>
+		<property hidden="true" >
+			<name>valid</name>
+		</property>
+	    <property>
+	    	<name>tabClass</name>
+	    	<classname>java.lang.String</classname>
+	      	<description>A CSS class to be applied to all tabs</description>
+	    </property>
+		<property exist="true" existintag="true">
+			<name>selectedTab</name>
+			<classname>java.lang.Object</classname>
+			<description>Attribute defines name of selected tab</description>
+		</property>		
+	    <property>
+	    	<name>activeTabClass</name>
+	    	<classname>java.lang.String</classname>
+	      	<description>A CSS class to be applied to an active tab</description>
+	    </property>
+	    <property>
+	    	<name>inactiveTabClass</name>
+	    	<classname>java.lang.String</classname>
+	      	<description>CSS class to be applied to an inactive (but not disabled) tab</description>
+	    </property>
+	    <property>
+	    	<name>disabledTabClass</name>
+	    	<classname>java.lang.String</classname>
+	      	<description>A CSS class to be applied to a disabled tab</description>
+	    </property>
+	    <property>
+	    	<name>contentStyle</name>
+	    	<classname>java.lang.String</classname>
+	    	<description>A CSS style is for the content of a tab panel</description>
+	    </property>
+	    <property>
+	    	<name>contentClass</name>
+	    	<classname>java.lang.String</classname>
+	    	<description>A CSS class for content of a tab panel</description>
+	    </property>
+	    <property>
+	    	<name>headerAlignment</name>
+	    	<classname>java.lang.String</classname>
+	    	<description>Sets tab headers alignment. It can be "left" or "right".
+	    		 Default value is &quot;left&quot;.
+	    	</description>
+			<defaultvalue>"left"</defaultvalue>
+	    </property>
+	    <property>
+	    	<name>headerSpacing</name>
+	    	<classname>java.lang.String</classname>
+	    	<description>Sets tab headers spacing. It should be a valid size unit expression. Default value is &quot;1px&quot;.
+	    	</description>
+			<defaultvalue>"1px"</defaultvalue>
+	    </property>
+		<property>
+	    	<name>headerClass</name>
+	    	<classname>java.lang.String</classname>
+	    	<description>A CSS style is for the header of a tab panel.
+	    	</description>
+	    </property>
+	    <property hidden="true">
+	    	<name>renderedValue</name>
+	    	<classname>java.lang.Object</classname>
+	    	<description></description>
+	    </property>
+	    
+	    <property>
+            <name>ontabchange</name>
+            <classname>java.lang.String</classname>
+            <description>
+            	HTML: a script expression; a tab has been changed 
+            </description>
+            <defaultvalue><![CDATA[""]]></defaultvalue>
+        </property>
+        <property>
+			<name>label</name>
+			<classname>java.lang.String</classname>
+			<description>A localized user presentable name for this component.</description>
+		</property>
+		<property>
+			<name>ontabclosed</name>
+			<classname>java.lang.String</classname>
+			<description></description>
+		</property>
+		<property>
+			<name>maxTabWidth</name>
+			<classname>java.lang.Integer</classname>
+			<description></description>
+			<defaultvalue>0</defaultvalue>
+		</property>
+		<property>
+			<name>markupTemplate</name>
+			<classname>java.lang.String</classname>
+			<description>Defines tab panel type (Search, Static)</description>
+			<defaultvalue>"dynamic"</defaultvalue>
+		</property>
+		<property>
+			<name>maxCountOfTabsLoadedOnClient</name>
+			<classname>java.lang.Integer</classname>
+			<description>Defines max count of tabs to load on client</description>
+			<defaultvalue>0</defaultvalue>
+		</property>
+		<property>
+			<name>tabCloseListener</name>
+			<classname>javax.faces.el.MethodBinding</classname>
+			<methodargs>java.lang.String</methodargs>
+			<description>
+				MethodExpression representing an action listener method
+				that will be notified after tab closed.
+			</description>
+		</property>
+		 <property>
+	    	<name>tabListHeight</name>
+	    	<classname>java.lang.Integer</classname>
+	      	<description></description>
+			<defaultvalue>0</defaultvalue>
+	    </property>
+  		<!-- listener>
+			<name>tabCloseListener</name>
+			<listenerclass>
+				javax.faces.event.FacesListener	
+			</listenerclass>
+			<componentclass>
+				com.exadel.siperian.component.UITabPanel		
+			</componentclass>
+			<eventclass>
+				javax.lang.String
+			</eventclass>
+			<taghandler generate="true">
+				<classname>
+					com.exadel.siperian.taglib.html.TabCloseListenerTagHandler
+				</classname>
+			</taghandler>
+		</listener-->
+	</component>
+  	
+	<renderer generate="true">
+		<template>tabHeader.jspx</template>
+	</renderer>
+</components>

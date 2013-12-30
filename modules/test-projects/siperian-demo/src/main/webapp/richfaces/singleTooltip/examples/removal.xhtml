@@ -1,0 +1,51 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:sip="http://siperian.exadel.com/sip">
+
+<ui:composition>
+
+
+
+
+
+<style>
+
+</style>
+<ui:include src="/richfaces/singleTooltip/examples/singleTooltipInclude.xhtml">
+	<ui:param name="id" value="testTT"/>
+</ui:include>
+	
+	<h:form id="form">
+	
+	
+	<rich:panel>
+		<rich:dataTable var="locale" value="#{userBean.locales}">
+			<rich:column>
+				<f:facet name="header">
+					<h:outputText style="font-weight:bold" value="LANGUAGE"/>
+				</f:facet>
+				<h:commandLink value="#{locale.language}" onmousemove="testTT.show(event,'There are the text for the tooltip for language : #{locale.language}');"/>
+			</rich:column>
+			<rich:column>
+				<f:facet name="header">
+					<h:outputText style="font-weight:bold" value="COUNTRY"/>
+				</f:facet>
+				<span onmousemove="testTT.show(event,'&lt;pre&gt;There are the text for the tooltip&lt;br/&gt; for country : #{sip:nl2br(userBean.longDescription)} :&lt;/pre&gt;');">
+				<h:outputText value="#{locale.country}"  />
+				
+					</span>
+			</rich:column>
+		</rich:dataTable>
+		<h:outputText value="#{sip:nl2br(userBean.longDescription)}" escape="false"/>
+	</rich:panel>
+	</h:form>
+</ui:composition>
+
+</html>

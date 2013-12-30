@@ -1,0 +1,33 @@
+/* Modal Panel CSS */
+
+/* Body */
+.dr-mpnl-pnl-b{
+   padding : 0px !important;
+   padding-left: 0 !important;
+   color: black !important;
+   vertical-align: top;
+   top: 100%;
+   
+}
+/* Panel */
+.dr-mpnl-pnl{
+   border-width: 1px !important;
+   border-style: solid !important;
+   padding : 1px !important;
+   border-color: #BCCCE6 !important;
+   border-width: 1px !important;
+}
+/* Header */
+.teste{
+ background-color: #BCCCE6 !important;
+ background-image: none !important;
+ border-color: #BCCCE6 !important;
+ border-width: 1px !important;
+}
+.rich-panel {
+    border: none;
+}
+
+.rich-panel-header {
+    border: none;
+}

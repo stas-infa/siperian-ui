@@ -1,0 +1,14 @@
+---
+Developer Resources
+---
+Andrea Penn
+---
+04-Apr-2007
+---
+This section is meant to guide hello-world developers and integrators,
+by providing information on the development process, system architecture,
+and APIs available.
+Quick Links
+* {{{architecture.html}System Architecture}}
+* {{{embedding.html}Embedding Guide}}
+[]

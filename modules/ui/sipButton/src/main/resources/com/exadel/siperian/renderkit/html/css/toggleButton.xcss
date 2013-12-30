@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:template 
+	xmlns:f="http://jsf.exadel.com/template"
+   	xmlns:u="http://jsf.exadel.com/template/util" 
+   	xmlns="http://www.w3.org/1999/xhtml">
+
+<f:verbatim>
+<![CDATA[
+.siptoggle {
+	display: table;
+}
+.siptoggle .left {
+	background-repeat: no-repeat;
+	width: 9px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	text-decoration: none;
+	cursor: pointer;
+}
+.siptoggle .right {
+	background-repeat: no-repeat;
+	width: 9px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	text-decoration: none;
+	height: 19px;
+	cursor: pointer;
+}
+.siptoggle .middle {
+	background-repeat: repeat-x;
+	white-space: nowrap;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	text-decoration: none;
+	color: white;
+	cursor: pointer;
+	text-align: center;
+	vertical-align: top;
+	padding: 2px 0 0 0;
+}
+
+.siptoggle .btnstub{
+  width: 1px;
+  height: 1px;
+}
+
+.dottedButtonAnchor {
+	color:transparent; 
+	border:none;	
+}
+
+.normalButtonAnchor {
+	color:transparent !important;
+}
+
+.siptoggle .middle img.icon-left {margin-right: 5px; border:0px;}
+.siptoggle .middle img.icon-right {margin-left: 5px; border:0px;}
+
+.siptoggle .sipButCommon .middle {color: #000000; cursor: pointer;}
+
+.dottedButtonAnchor .siptoggle .sipButCommon .middle {color: #000000;}
+
+]]>
+</f:verbatim>
+
+<u:selector name=".siptoggle .unpressed .left">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/blt-unpressed.png" />
+    </u:style>
+</u:selector>
+<u:selector name=".siptoggle .unpressed .right">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/brt-unpressed.png" />
+    </u:style>
+</u:selector>
+<u:selector name=".siptoggle .unpressed .middle">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/bct-unpressed.png" />
+    </u:style>
+</u:selector>
+
+
+<u:selector name=".siptoggle .pressed .left">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/blt-pressed.png" />
+    </u:style>
+</u:selector>
+<u:selector name=".siptoggle .pressed .right">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/brt-pressed.png" />
+    </u:style>
+</u:selector>
+<u:selector name=".siptoggle .pressed .middle">
+    <u:style name="background-image">
+    	<f:resource f:key="/com/exadel/siperian/renderkit/html/images/bct-pressed.png" />
+    </u:style>
+</u:selector>
+
+
+</f:template>

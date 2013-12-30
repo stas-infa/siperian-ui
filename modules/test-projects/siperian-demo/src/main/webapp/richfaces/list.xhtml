@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+    xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:sip="http://siperian.exadel.com/sip">
+<ui:composition template="/templates/main.xhtml">
+	<ui:define name="title">Ordering List</ui:define>
+	<ui:define name="body">
+	
+    <style>
+    .cent{
+        text-align:center;
+    }
+    .rich-ordering-control-disabled, .rich-ordering-control-top, .rich-ordering-control-bottom, .rich-ordering-control-up, .rich-ordering-control-down{
+    	border: 0px;
+    	margin: 0px;
+    }
+    
+    .icon{
+    	height: 22px;
+    }
+	</style>
+    <h:form>
+        <rich:orderingList value="#{capitalsBean.capitals}" var="lib" 
+        listHeight="300" 
+        listWidth="350"
+        controlsType="button">
+	        <f:facet name="topControl">
+	              <sip:icon direction="up" type="double" />
+	        </f:facet>
+	        <f:facet name="upControl">
+	              <sip:icon direction="up" type="single"/>
+	        </f:facet>
+	        <f:facet name="downControl">
+	                 <sip:icon direction="down" type="single" />
+	        </f:facet>
+	        <f:facet name="bottomControl">
+	                <sip:icon direction="down" type="double" />
+	        </f:facet>
+	        <f:facet name="topControlDisabled">
+	              <sip:icon direction="up" type="double" disabled="true"/>
+	        </f:facet>
+	        <f:facet name="upControlDisabled">
+	              <sip:icon direction="up" type="single" disabled="true"/>
+	        </f:facet>
+	        <f:facet name="downControlDisabled">
+	                 <sip:icon direction="down" type="single" disabled="true"/>
+	        </f:facet>
+	        <f:facet name="bottomControlDisabled">
+	                <sip:icon direction="down" type="double" disabled="true"/>
+	        </f:facet>
+            <rich:column  width="180">
+            <f:facet name="header">
+                <h:outputText value="Capital Name" />
+            </f:facet> 
+                <h:outputText value="#{lib.name}"></h:outputText>
+            </rich:column>
+            <rich:column>
+                <f:facet name="header">
+                    <h:outputText value="State" />
+                </f:facet>
+                <h:outputText value="#{lib.state}"></h:outputText>
+            </rich:column>
+           
+        </rich:orderingList>
+    </h:form>
+
+	</ui:define>
+</ui:composition>
+</html>

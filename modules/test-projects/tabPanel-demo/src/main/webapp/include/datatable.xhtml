@@ -1,0 +1,29 @@
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:rich="http://richfaces.ajax4jsf.org/rich"
+                xmlns:c="http://java.sun.com/jstl/core"
+                xmlns:a4j="https://ajax4jsf.dev.java.net/ajax"
+                xmlns:sip="http://siperian.exadel.com/sip">
+
+    <!--@elvariable id="uiBean" type="com.siperian.example.DataUIBean"-->
+    <rich:extendedDataTable
+            id="table_#{uiBean.firstName}"
+            value="#{uiBean.values}"
+            var="strValue"
+            rows="100"
+            componentState="#{bean2.state}"
+            >
+        <rich:column id="name" label="Test label">
+            <f:facet name="header">
+                <h:outputText value="Test label" id="info_label"/>
+            </f:facet>
+            <h:outputLabel value="#{strValue}"/>
+        </rich:column>
+        <f:facet name="footer">
+            <rich:datascroller align="left"
+                               page="#{uiBean.currentPage}"
+                               id="scroller_#{uiBean.firstName}"/>
+        </f:facet>
+    </rich:extendedDataTable>
+</ui:composition>

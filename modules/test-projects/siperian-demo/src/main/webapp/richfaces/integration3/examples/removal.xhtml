@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:sip="http://siperian.exadel.com/sip">
+
+<ui:composition>
+	<style>
+		.modal-panel-div{
+			height: 300px; display: block; 
+			overflow-y: auto !important; border: 1px solid black;
+		}
+	</style>
+	<rich:dragIndicator id="indicator" />
+	<h:form id="form">
+			 	<sip:modalPanel left="300" id="sourceMp" height="350" width="200" top="220" 
+					panelDOMAttachment="unchanged" showWhenRendered="true" isModal="false" >
+					<f:facet name="header">
+					<h:outputText value="Source List" />
+				</f:facet>
+				<h:panelGroup layout="block" styleClass="modal-panel-div">
+				<h:dataTable id="src" columns="1" value="#{capitalsBean.capitals}"
+					var="cap" >
+
+					<h:column>
+						<a4j:outputPanel style="width:100px;border:1px solid gray;padding:2px" layout="block">
+							<rich:dragSupport dragIndicator=":indicator"
+								dragType="capital" dragValue="#{cap}">
+								<rich:dndParam name="label" value="#{cap.name}" />
+							</rich:dragSupport>
+							<h:outputText value="#{cap.name}"></h:outputText>
+						</a4j:outputPanel>
+					</h:column>
+				</h:dataTable>
+				</h:panelGroup>
+		</sip:modalPanel>
+		<sip:modalPanel left="600" id="targetMp" height="350" width="200" top="220"
+					panelDOMAttachment="unchanged" showWhenRendered="true" isModal="false" >
+					
+					<f:facet name="header">
+					<h:outputText value="Target List" />
+				</f:facet>
+				<rich:dropSupport id="drop" acceptedTypes="capital" dropValue="capital"
+					dropListener="#{capitalsBean.processDrop}" reRender="src, src2">
+				</rich:dropSupport>
+				
+				<h:panelGroup layout="block" styleClass="modal-panel-div">
+				<h:dataTable id="src2" columns="1" value="#{capitalsBean.droppedCapitals}"
+					var="cap2" >
+
+					<h:column>	
+						<a4j:outputPanel style="width:100px;border:1px solid gray;padding:2px" layout="block">				
+							<h:outputText value="#{cap2.name}"></h:outputText>	
+						</a4j:outputPanel>			
+					</h:column>
+				</h:dataTable>
+				</h:panelGroup>
+				
+		</sip:modalPanel>
+	</h:form>
+</ui:composition>
+
+</html>

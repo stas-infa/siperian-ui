@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.exadel.siperian</groupId>
+    <artifactId>siperian</artifactId>
+    <packaging>pom</packaging>
+    <version>${siperian-ui.version}</version>
+    <name>Siperian</name>
+    
+    <modules>
+        <module>ui</module>
+		<module>ui/assembly</module>
+        <module>test-projects</module>
+    </modules>
+
+    <properties>
+        <siperian-ui.version>9.7.0</siperian-ui.version>
+    </properties>
+
+	<scm>
+		<connection> scm:svn:https://subversion.exadel.com/svn/siperian/concord/trunk/modules </connection>
+	</scm>
+	
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>cobertura-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jdepend-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-pmd-plugin</artifactId>
+				<configuration>
+					<rulesets>
+						<ruleset>src/site/etc/pmd/custom.xml</ruleset>
+					</rulesets>
+					<targetJdk>1.5</targetJdk>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<configuration>
+					<enableRulesSummary>false</enableRulesSummary>
+					<configLocation>src/site/etc/checkstyle/custom.xml</configLocation>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<configuration>
+					<aggregate>true</aggregate>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>findbugs-maven-plugin</artifactId>
+				<configuration>
+					<xmlOutput>true</xmlOutput>
+				</configuration>
+			</plugin>
+			<!-- plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-changelog-plugin</artifactId>
+			</plugin -->
+			<!-- plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>taglist-maven-plugin</artifactId>
+				<configuration>
+					<tags>
+						<tag>@fixme</tag>
+						<tag>FIXME</tag>
+						<tag>@todo</tag>
+						<tag>TODO</tag>
+					</tags>
+				</configuration>
+			</plugin -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>dashboard-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</reporting>
+
+	<repositories>
+		<!--exadel repositories-->
+		<!--repository>
+			<snapshots>
+				<enabled>true</enabled>
+				<checksumPolicy>fail</checksumPolicy>
+			</snapshots>
+			<id>snapshots-int.exadel.com</id>
+			<name>Exadel Maven 2 Snapshots Internal Repository</name>
+			<url>http://snapshots-int.exadel.com</url>
+			<layout>default</layout>
+		</repository>
+		<repository>
+			<id>repository-int.exadel.com</id>
+			<name>Exadel Maven 2 Repository Internal Repository</name>
+			<url>http://mdmmaven01.informatica.com:8081/nexus/content/repositories/repository-int.exadel.com/</url>
+			<layout>default</layout>
+			<releases>
+				<enabled>true</enabled>
+				<checksumPolicy>fail</checksumPolicy>
+			</releases>
+		</repository-->
+		<!--jboss repositories-->
+		<repository>
+		  <id>jboss-public-repository-group</id>
+		  <name>JBoss Public Repository Group</name>
+		  <url>http://mdmmaven01.informatica.com:8081/nexus/content/repositories/jboss-public-repository-group/</url>
+		  <layout>default</layout>
+		  <releases>
+			<enabled>true</enabled>
+			<updatePolicy>never</updatePolicy>
+		  </releases>
+		  <snapshots>
+			<enabled>true</enabled>
+			<updatePolicy>never</updatePolicy>
+		  </snapshots>
+		</repository>
+	</repositories>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.5</source>
+					<target>1.5</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jdepend-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>dashboard-maven-plugin</artifactId>
+				<configuration>
+					<dialect>org.hibernate.dialect.PostgreSQLDialect</dialect>
+					<driverClass>org.postgresql.Driver</driverClass>
+					<username>${dashboard.username}</username>
+					<password>${dashboard.password}</password>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>postgresql</groupId>
+						<artifactId>postgresql</artifactId>
+						<version>8.2-504.jdbc3</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+            <!--<plugin>-->
+                <!--<groupId>org.codehaus.mojo</groupId>-->
+                <!--<artifactId>properties-maven-plugin</artifactId>-->
+                <!--<version>1.0-alpha-2</version>-->
+                <!--<inherited>false</inherited>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<phase>initialize</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>read-project-properties</goal>-->
+                        <!--</goals>-->
+                        <!--<configuration>-->
+                            <!--<files>-->
+                                <!--<file>pom.properties</file>-->
+                            <!--</files>-->
+                        <!--</configuration>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
+		</plugins>
+	</build>
+
+	<distributionManagement>
+		<site>
+			<id>reports.exadel.com</id>
+			<name>reports.exadel.com</name>
+			<url>scpexe://download.exadel.com/user/srv/www/mavenrep/siperian-components</url>		
+		</site>
+	</distributionManagement>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>Codehaus</id>
+			<url>http://mdmmaven01.informatica.com:8081/nexus/content/repositories/Codehaus/</url>
+		</pluginRepository>
+		<pluginRepository>
+			<id>Codehaus Snapshots</id>
+			<url>http://mdmmaven01.informatica.com:8081/nexus/content/repositories/codehaus-snapshots/</url>
+		</pluginRepository>
+		<pluginRepository>
+			<id>repository-int.exadel.com</id>
+			<name>Exadel Maven 2 Repository Internal Repository</name>
+			<url>http://mdmmaven01.informatica.com:8081/nexus/content/repositories/repository-int.exadel.com/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+		</pluginRepository>		
+		<pluginRepository>
+		  <id>jboss-public-repository-group</id>
+		  <name>JBoss Public Repository Group</name>
+		  <url>http://mdmmaven01.informatica.com:8081/nexus/content/repositories/jboss-public-repository-group/</url>
+		  <releases>
+			<enabled>true</enabled>
+		  </releases>
+		  <snapshots>
+			<enabled>true</enabled>
+		  </snapshots>
+		 </pluginRepository>
+	</pluginRepositories>
+
+	<ciManagement>
+		<system>hudson</system>
+		<url>http://hudson.eltegra.by:9070/</url>
+		<notifiers>
+			<notifier>
+				<type>mail</type>
+				<configuration>
+					<address>aharhots@exadel.com</address>
+				</configuration>
+			</notifier>
+		</notifiers>
+	</ciManagement>
+
+	<developers>
+		<developer>
+			<!-- Id of developer -->
+			<id>srusak</id>
+			<!-- Developer name -->
+			<name>Sergey Rusak</name>
+			<!-- Developer email address -->
+			<email>srusak@exadel.com</email>
+			<!-- Personal developer url -->
+			<url></url>
+			<!-- Developer organisation -->
+			<organization>Exadel</organization>
+			<!-- Organization URL -->
+			<organizationUrl>http://www.exadel.com</organizationUrl>
+			<!-- Developer roles in project -->
+			<roles>
+				<role>Developer</role>
+			</roles>
+			<!-- Developer timezone -->
+			<timezone>+2</timezone>
+			<!-- Additional properties -->
+			<properties>
+				<gpg-key>srusak@exadel.com</gpg-key>
+			</properties>
+		</developer>
+		
+		<developer>
+			<!-- Id of developer -->
+			<id>mabramchik</id>
+			<!-- Developer name -->
+			<name>Michail Abramchik</name>
+			<!-- Developer email address -->
+			<email>mabramchik@exadel.com</email>
+			<!-- Personal developer url -->
+			<url></url>
+			<!-- Developer organisation -->
+			<organization>Exadel</organization>
+			<!-- Organization URL -->
+			<organizationUrl>http://www.exadel.com</organizationUrl>
+			<!-- Developer roles in project -->
+			<roles>
+				<role>Developer</role>
+			</roles>
+			<!-- Developer timezone -->
+			<timezone>+2</timezone>
+			<!-- Additional properties -->
+			<properties>
+				<gpg-key>mabramchik@exadel.com</gpg-key>
+			</properties>
+		</developer>
+		
+		<developer>
+			<!-- Id of developer -->
+			<id>vsinelnikov</id>
+			<!-- Developer name -->
+			<name>Vladimir Sinelnikov</name>
+			<!-- Developer email address -->
+			<email>vsinelnikov@exadel.com</email>
+			<!-- Personal developer url -->
+			<url></url>
+			<!-- Developer organisation -->
+			<organization>Exadel</organization>
+			<!-- Organization URL -->
+			<organizationUrl>http://www.exadel.com</organizationUrl>
+			<!-- Developer roles in project -->
+			<roles>
+				<role>Developer</role>
+			</roles>
+			<!-- Developer timezone -->
+			<timezone>+2</timezone>
+			<!-- Additional properties -->
+			<properties>
+				<gpg-key>vsinelnikov@exadel.com</gpg-key>
+			</properties>
+		</developer>
+				
+		<developer>
+			<!-- Id of developer -->
+			<id>pyaschenko</id>
+			<!-- Developer name -->
+			<name>Pavel Yaschenko</name>
+			<!-- Developer email address -->
+			<email>pyaschenko@exadel.com</email>
+			<!-- Personal developer url -->
+			<url></url>
+			<!-- Developer organisation -->
+			<organization>Exadel</organization>
+			<!-- Organization URL -->
+			<organizationUrl>http://www.exadel.com</organizationUrl>
+			<!-- Developer roles in project -->
+			<roles>
+				<role>Developer</role>
+			</roles>
+			<!-- Developer timezone -->
+			<timezone>+2</timezone>
+			<!-- Additional properties -->
+			<properties>
+				<gpg-key>pyaschenko@exadel.com</gpg-key>
+			</properties>
+		</developer>
+			
+		<developer>
+			<!-- Id of developer -->
+			<id>amarkavtsov</id>
+			<!-- Developer name -->
+			<name>Andrei Markavtsov</name>
+			<!-- Developer email address -->
+			<email>amarkavtsov@exadel.com</email>
+			<!-- Personal developer url -->
+			<url></url>
+			<!-- Developer organisation -->
+			<organization>Exadel</organization>
+			<!-- Organization URL -->
+			<organizationUrl>http://www.exadel.com</organizationUrl>
+			<!-- Developer roles in project -->
+			<roles>
+				<role>Developer</role>
+			</roles>
+			<!-- Developer timezone -->
+			<timezone>+2</timezone>
+			<!-- Additional properties -->
+			<properties>
+				<gpg-key>amarkavtsov@exadel.com</gpg-key>
+			</properties>
+		</developer>
+
+		<developer>
+			<!-- Id of developer -->
+			<id>dsvyatobatsko</id>
+			<!-- Developer name -->
+			<name>Dmitri Svyatobatsko</name>
+			<!-- Developer email address -->
+			<email>dsvyatobatsko@exadel.com</email>
+			<!-- Personal developer url -->
+			<url></url>
+			<!-- Developer organisation -->
+			<organization>Exadel</organization>
+			<!-- Organization URL -->
+			<organizationUrl>http://www.exadel.com</organizationUrl>
+			<!-- Developer roles in project -->
+			<roles>
+				<role>Developer</role>
+			</roles>
+			<!-- Developer timezone -->
+			<timezone>+2</timezone>
+			<!-- Additional properties -->
+			<properties>
+				<gpg-key>dsvyatobatsko@exadel.com</gpg-key>
+			</properties>
+		</developer>
+		
+		<developer>
+			<!-- Id of developer -->
+			<id>alevkovsky</id>
+			<!-- Developer name -->
+			<name>Alexander Levkovsky</name>
+			<!-- Developer email address -->
+			<email>alevkovsky@exadel.com</email>
+			<!-- Personal developer url -->
+			<url></url>
+			<!-- Developer organisation -->
+			<organization>Exadel</organization>
+			<!-- Organization URL -->
+			<organizationUrl>http://www.exadel.com</organizationUrl>
+			<!-- Developer roles in project -->
+			<roles>
+				<role>Developer</role>
+			</roles>
+			<!-- Developer timezone -->
+			<timezone>+2</timezone>
+			<!-- Additional properties -->
+			<properties>
+				<gpg-key>alevkovsky@exadel.com</gpg-key>
+			</properties>
+		</developer>		
+		
+		<developer>
+			<!-- Id of developer -->
+			<id>ishaikovsky</id>
+			<!-- Developer name -->
+			<name>Ilya Shaikovsky</name>
+			<!-- Developer email address -->
+			<email>ishaikovsky@exadel.com</email>
+			<!-- Personal developer url -->
+			<url></url>
+			<!-- Developer organisation -->
+			<organization>Exadel</organization>
+			<!-- Organization URL -->
+			<organizationUrl>http://www.exadel.com</organizationUrl>
+			<!-- Developer roles in project -->
+			<roles>
+				<role>Developer</role>
+			</roles>
+			<!-- Developer timezone -->
+			<timezone>+2</timezone>
+			<!-- Additional properties -->
+			<properties>
+				<gpg-key>ishaikovsky@exadel.com</gpg-key>
+			</properties>
+		</developer>			
+		
+	</developers>
+
+	<issueManagement>
+		<system>JIRA</system>
+		<url>https://jira.exadel.com/browse/SC</url>
+	</issueManagement>
+
+	<mailingLists>
+		<mailingList>
+
+			<!-- The name of the mailing list, to help when referring to it -->
+			<name>Sample mail list</name>
+
+			<!-- The email address to use when posting messages to the list -->
+			<post>sample@dev.example.com</post>
+
+			<!-- The email address to use when subscribing to the list -->
+			<subscribe>sample-subscribe@dev.example.com</subscribe>
+
+			<!-- The email address to use when unsubscribing from the list -->
+			<unsubscribe>sample-unsubscribe@dev.example.com</unsubscribe>
+
+			<!-- List-archive URL, for historical reference -->
+			<archive>http://dev.example.com/mail-archives/sample/users</archive>
+
+			<otherArchives>
+				<!-- Other list-archive URL, for historical reference -->
+				<otherArchive>http://www.sample.com/oterh-sample.html</otherArchive>
+			</otherArchives>
+
+		</mailingList>
+	</mailingLists>
+
+	<licenses>
+
+		<license>
+			<name>UNKNOWN</name>
+		</license>
+	</licenses>
+</project>

@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<timeline-root>
+<properties>
+	   <menu>
+           <eventMenu>
+                <item label="Label1" jsCode="alert('onItem1Handler')"/>
+                <item label="Label2" jsCode="alert('onItem2Handler')"/>
+           </eventMenu>
+           <globalMenu>
+                <item label="GLobal label1" jsCode="alert('onItem3Handler')"/>
+                <item label="Global label2" jsCode="alert('onItem4Handler')"/>
+           </globalMenu>
+       </menu> 
+</properties>
+<styles>
+	.primary-swimlane {
+    height: 30px;
+    background-color: #efe6b7;
+}
+
+.limited-privileges-swimlane {
+
+    background-color: #CFCFCC;
+}
+
+.small-event {
+    color: #556688;
+    borderColor: #ffffff;
+}
+
+.bo-change-event {
+    width: 14px;
+    height: 14px;
+    color: #FF00FF;
+    border-width: 1px;
+    border-color: #000000;
+    filter: "blur-alpha:30,blur-dx:4,blur-x:2,blur-y:2,blur-quality:7"
+}
+
+.bo-change-event-selected {
+    width: 16px;
+    height: 16px;
+    color: #3BC1DF;
+    background-color: #5675D7;
+    border-width: 1px;
+    border-color: #ffffff;
+    filter: "blur-alpha:30,blur-dx:4,blur-x:2,blur-y:2,blur-quality:7"
+}
+
+.bo-change-event-hovered {
+    width: 18px;
+    height: 18px;
+    color: #3BC1DF;
+    background-color: #00bfff;
+    border-width: 1px;
+    border-color: #ffffff;
+    filter: "blur-alpha:30,blur-dx:4,blur-x:2,blur-y:2,blur-quality:7"
+}
+
+.xref-change-event {
+    width: 14px;
+    height: 14px;
+    color: #;
+    border-width: 1px;
+    border-color: #000000;
+    filter: "blur-alpha:30,blur-dx:4,blur-x:2,blur-y:2,blur-quality:7"
+}
+
+.xref-change-event-selected {
+    width: 16px;
+    height: 16px;
+    color: #6F95C9;
+    background-color: #5675D7;
+    border-width: 1px;
+    border-color: #ffffff;
+    filter: "blur-alpha:30,blur-dx:4,blur-x:2,blur-y:2,blur-quality:7"
+}
+
+.xref-change-event-hovered {
+    width: 18px;
+    height: 18px;
+    color: #6F95C9;
+    background-color: #6F95C9;
+    border-width: 1px;
+    border-color: #ffffff;
+    filter: "blur-alpha:30,blur-dx:4,blur-x:2,blur-y:2,blur-quality:7"
+}
+
+
+
+.timelineGroup {
+    width: 14px;
+    height: 14px;
+    color: #A4D36C;
+    border-width: 1px;
+    border-color: #000000;
+    filter: "blur-alpha:30,blur-dx:4,blur-x:2,blur-y:2,blur-quality:7"
+}
+
+.timelineSelectedgroup {
+    width: 16px;
+    height: 16px;
+    color: #A4D36C;
+    background-color: #5675D7;
+    border-width: 1px;
+    border-color: #ffffff;
+    filter: "blur-alpha:30,blur-dx:4,blur-x:2,blur-y:2,blur-quality:7"
+}
+
+.timelineHovergroup {
+    width: 18px;
+    height: 18px;
+    color: #A4D36C;
+    background-color: #A4D36C;
+    border-width: 1px;
+    border-color: #ffffff;
+    filter: "blur-alpha:30,blur-dx:4,blur-x:2,blur-y:2,blur-quality:7"
+}
+
+.tooltip {
+    background-color: #ffffec;
+    border-width: 1px;
+    border-color: #000000;
+    font-size: 10px;
+    nowrap: true;
+    line-length: 100;
+}
+	
+	
+</styles>
+<data>
+<swimLines frozenWidth="120">
+   
+      
+        <swimLine id="C_PARTY" name="C_PARTY" ></swimLine>
+ 
+      </swimLines>
+<eventGroup styleClass="timelineGroup" hoverStyleClass="timelineHovergroup" selectedStyleClass="timelineSelectedgroup" eventInterval="2">
+<tooltipTemplate maxdisplayed="4">
+<header>
+<html>
+Events in the group: {#count}
+<br/>
+------
+<br/>
+</html>  </header>
+  <content>
+      <html>
+      {#tooltip}
+      <br/>
+      </html>
+    </content>
+  <footerifbreak>
+      <html>
+      ...
+      </html>
+    </footerifbreak>
+  </tooltipTemplate>
+  </eventGroup>
+  <intervals fromDate="925126035082" toDate="1244833260000" viewFromDate="934437655000" viewToDate="960789655000">
+      <interval length="2h" marker="15m" datePattern="HH:mm"></interval>
+      <interval length="8h" marker="1h" datePattern="HH:mm"></interval>
+      <interval length="16h" marker="2h" datePattern="HH:mm"></interval>
+      <interval length="24h" marker="3h" datePattern="HH:mm"></interval>
+      <interval length="7d" marker="1d" datePattern="MM/dd"></interval>
+      <interval length="1M" marker="7d" datePattern="MM/dd"></interval>
+      <interval length="6M" marker="1M" datePattern="MM/dd"></interval>
+      <interval length="24M" marker="3M" datePattern="MM/dd/yyyy"></interval>
+      <interval length="+" marker="1y" datePattern="MM/dd/yyyy"></interval>
+    </intervals>
+  <eventTypes styleClass="small-event">
+    
+      <eventType id="XREF_CHANGE" name="XREF Change" styleClass="xref-change-event" selectedStyleClass="xref-change-event-selected" hoverStyleClass="xref-change-event-hovered" ></eventType>
+
+      <eventType id="BO_CHANGE" name="BO Change" styleClass="bo-change-event" selectedStyleClass="bo-change-event-selected" hoverStyleClass="bo-change-event-hovered"></eventType>
+    </eventTypes>
+  <events>
+ 
+        <event id="0" type="BO_CHANGE" date="934437655000" swimLineId="C_PARTY">
+	<event id="0" type="BO_CHANGE" date="934437755000" swimLineId="C_PARTY">
+      <tooltip>
+11/Aug/1999 23:00.55, BO change.
+        </tooltip>
+    </event>   
+     <event id="2" type="XREF_CHANGE" date="1218520861000" swimLineId="C_PARTY">
+      <tooltip>
+11/Aug/2008 23:01.01, XREF change. Source system: Legacy
+        </tooltip>
+    </event>
+
+      
+     
+    </events>
+  </data>
+  </timeline-root>
+  

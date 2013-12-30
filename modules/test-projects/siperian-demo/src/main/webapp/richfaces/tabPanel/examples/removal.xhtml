@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:sip="http://siperian.exadel.com/sip">
+
+<ui:composition>
+	<a4j:queue />
+	<h:form id="form">
+	<h:selectOneRadio value="#{tabPanelBean.markup}" >
+		 <f:selectItems
+   				value="#{tabPanelBean.markups}" />
+   		<a4j:support event="onclick" reRender="tapPanel"></a4j:support>
+	</h:selectOneRadio>
+	<table border="0" cellspacing="0" cellpadding="4"><tr>
+		<td><h:outputText style="float: left" value="Max Tab Width:"></h:outputText></td>
+		<td><rich:inputNumberSlider value="#{tabPanelBean.maxTabWidth}" minValue="50" maxValue="300" step="20" showInput="false">
+			<a4j:support event="onchange" reRender="tapPanel"></a4j:support>
+		</rich:inputNumberSlider>
+		</td></tr>
+		<tr>
+			<td><h:outputText style="float: left" value="Max Tabs To Load"></h:outputText></td>
+			<td>
+				<h:inputText value="#{tabPanelBean.maxTabsToLoad}">
+					<a4j:support event="onchange" reRender="tapPanel"></a4j:support>
+				</h:inputText>
+			</td>
+		</tr>
+	</table>
+	<br/>
+
+	<sip:tabPanel id="tapPanel"
+			maxTabWidth="#{tabPanelBean.maxTabWidth}" 
+			markupTemplate="#{tabPanelBean.markup}"
+			maxCountOfTabsLoadedOnClient="#{tabPanelBean.maxTabsToLoad}"
+			tabCloseListener="#{capitalsBean.remove}"
+			selectedTab="#{capitalsBean.selectedTab}"
+			>
+		<c:forEach items="#{capitalsBean.capitals}" var="cap" begin="1" end="30" varStatus="i">
+			<sip:tab id="tab#{i.index}" name="#{cap.name}" tabCloseable="true"
+			longRunning="#{cap.longRunning}">
+				<f:facet name="label">	
+					<h:panelGroup id="label#{i.index}">			
+						<!--h:graphicImage value="#{cap.stateFlag}" style="width:12px; height:12px;"/-->						
+						
+						<h:outputText value="#{cap.name}" rendered="#{!cap.longRunning}"/>
+						<h:outputText value="R++++" rendered="#{cap.longRunning}"></h:outputText>
+
+				
+					</h:panelGroup>
+				
+				</f:facet>
+				
+				<a4j:include id="tabc#{i.index}" viewId="inc.xhtml" ajaxRendered="false"></a4j:include>
+			</sip:tab>
+		</c:forEach>
+		
+	</sip:tabPanel>
+	
+	 <a4j:push id="pushId" eventProducer="#{capitalsBean.addEventProducer}" interval="5000" 
+								reRender="#{capitalsBean.pushReRender}"
+								enabled="#{capitalsBean.pushEnabled}"
+								actionListener="#{capitalsBean.pushListener}"
+								oncomplete="#{capitalsBean.pushOncomplete}">
+						</a4j:push>
+						
+	
+	<a4j:commandLink value="ReRender" reRender="tapPanel"></a4j:commandLink>
+		
+	</h:form>
+</ui:composition>
+
+</html>

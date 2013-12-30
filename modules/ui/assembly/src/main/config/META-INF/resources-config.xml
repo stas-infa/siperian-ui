@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resource-config>
+	<resource >
+		<name>/org/richfaces/ui.pack.js</name>
+		<path>org/richfaces/ui.pack.js</path>
+		<renderer class="org.ajax4jsf.resource.CompressedScriptRenderer"/>
+	</resource>
+</resource-config>

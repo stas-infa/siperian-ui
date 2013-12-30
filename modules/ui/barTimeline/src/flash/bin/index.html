@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>Timeline</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="language" content="en" />
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	
+	<script src="js/prototype-1.6.0.3.js" type="text/javascript"></script>
+	<script src="js/swfobject.js" type="text/javascript"></script>
+	<script src="js/timeline.js" type="text/javascript"></script>
+	<script src="js/rightClick.js" type="text/javascript"></script>
+
+
+	<style>
+		html, body { height:100%; }
+		body { margin:0; }
+	</style>
+	<script>
+
+		function getVisibleInt() {
+			var callResult = $("form:timlineFlash").component.getVisibleInterval();
+			document.getElementById('inputText').value = callResult.fromDateNumber;
+			document.getElementById('inputText2').value = callResult.toDateNumber;
+		}
+		function setVisibleInt() {
+			var callResult = $("form:timlineFlash").component.setVisibleInterval(new Date(parseInt(document.getElementById('inputText').value)), new Date(parseInt(document.getElementById('inputText2').value)));
+		}
+		/*function getVisibleEventsNumber() {
+			var callResult = $("form:timlineFlash").component.getVisibleEventsNumber((new Date(2008,2,3)), (new Date(2008,2,10)));
+			document.getElementById('inputText').value = callResult;
+		}*/
+		function zoomIn() {
+			var callResult = $("form:timlineFlash").component.zoomIn(2);
+		}
+		function zoomOut() {
+			var callResult = $("form:timlineFlash").component.zoomOut(2);
+		}
+		function disableComponent() {
+			var callResult = $("form:timlineFlash").component.disable(true);
+		}
+		function enableComponent() {
+			var callResult = $("form:timlineFlash").component.disable(false);
+		}
+		function setVerticalRuller(date) {
+			var callResult = $("form:timlineFlash").component.setVerticalRuller(date.getTime());
+		}
+		function hideVerticalRuller(date) {
+			var callResult = $("form:timlineFlash").component.hideVerticalRuller(date);
+		}
+		
+	</script>
+</head>
+<body>
+	<div>Date range time stamps:&nbsp;<input type="text" id="inputText" value=""/>
+		 <input type="text" id="inputText2" value=""/><br/>
+		 <input type="button" id="getVisibleInt" value="Get Visible Interval" onClick="getVisibleInt();"/>
+		 <input type="button" id="setVisibleInt" value="Set Visible Interval" onClick="setVisibleInt();"/>
+		 <input type="button" id="zoomIn" value="Zoom In" onClick="zoomIn();"/>
+		 <input type="button" id="zoomOut" value="Zoom Out" onClick="zoomOut();"/>
+		 <br/><br/>
+		 <input type="button" id="disamble" value="Disable" onClick="disableComponent();"/>
+		 <input type="button" id="enable" value="Enable" onClick="enableComponent();"/>
+		 <input type="button" id="setvr" value="Set Vertical Ruller" onClick="setVerticalRuller(new Date(2008,0,31));"/>
+		 <input type="button" id="hidevr" value="Hide Vertical Ruller" onClick="hideVerticalRuller();"/>
+    </div>
+<div id="form:timlineFlash" style="z-index:1000;">
+	<input type="hidden" id="form:timlineFlash:xml" value='<timeline-root><properties><monthNames>January,February,March,April,May,June,July,August,September,October,November,December,Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec</monthNames><dayNames>Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sun,Mon,Tue,Wed,Thu,Fri,Sat</dayNames></properties><data><intervals><interval length="10m" marker="1m" datePattern="HH:mm"/><interval length="2h" marker="15m" datePattern="HH:mm"/><interval length="8h" marker="1h" datePattern="HH:mm"/><interval length="16h" marker="2h" datePattern="HH:mm"/><interval length="24h" marker="3h" datePattern="HH:mm"/><interval length="7d" marker="1d" datePattern="NNN/dd"/><interval length="1M" marker="1d" datePattern="NNN/dd"/><interval length="6M" marker="1M" datePattern="NNN/yyyy"/><interval length="24M" marker="3M" datePattern="MM/dd/yyyy"/><interval length="+" marker="1y" datePattern="MM/dd/yyyy"/></intervals><swimLines frozenWidth="120"><swimLine name="Object 11" id="1" styleClass=""/><swimLine name="Object 2" id="2" styleClass=""/><swimLine name="Object 3" id="3" styleClass="swimLine"/><swimLine name="Object 4" id="4" styleClass=""/><swimLine name="Object 5" id="5" styleClass=""/></swimLines><itemTypes><itemType id="type1" name="name1" styleClass="type1" selectedStyleClass="type1selected" hoverStyleClass="type1hover" highlightStyleClass="type1highlight" tooltipStyleClass="tooltip"/><itemType id="type2" name="name2" styleClass="type2" selectedStyleClass="type2selected" hoverStyleClass="type2hover" highlightStyleClass="type2highlight" tooltipStyleClass="tooltip"/></itemTypes><items><item id="0" type="type2" startDate="1201512900000" endDate="1211512900000" swimLineId="1"><tooltip>There are very long long long long tooltip. There are very long long long long tooltip. !</tooltip></item><item id="1" type="type2" startDate="1201612900000" swimLineId="2"><tooltip>There are very long long long long tooltip. There are very long long long long tooltip. !</tooltip></item><item id="2" type="type1" startDate="1201010000000" endDate="1201410000000" swimLineId="3"><tooltip>There are very long long long long tooltip. There are very long long long long tooltip. !</tooltip></item><item id="3" type="type1" startDate="1201410000000" endDate="1201810000000" swimLineId="3"><tooltip>There are very long long long long tooltip. There are very long long long long tooltip. !</tooltip></item></items></data></timeline-root>'/>
+	<div id="form:timlineFlash:flashContainer" style="z-index:10001;position:absolute;top:0px;left:0px;">
+		<h1>Timeline</h1>
+		<p>Alternative content</p>
+		<p><a href="http://www.adobe.com/go/getflashplayer"><img 
+			src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" 
+			alt="Get Adobe Flash player" /></a></p>
+	</div>
+</div>
+<script>new Timeline('form:timlineFlash', 'Timeline.swf','expressInstall.swf',"100%","200", "transparent","","css/styles.css",null,null);</script>
+<!--div id="contextMenu" style="position:absolute; display:none, background-color:#ff0000;width:100px;height:50px;">
+	Context Menu<br/>
+	<span></span>
+</div-->
+</body>
+</html>

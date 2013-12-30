@@ -1,0 +1,39 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<parent>
+		<groupId>com.exadel.siperian</groupId>
+		<artifactId>ui</artifactId>
+		<version>${siperian-ui.version}</version>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.exadel.siperian.ui</groupId>
+	<artifactId>dropdown-menu</artifactId>
+	<name>Siperian drop down menu</name>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.richfaces.cdk</groupId>
+				<artifactId>maven-cdk-plugin</artifactId>
+				<version>${richfaces}</version>
+				<executions>
+					<execution>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<library>
+						<prefix>com.exadel.siperian</prefix>
+						<taglib>
+							<taglib>sip</taglib>
+							<uri>http://siperian.exadel.com/sip</uri>
+							<shortName>dropdown-menu</shortName>
+						</taglib>
+					</library>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

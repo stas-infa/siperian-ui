@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:root 
+	xmlns:f="http://ajax4jsf.org/cdk/template" 
+	xmlns:c=" http://java.sun.com/jsf/core" 
+	xmlns:ui=" http://ajax4jsf.org/cdk/ui"
+	xmlns:u=" http://ajax4jsf.org/cdk/u"
+	xmlns:x=" http://ajax4jsf.org/cdk/x"
+	baseclass="com.exadel.siperian.renderkit.html.VerticalScrollerRenderer"
+	class="com.exadel.siperian.renderkit.html.VerticalScrollerTemplate"
+	component="com.exadel.siperian.component.UIVerticalScroller" 
+	>
+	<h:styles>css/verticalScroller.xcss</h:styles>  
+	
+   	<h:scripts>
+			new org.ajax4jsf.javascript.PrototypeScript(),
+			new org.ajax4jsf.javascript.AjaxScript(),
+			/org/richfaces/renderkit/html/scripts/utils.js,
+			scripts/vScroller.js,
+			scripts/verticalScroller.js,
+	</h:scripts>
+	
+	<f:clientid var="clientId"/>
+	
+	<f:resource name="/com/exadel/siperian/renderkit/html/images/clear.gif" var="clear" />
+	
+    <jsp:scriptlet>
+		<![CDATA[org.richfaces.component.util.FormUtil.throwEnclFormReqExceptionIfNeed(context,component);]]>		                                               
+    </jsp:scriptlet>	
+
+	<c:object var="singlePageRenderStyle" type="java.lang.String" />
+
+    <jsp:scriptlet>
+		<![CDATA[
+        int pageCount = component.getPageCount();
+        int pageIndex = component.getPage();
+
+        com.exadel.siperian.renderkit.html.ControlsState controlsState = getControlsState(context, component, pageIndex, pageCount);
+        boolean singlePageRender = true;
+		
+		if (pageCount == 1 && !component.isRenderIfSinglePage()) {
+        	singlePageRenderStyle = "; display: none";
+        	singlePageRender = false;
+        } else if (!controlsState.isFirstRendered() && !controlsState.isFastRewindRendered() &&
+        	!controlsState.isPreviousRendered() && !controlsState.isNextRendered() && 
+        	!controlsState.isFastForwardRendered() && !controlsState.isLastRendered() && 
+        	pageCount <= 1 ) {
+            singlePageRenderStyle = "; display: none";
+    		singlePageRender = false;
+        }
+		variables.setVariable("pageIndex", pageIndex);
+		]]>		                                               
+    </jsp:scriptlet>	
+
+	<div id="#{clientId}"
+		x:passThruWithExclusions="value,name,type,id,styleClass,class,style"
+		style="#{component.attributes['style']} #{singlePageRenderStyle}"
+		class="mainContainer #{component.attributes['styleClass']}">
+		
+	    <jsp:scriptlet>
+			<![CDATA[
+			if (singlePageRender) {
+			]]>		                                               
+	    </jsp:scriptlet>	
+			
+			<div class="verticalTabsNoScroll" id="#{clientId}:inner">
+				
+				<jsp:scriptlet>
+					<![CDATA[
+					String height = "300";
+					
+					if (component.getHeight() != null) {
+						height = component.getHeight();
+					}
+					
+			        ResponseWriter out = context.getResponseWriter();
+		            out.startElement("div", component);
+					out.writeAttribute("id", clientId + ":tabs", null);
+					out.writeAttribute("class", "scrollTabsContainer", null);
+					out.writeAttribute("style", "height: " + height + "px;", null);
+					]]>		                                               
+				</jsp:scriptlet>	
+
+			
+	                <jsp:scriptlet><![CDATA[
+	                String facet;                         
+	                
+	                if (controlsState.isFirstRendered()){                       
+	                if (controlsState.isFirstEnabled()){
+	                  variables.setVariable("buttonClass", "");                  
+	                  variables.setVariable("onclick", getOnClick(component.FIRST_FACET_NAME));                        
+	                  variables.setVariable("facet", component.FIRST_FACET_NAME);                  
+	                  facet=component.FIRST_FACET_NAME;
+	                }else{
+	                  variables.setVariable("buttonClass", "dr-dscr-button-dsbld rich-datascr-button-dsbld");  
+	                  variables.setVariable("onclick", "");                                            
+	                  variables.setVariable("facet", component.FIRST_DISABLED_FACET_NAME);                                    
+	                  facet=component.FIRST_DISABLED_FACET_NAME;
+	                };                
+	               
+	               
+	                }
+	                ]]></jsp:scriptlet>
+	               
+	                                
+	               
+	
+					<jsp:scriptlet><![CDATA[
+						renderPages(context, component, pageIndex, pageCount);
+	   			        UIComponent pagesFacet = component.getFacet("pages");
+	   			        if (pagesFacet !=null && pagesFacet.isRendered()) {
+							renderChild(context, pagesFacet);
+	                ]]></jsp:scriptlet>
+					<jsp:scriptlet><![CDATA[
+	   			        } else {
+	   			        	renderPager(context, component, pageIndex, pageCount);
+	   			        }
+	                ]]></jsp:scriptlet>
+	
+				<jsp:scriptlet>
+					<![CDATA[               
+					out.endElement("div");
+					]]>		                                               
+				</jsp:scriptlet>	
+
+				<div id="#{clientId}:down"></div>
+				<div id="#{clientId}:up"></div>
+			</div>
+
+	    <jsp:scriptlet>
+			<![CDATA[
+			}
+			]]>		                                               
+	    </jsp:scriptlet>	
+		<script type="text/javascript">
+		new VerticalScroller('#{clientId}', #{this:getSubmitFunction(context, component)}, #{pageIndex}, '#{clear}');
+		Event.observe('#{clientId}', 'rich:datascroller:onscroll', $('#{clientId}').component.onscroll.bind($('#{clientId}').component));
+		document.observe("dom:loaded", $('#{clientId}').component.initScrolling.bind($('#{clientId}').component));
+		</script>
+		<br clear="all" />
+	</div>
+</f:root>

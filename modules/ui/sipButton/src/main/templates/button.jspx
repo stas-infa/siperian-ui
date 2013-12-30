@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:root xmlns:f="http://ajax4jsf.org/cdk/template"
+   xmlns:c=" http://java.sun.com/jsf/core"
+   xmlns:ui=" http://ajax4jsf.org/cdk/ui"
+   xmlns:u=" http://ajax4jsf.org/cdk/u"
+   xmlns:x=" http://ajax4jsf.org/cdk/x"
+   xmlns:h="http://jsf.exadel.com/header"
+   xmlns:vcp="http://ajax4jsf.org/cdk/vcp"
+   baseclass="com.exadel.siperian.renderkit.SipButtonRendererBase"
+   class="com.exadel.siperian.renderkit.html.HtmlSipButtonRenderer"
+   component="javax.faces.component.UICommand">    
+   <h:styles>
+      /com/exadel/siperian/renderkit/html/css/button.xcss,
+   </h:styles>
+   <h:scripts>
+      new org.ajax4jsf.javascript.PrototypeScript(),
+      /org/ajax4jsf/javascript/scripts/form.js,
+      /com/exadel/siperian/renderkit/html/scripts/sipButton.js
+   </h:scripts>
+   <f:clientid var="clientId" />
+   <jsp:declaration><![CDATA[
+   public void encodeIcon(FacesContext context, UIComponent component) throws IOException {
+      ResponseWriter writer = context.getResponseWriter();
+      String iconAlign =   (String) component.getAttributes().get("iconAlign");
+      String icon =  (String) component.getAttributes().get("icon");
+      if("right".equals(iconAlign)){
+         writer.writeText(convertToString(getValue(component)),null);
+      }
+      if(icon != null){
+         icon = context.getApplication().getViewHandler().getResourceURL(context, icon);
+         icon = context.getExternalContext().encodeResourceURL(icon);
+         writer.startElement("img", component);
+         writer.writeURIAttribute("src", icon, null);
+         writer.writeAttribute("width", "9", null);
+         writer.writeAttribute("height", "9", null);
+         writer.writeAttribute("class", "icon-"+iconAlign, null);        
+         writer.endElement("img");
+      }     
+      if("left".equals(iconAlign)){
+         writer.writeText(convertToString(getValue(component)),null);
+      }
+   }
+   ]]></jsp:declaration>
+   <f:resource name="/com/exadel/siperian/renderkit/html/images/st.png" var="icon" />
+   <f:resource name="/com/exadel/siperian/renderkit/html/images/clear.gif" var="clear" />
+   <jsp:scriptlet>
+   <![CDATA[
+         String onclickhandler = "if (!(this.getAttribute('sipdisabled')=='true')) {" + getOnClick(context,component) + "; } else {return false;}";
+         variables.setVariable("onclickhandler", onclickhandler);
+         variables.setVariable("contextButton", getUtils().isBooleanAttribute(component, "contextButton") ? "contextButton" : "globalButton");
+      ]]>
+   </jsp:scriptlet>
+<table id="#{clientId}" border="0" cellspacing="0" cellpadding="0">
+<tbody>
+<tr><td>
+<a href="javascript:void(0);" 
+   sipdisabled="#{component.attributes['disabled']}"
+   onmousedown="#{onclickhandler}"
+   onkeydown="if(event.keyCode == 32 || event.keyCode == 13){this.onmousedown();return false;}"
+   style="color:transparent !important" id="#{clientId}butLink" onfocus="if (!isIE7()) {this.className='dottedButtonAnchor';}" onblur="if (!isIE7()) {this.className='normalButtonAnchor';}">
+<div class="sipbutton">
+   <jsp:scriptlet>
+      <![CDATA[
+         if (!isNestedWithinForm(context, component)) {
+      ]]>                                                     
+   </jsp:scriptlet>
+            <span>#{this:getValue(component)}: This link is disabled as it is not nested within a JSF form.</span>
+   <jsp:scriptlet>
+      <![CDATA[
+         } else if (isDisabled(component)) {
+      ]]>
+   </jsp:scriptlet>
+         <div id="#{clientId}container" class="disabled #{contextButton}"
+             x:passThruWithExclusions="value,name,onclick,href,id,class,onmousedown">
+            <table border="0" cellspacing="0" cellpadding="0">
+               <tr>
+                  <td class="left"><jsp:scriptlet><![CDATA[writer.write("&#160;&#160;&#160;");]]></jsp:scriptlet></td>
+                  <td class="middle"><jsp:scriptlet>encodeIcon(context, component);</jsp:scriptlet><div class="btnstub"/></td>
+                   <td class="right"><jsp:scriptlet><![CDATA[writer.write("&#160;&#160;&#160;");]]></jsp:scriptlet></td>
+               </tr>
+            </table>
+         </div>
+   <jsp:scriptlet>
+      <![CDATA[
+         } else {
+      ]]>
+   </jsp:scriptlet>
+            <div id="#{clientId}container" 
+               class="sipButCommon #{contextButton}"
+               x:passThruWithExclusions="value,name,onclick,href,id,class,onmousedown">
+               <table border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                     <td class="left"><jsp:scriptlet><![CDATA[writer.write("&#160;&#160;&#160;");]]></jsp:scriptlet></td>
+                     <td class="middle"><jsp:scriptlet>encodeIcon(context, component);</jsp:scriptlet><div class="btnstub"/></td>
+                      <td class="right"><jsp:scriptlet><![CDATA[writer.write("&#160;&#160;&#160;");]]></jsp:scriptlet></td>
+                  </tr>
+               </table>
+            </div>
+   <jsp:scriptlet>
+      <![CDATA[
+         }
+      ]]>
+   </jsp:scriptlet>
+</div>
+</a>
+</td></tr></tbody></table>
+</f:root>
+
+
